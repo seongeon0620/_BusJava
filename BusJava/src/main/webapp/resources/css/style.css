@@ -9343,8 +9343,8 @@ a {
 }
 
 .section {
-  padding: 8em 0 3em 0;
-  min-height: calc(100vh - 6em);
+  padding: 9em 0 4em 0;
+  min-height: calc(100vh - 5.5em);
   width: 100%;
 }
 .section.bg-light {

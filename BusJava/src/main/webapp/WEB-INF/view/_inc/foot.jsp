@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-	<footer>
+	<footer class="bg-light">
       <div class="container">
         <div class="row">
           <div class="col-md-12 text-center">
-            <p class="probootstrap_font-15 mb-0">© 2023 <span class="text-primary">BUSJAVA</span>. All Rights Reserved.</p>
+            <p class="probootstrap_font-15 mb-0">© 2023 BUSJAVA. All Rights Reserved.</p>
           </div>
         </div>
       </div>

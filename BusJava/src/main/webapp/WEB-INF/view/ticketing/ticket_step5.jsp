@@ -7,11 +7,11 @@ int totalSeat = Integer.parseInt(request.getParameter("totalSeat"));
 int leftSeat = Integer.parseInt(request.getParameter("leftSeat"));
 List<Integer> seatList = (List<Integer>) session.getAttribute("seatList");
 %>
-<section class="probootstrap_section">
+<section class="section">
 	<div class="container">
-		<div
-			class="row text-center mb-5 probootstrap-animate fadeInUp probootstrap-animated">
-			<div class="col-md-12"><%=ri2.getRi_line_type().equals("H") ? "고속" : "시외"%>버스 예매</h2>
+		<div class="row text-center animate fadeInUp animated">
+			<div class="col-md-12">
+				<h2 class="border-bottom section-heading"><%=ri2.getRi_line_type().equals("고속") ? "고속" : "시외" %>버스 예매</h2>
 			</div>
 			<div class="col-md-12">
 				<div class="col-md-12 m-auto">
@@ -63,9 +63,9 @@ List<Integer> seatList = (List<Integer>) session.getAttribute("seatList");
 					</colgroup>
 					<tbody>
 						<tr class="border-b">
-							<td class="align-middle"><span class="badge badge-danger">출발지</span></td>
+							<td class="align-middle"><span class="badge badge-danger font-weight-normal">출발지</span></td>
 							<td><%=ri2.getRi_fr()%></td>
-							<td class="align-middle"><span class="badge badge-primary">도착지</span></td>
+							<td class="align-middle"><span class="badge badge-primary text-white font-weight-normal">도착지</span></td>
 							<td><%=ri2.getRi_to()%></td>
 							<td><%=ri2.getRi_frdate().substring(0, 11)%></td>
 							<td>출발 <%=ri2.getRi_frdate().substring(11, 16)%></td>
@@ -77,10 +77,10 @@ List<Integer> seatList = (List<Integer>) session.getAttribute("seatList");
 			</div>
 		</div>
 		<form name="frmSeat" action="payment" method="post">
-			<input type="hidden" name="totalPee" class="totalPee" value="<%=(ri2.getRi_acnt() * ri2.getAdult_pee() + ri2.getRi_scnt() * ri2.getStudent_pee() + ri2.getRi_ccnt() * ri2.getChild_pee())%>" />
+			<input type="hidden" name="totalFee" class="totalFee" value="<%=(ri2.getRi_acnt() * ri2.getAdult_fee() + ri2.getRi_scnt() * ri2.getStudent_fee() + ri2.getRi_ccnt() * ri2.getChild_fee())%>" />
 			<div class="row justify-content-center">
 				<div class="col-md-6 text-center">
-					<p class="mb-0">좌석선택<%=leftSeat%>/<%=totalSeat%></p>
+					<p class="mb-0 h5">좌석선택<%=leftSeat%>/<%=totalSeat%></p>
 					<div class="seat-bg ml-auto 
 <%if (ri2.getRi_level().indexOf("일반") != -1 || ri2.getRi_level().indexOf("고속") != -1) {%>
 	seat45
@@ -118,62 +118,44 @@ List<Integer> seatList = (List<Integer>) session.getAttribute("seatList");
 				<div class="col-md-6">
 					<div class="col-md-6 mb-5">
 						<h4>매수</h4>
-						<div class="d-flex mb-2 align-items-center">
-							<div class="col-md-5">
-								<span class="mr-3">성인</span>
-							</div>
+						<div class="d-flex mb-2 align-items-center justify-content-between">
+							<span>성인</span>
 							<div class="col-md-7">
 								<div class="btn-group custom">
 									<button type="button" class="btn btn-primary p-1" disabled="disabled">
-										<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-dash" viewBox="0 0 16 16">
-				        				<path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"></path>
-				        				</svg>
+										<i class="bi bi-dash-lg"></i>
 									</button>
 									<input class="form-control text-center bg-white" type="text" value="<%=ri2.getRi_acnt()%>" size="5" readonly>
 									<button type="button" class="btn btn-primary p-1" disabled="disabled">
-										<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
-										<path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
-				        				</svg>
+										<i class="bi bi-plus-lg"></i>
 									</button>
 								</div>
 							</div>
 						</div>
-						<div class="d-flex mb-2 align-items-center">
-							<div class="col-md-5">
-								<span class="mr-3">청소년</span>
-							</div>
+						<div class="d-flex mb-2 align-items-center justify-content-between">
+							<span>청소년</span>
 							<div class="col-md-7">
 								<div class="btn-group custom">
 									<button type="button" class="btn btn-primary p-1" disabled="disabled">
-										<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-dash" viewBox="0 0 16 16">
-				        				<path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"></path>
-				        				</svg>
+										<i class="bi bi-dash-lg"></i>
 									</button>
 									<input class="form-control text-center bg-white" type="text" value="<%=ri2.getRi_scnt()%>" size="5" readonly>
 									<button type="button" class="btn btn-primary p-1" disabled="disabled">
-										<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
-				          				<path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
-				        				</svg>
+										<i class="bi bi-plus-lg"></i>
 									</button>
 								</div>
 							</div>
 						</div>
-						<div class="d-flex mb-2 align-items-center">
-							<div class="col-md-5">
-								<span class="mr-3">아동</span>
-							</div>
+						<div class="d-flex mb-2 align-items-center justify-content-between">
+							<span>아동</span>
 							<div class="col-md-7">
 								<div class="btn-group custom">
 									<button type="button" class="btn btn-primary p-1" disabled="disabled">
-										<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-dash" viewBox="0 0 16 16">
-				        				<path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"></path>
-				        				</svg>
+										<i class="bi bi-dash-lg"></i>
 									</button>
 									<input class="form-control text-center bg-white" type="text" value="<%=ri2.getRi_ccnt()%>" size="5" disabled="disabled">
 									<button type="button" class="btn btn-primary p-1" disabled="disabled">
-										<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
-				          				<path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
-				        				</svg>
+										<i class="bi bi-plus-lg"></i>
 									</button>
 								</div>
 							</div>
@@ -192,19 +174,19 @@ List<Integer> seatList = (List<Integer>) session.getAttribute("seatList");
 						<h4>금액</h4>
 						<div class="d-flex justify-content-between">
 							<span>성인 <span id="adult2"><%=ri2.getRi_acnt()%></span>명
-							</span> <span id="adultPee"><%=String.format("%,d", (ri2.getRi_acnt() * ri2.getAdult_pee()))%></span>
+							</span> <span id="adultFee"><%=String.format("%,d", (ri2.getRi_acnt() * ri2.getAdult_fee()))%></span>
 						</div>
 						<div class="d-flex justify-content-between">
 							<span>청소년 <span id="teen2"><%=ri2.getRi_scnt()%></span>명
-							</span> <span id="teenPee"><%=String.format("%,d", (ri2.getRi_scnt() * ri2.getStudent_pee()))%></span>
+							</span> <span id="teenFee"><%=String.format("%,d", (ri2.getRi_scnt() * ri2.getStudent_fee()))%></span>
 						</div>
 						<div class="d-flex justify-content-between">
 							<span>아동 <span id="child2"><%=ri2.getRi_ccnt()%></span>명
-							</span> <span id="childPee"><%=String.format("%,d", (ri2.getRi_ccnt() * ri2.getChild_pee()))%></span>
+							</span> <span id="childFee"><%=String.format("%,d", (ri2.getRi_ccnt() * ri2.getChild_fee()))%></span>
 						</div>
 						<hr />
 						<p class="h5 text-right mb-5">
-							총 <span id="totalPee"><%=String.format("%,d", (ri2.getRi_acnt() * ri2.getAdult_pee() + ri2.getRi_scnt() * ri2.getStudent_pee() + ri2.getRi_ccnt() * ri2.getChild_pee()))%></span>원
+							총 <span id="totalFee"><%=String.format("%,d", (ri2.getRi_acnt() * ri2.getAdult_fee() + ri2.getRi_scnt() * ri2.getStudent_fee() + ri2.getRi_ccnt() * ri2.getChild_fee()))%></span>원
 						</p>
 						<button type="button" id="submitBtn" class="btn btn-primary btn-block">선택완료</button>
 					</div>
@@ -215,54 +197,54 @@ List<Integer> seatList = (List<Integer>) session.getAttribute("seatList");
 </section>
 <%@ include file="../_inc/foot.jsp"%>
 <script>
-	const selectedValues = [];
-	const seats = document.getElementsByName("seatBoxDtl");
+const selectedValues = [];
+const seats = document.getElementsByName("seatBoxDtl");
 
-	function getSeat(obj) {
+function getSeat(obj) {
 
-		const value = obj.value;
-		const index = selectedValues.indexOf(value); // 체크한 값이 배열에 이미 있는지 확인을 위한 변수
+	const value = obj.value;
+	const index = selectedValues.indexOf(value); // 체크한 값이 배열에 이미 있는지 확인을 위한 변수
 
-		let seatsCnt = 0;
-		let max = parseInt($("#totalCnt").text());
-		for (let i = 0; i < seats.length; i++) {
-			if (seats[i].checked) {
-				seatsCnt++;
-			}
+	let seatsCnt = 0;
+	let max = parseInt($("#totalCnt").text());
+	for (let i = 0; i < seats.length; i++) {
+		if (seats[i].checked) {
+			seatsCnt++;
 		}
-		if (seatsCnt > max) {
-			alert("가는편의 매수와 동일하게 선택 가능합니다.");
-			obj.checked = false;
-			return false;
-		}
-
-		if (index === -1) {
-			selectedValues.push(value);
-		} else {
-			selectedValues.splice(index, 1);
-		}
-
-		// 배열 오름차순 정렬
-		selectedValues.sort(function(a, b) {
-			return a - b;
-		});
-
-		$("#seatArr").text(selectedValues.join(", "));
-
-		if (selectedValues.length == 0) {
-			$("#seatArr").text("좌석을 선택해주세요.");
-		}
-
+	}
+	if (seatsCnt > max) {
+		alert("가는편의 매수와 동일하게 선택 가능합니다.");
+		obj.checked = false;
+		return false;
 	}
 
-	$(document).ready(function() {
+	if (index === -1) {
+		selectedValues.push(value);
+	} else {
+		selectedValues.splice(index, 1);
+	}
 
-		$("#submitBtn").click(function() {
-			if (!(selectedValues.length == parseInt($("#totalCnt").text()))) {
-				alert("좌석을 선택해주세요.");
-			} else {
-				document.frmSeat.submit();
-			}
-		});
+	// 배열 오름차순 정렬
+	selectedValues.sort(function(a, b) {
+		return a - b;
 	});
+
+	$("#seatArr").text(selectedValues.join(", "));
+
+	if (selectedValues.length == 0) {
+		$("#seatArr").text("좌석을 선택해주세요.");
+	}
+
+}
+
+$(document).ready(function() {
+
+	$("#submitBtn").click(function() {
+		if (!(selectedValues.length == parseInt($("#totalCnt").text()))) {
+			alert("좌석을 선택해주세요.");
+		} else {
+			document.frmSeat.submit();
+		}
+	});
+});
 </script>

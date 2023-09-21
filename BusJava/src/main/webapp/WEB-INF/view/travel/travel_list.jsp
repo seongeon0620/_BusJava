@@ -9,11 +9,11 @@ request.setCharacterEncoding("utf-8");
 JSONArray joItem = (JSONArray)request.getAttribute("joItem");
 PageInfo pi = (PageInfo)request.getAttribute("pi");
 %>
-<section class="probootstrap_section">
+<section class="section">
 	<div class="container">
-		<div class="row text-center mb-5 probootstrap-animate fadeInUp probootstrap-animated">
-			<div class="col-md-12 border-bottom">
-				<h2>추천 여행지</h2>
+		<div class="row text-center mb-5">
+			<div class="col-md-12">
+				<h2 class="border-bottom heading">추천 여행지</h2>
 				<p>여행지를 고민중이신가요? 버스자바가 도와드릴게요!</p>
 			</div>
 		</div>	

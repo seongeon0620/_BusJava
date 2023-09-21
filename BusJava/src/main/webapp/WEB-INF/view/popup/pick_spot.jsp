@@ -232,71 +232,72 @@ List<TerminalInfo> terminalList = (List<TerminalInfo>) request.getAttribute("ter
 	}
 %>
 				</ul>
+			</div>	
 		<%
 			}
 		%>
 			</div>
-		</div>
-		<div class="row" id="arrival" style="display: none;">
-			<div class="col-2 scroll-box border-0 pt-0 pb-0">
-				<div class="nav flex-column nav-pills" role="tablist" aria-orientation="vertical">
-					<button class="nav-link active" data-toggle="pill" data-target="#all2" role="tab">전체</button>
-					<button class="nav-link" data-toggle="pill" data-target="#seoul2" role="tab">서울</button>
-					<button class="nav-link" data-toggle="pill" data-target="#gyeong2" role="tab">경기</button>
-					<button class="nav-link" data-toggle="pill" data-target="#incheon2" role="tab">인천</button>
-					<button class="nav-link" data-toggle="pill" data-target="#gang2" role="tab">강원</button>
-					<button class="nav-link" data-toggle="pill" data-target="#daejeon2" role="tab">대전</button>
-					<button class="nav-link" data-toggle="pill" data-target="#chungnam2" role="tab">충남</button>
-					<button class="nav-link" data-toggle="pill" data-target="#chungbuk2" role="tab">충북</button>
-					<button class="nav-link" data-toggle="pill" data-target="#gwangju2" role="tab">광주</button>
-					<button class="nav-link" data-toggle="pill" data-target="#jeonnam2" role="tab">전남</button>
-					<button class="nav-link" data-toggle="pill" data-target="#jeonbuk2" role="tab">전북</button>
-					<button class="nav-link" data-toggle="pill" data-target="#busan2" role="tab">부산</button>
-					<button class="nav-link" data-toggle="pill" data-target="#gyeongnam2" role="tab">경남</button>
-					<button class="nav-link" data-toggle="pill" data-target="#daegu2" role="tab">대구</button>
-					<button class="nav-link" data-toggle="pill" data-target="#gyeongbuk2" role="tab">경북</button>
-					<button class="nav-link" data-toggle="pill" data-target="#ulsan2" role="tab">울산</button>
-				</div>
+	</div>
+	<div class="row" id="arrival" style="display: none;">
+		<div class="col-2 scroll-box border-0 pt-0 pb-0">
+			<div class="nav flex-column nav-pills" role="tablist" aria-orientation="vertical">
+				<button class="nav-link active" data-toggle="pill" data-target="#all2" role="tab">전체</button>
+				<button class="nav-link" data-toggle="pill" data-target="#seoul2" role="tab">서울</button>
+				<button class="nav-link" data-toggle="pill" data-target="#gyeong2" role="tab">경기</button>
+				<button class="nav-link" data-toggle="pill" data-target="#incheon2" role="tab">인천</button>
+				<button class="nav-link" data-toggle="pill" data-target="#gang2" role="tab">강원</button>
+				<button class="nav-link" data-toggle="pill" data-target="#daejeon2" role="tab">대전</button>
+				<button class="nav-link" data-toggle="pill" data-target="#chungnam2" role="tab">충남</button>
+				<button class="nav-link" data-toggle="pill" data-target="#chungbuk2" role="tab">충북</button>
+				<button class="nav-link" data-toggle="pill" data-target="#gwangju2" role="tab">광주</button>
+				<button class="nav-link" data-toggle="pill" data-target="#jeonnam2" role="tab">전남</button>
+				<button class="nav-link" data-toggle="pill" data-target="#jeonbuk2" role="tab">전북</button>
+				<button class="nav-link" data-toggle="pill" data-target="#busan2" role="tab">부산</button>
+				<button class="nav-link" data-toggle="pill" data-target="#gyeongnam2" role="tab">경남</button>
+				<button class="nav-link" data-toggle="pill" data-target="#daegu2" role="tab">대구</button>
+				<button class="nav-link" data-toggle="pill" data-target="#gyeongbuk2" role="tab">경북</button>
+				<button class="nav-link" data-toggle="pill" data-target="#ulsan2" role="tab">울산</button>
 			</div>
-			<div class="col-10">
-				<div class="tab-content" id="v-pills-tabContent">
-					<ul class="tab-pane scroll-box t-list active" id="all2" role="tabpanel" aria-expanded="true">
-					</ul>
-					<ul class="tab-pane scroll-box t-list" id="seoul2" role="tabpanel">
-					</ul>
-					<ul class="tab-pane scroll-box t-list" id="gyeong2" role="tabpanel">
-					</ul>
-					<ul class="tab-pane scroll-box t-list" id="incheon2" role="tabpanel">
-					</ul>
-					<ul class="tab-pane scroll-box t-list" id="gang2" role="tabpanel">
-					</ul>
-					<ul class="tab-pane scroll-box t-list" id="daejeon2" role="tabpanel">
-					</ul>
-					<ul class="tab-pane scroll-box t-list" id="chungnam2" role="tabpanel">
-					</ul>
-					<ul class="tab-pane scroll-box t-list" id="chungbuk2" role="tabpanel">
-					</ul>
-					<ul class="tab-pane scroll-box t-list" id="gwangju2" role="tabpanel">
-					</ul>
-					<ul class="tab-pane scroll-box t-list" id="jeonnam2" role="tabpanel">
-					</ul>
-					<ul class="tab-pane scroll-box t-list" id="jeonbuk2" role="tabpanel">
-					</ul>
-					<ul class="tab-pane scroll-box t-list" id="busan2" role="tabpanel">
-					</ul>
-					<ul class="tab-pane scroll-box t-list" id="gyeongnam2" role="tabpanel">
-					</ul>
-					<ul class="tab-pane scroll-box t-list" id="daegu2" role="tabpanel">
-					</ul>
-					<ul class="tab-pane scroll-box t-list" id="gyeongbuk2" role="tabpanel">
-					</ul>
-					<ul class="tab-pane scroll-box t-list" id="ulsan2" role="tabpanel">
-					</ul>
-					
-				</div>
+		</div>
+		<div class="col-10">
+			<div class="tab-content" id="v-pills-tabContent">
+				<ul class="tab-pane scroll-box t-list active" id="all2" role="tabpanel" aria-expanded="true">
+				</ul>
+				<ul class="tab-pane scroll-box t-list" id="seoul2" role="tabpanel">
+				</ul>
+				<ul class="tab-pane scroll-box t-list" id="gyeong2" role="tabpanel">
+				</ul>
+				<ul class="tab-pane scroll-box t-list" id="incheon2" role="tabpanel">
+				</ul>
+				<ul class="tab-pane scroll-box t-list" id="gang2" role="tabpanel">
+				</ul>
+				<ul class="tab-pane scroll-box t-list" id="daejeon2" role="tabpanel">
+				</ul>
+				<ul class="tab-pane scroll-box t-list" id="chungnam2" role="tabpanel">
+				</ul>
+				<ul class="tab-pane scroll-box t-list" id="chungbuk2" role="tabpanel">
+				</ul>
+				<ul class="tab-pane scroll-box t-list" id="gwangju2" role="tabpanel">
+				</ul>
+				<ul class="tab-pane scroll-box t-list" id="jeonnam2" role="tabpanel">
+				</ul>
+				<ul class="tab-pane scroll-box t-list" id="jeonbuk2" role="tabpanel">
+				</ul>
+				<ul class="tab-pane scroll-box t-list" id="busan2" role="tabpanel">
+				</ul>
+				<ul class="tab-pane scroll-box t-list" id="gyeongnam2" role="tabpanel">
+				</ul>
+				<ul class="tab-pane scroll-box t-list" id="daegu2" role="tabpanel">
+				</ul>
+				<ul class="tab-pane scroll-box t-list" id="gyeongbuk2" role="tabpanel">
+				</ul>
+				<ul class="tab-pane scroll-box t-list" id="ulsan2" role="tabpanel">
+				</ul>
+				
 			</div>
 		</div>
 	</div>
+</div>
 </div>
 <div class="modal-footer">
 	<button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>

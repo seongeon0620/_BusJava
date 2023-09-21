@@ -5,7 +5,6 @@
 <%@ page import="java.time.temporal.ChronoUnit"%>
 <%@ page import="java.text.*"%>
 <%@ page import="vo.*"%>
-<script src="${pageContext.request.contextPath}/resources/js/jquery-3.6.4.js"></script>
 <%
 request.setCharacterEncoding("utf-8");
 BookInfo bi = (BookInfo) request.getAttribute("bi");
@@ -49,7 +48,7 @@ if (diffMinutes >= 2 * 24 * 60) {
 
 <section class="section">
 	<div class="container">
-		<div class="row text-center animate fadeInUp animated">
+		<div class="row text-center">
 			<div class="col-md-12">
 				<h2 class="border-bottom heading">예매 정보</h2>
 			</div>

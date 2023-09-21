@@ -35,7 +35,7 @@ a {text-decoration: none !important;}
 .scroll-box2 a:hover { color: #007e2f;}
 
 input[type=radio] { width: 20px; height: 20px;}
-.form-check.custom { display: inline-flex ; align-items: center;}
+.form-check.custom { display: inline-flex ; align-items: center; padding: 0;}
 .form-check.custom .form-check-input { position: unset; margin: 0; width: 16px; height: 16px;}
 .form-check.custom .form-check-label { padding-left: 0.5rem;}
 .form-check.custom:not(:first-child) { margin-left: 1rem;}
@@ -500,7 +500,7 @@ h1.logo {margin: 0; line-height: 0;}
 
 #seatArr {height: 44px;}
 
-footer {border-top: 1px solid #ECECEC; padding: 2em 0;}
+footer {padding: 2em 0;}
 .mh-400 {min-height: 400px;}
 
 @media (max-width: 991px) {

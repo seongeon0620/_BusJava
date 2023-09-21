@@ -4,24 +4,18 @@
 request.setCharacterEncoding("utf-8");
 List<TerminalInfo> areaList = (List<TerminalInfo>)request.getAttribute("areaList"); 
 %>
-<style>
-.btnSize { 
-	height: 60px; 
-	width: 220px;
-}
-</style>
-<section class="probootstrap_section">
+<section class="section">
 <div class="container">
-	<div class="row text-center mb-5 probootstrap-animate fadeInUp probootstrap-animated">
+	<div class="row text-center mb-5">
 		<div class="col-md-12">
-		<h2 class="border-bottom probootstrap-section-heading">도착시간 안내</h2>
+		<h2 class="border-bottom heading">도착시간 안내</h2>
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-md-12 m-auto">
-		<form name="frmArrivaltime" method="post" class="probootstrap-form">
+		<div class="col-md-8 m-auto">
+		<form name="frmArrivaltime" method="post" class="custom-form">
 			<div class="d-flex">
-				<div class="form-group col-md-4">
+				<div class="form-group col-md">
 					<label for="departureArea">출발 지역</label>
 					<select id="departureArea" class="form-control custom-select">
 						<option value="" selected disabled>지역 선택</option>
@@ -34,23 +28,25 @@ List<TerminalInfo> areaList = (List<TerminalInfo>)request.getAttribute("areaList
 }%>
 					</select>
 				</div>
-				<div class="form-group col-md-4">
+				<div class="form-group col-md">
 					<label for="departureTerminal">출발 터미널</label>
 					<select id="departureTerminal" name="departureTerminal" class="form-control custom-select">
 						<option value="" selected disabled>터미널 선택</option>
 					</select>
 				</div>
-				<div class="form-group col-md-4">
+			</div>
+			<div class="d-flex align-items-end">
+				<div class="form-group col-md mb-0">
 					<label for="arrivalTerminal" name="arrivalTerminal">도착 터미널</label>
 					<select id="arrivalTerminal" class="form-control custom-select">
 						<option value="" selected disabled>터미널 선택</option>
 					</select>
 				</div>
-			</div>
-			<div class="btn-wrap">
-				<input type="button" id="schBtn" value="조회하기" class="btn btn-primary btnSize">	<!-- ID부여 -->
+				<div class="col-md">
+					<button type="button" id="schBtn" class="btn btn-primary btn-block pt-2 pb-2">조회하기</button>
+				</div>
 			</div> 
-		</form>        
+		</form>
 		</div>
 	</div>
 	<div class="row">

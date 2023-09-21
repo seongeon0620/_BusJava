@@ -6,10 +6,10 @@ List<ScheduleInfo> scheduleList = (List<ScheduleInfo>)session.getAttribute("sche
 ReservationInfo ri2 = (ReservationInfo) session.getAttribute("ri2");
 boolean hasSchedule = scheduleList != null ? true : false;
 %>
-<section class="probootstrap_section">
+<section class="section">
 	<div class="container">
 		<div
-			class="row text-center mb-5 probootstrap-animate fadeInUp probootstrap-animated mb-0">
+			class="row text-center animate fadeInUp animated">
 			<div class="col-md-12">
 				<h2 class="border-bottom probootstrap-section-heading"><%=ri2.getRi_line_type().equals("H") ? "고속" : "시외" %>버스 예매</h2>
 			</div>
@@ -62,9 +62,9 @@ boolean hasSchedule = scheduleList != null ? true : false;
 					</colgroup>
 					<tbody>
 						<tr class="border-b">
-							<td class="align-middle"><span class="badge badge-danger">출발지</span></td>
+							<td class="align-middle"><span class="badge badge-danger font-weight-normal">출발지</span></td>
 							<td class="align-middle"><%=ri2.getRi_fr() %></td>
-							<td class="align-middle"><span class="badge badge-primary">도착지</span></td>
+							<td class="align-middle"><span class="badge badge-primary text-white font-weight-normal">도착지</span></td>
 							<td class="align-middle"><%=ri2.getRi_to() %></td>
 							<td class="align-middle">탑승일</td>
 							<td class="text-left"><%=ri2.getRi_frdate() %>
@@ -107,9 +107,9 @@ boolean hasSchedule = scheduleList != null ? true : false;
 							<input type="hidden" id="toTime" name="toTime" value="" />
 							<input type="hidden" id="company" name="company" value="" />
 							<input type="hidden" id="lineLevel" name="lineLevel" value="" />
-							<input type="hidden" id="adultPee" name="adultPee" value="" />
-							<input type="hidden" id="teenPee" name="teenPee" value="" />
-							<input type="hidden" id="childPee" name="childPee" value="" />
+							<input type="hidden" id="adultFee" name="adultFee" value="" />
+							<input type="hidden" id="teenFee" name="teenFee" value="" />
+							<input type="hidden" id="childFee" name="childFee" value="" />
 							<input type="hidden" id="totalSeat" name="totalSeat" value="" />
 							<input type="hidden" id="leftSeat" name="leftSeat" value="" />
 							<% if (hasSchedule && scheduleList.size() > 0) {	// 해당 노선의 시간표가 있는 경우
@@ -120,9 +120,9 @@ boolean hasSchedule = scheduleList != null ? true : false;
 							<td><%=si.getFr_time() %></td>
 							<td><%=si.getRi_com() %></td>
 							<td><%=si.getLevel() %></td>
-							<td><%=String.format("%,d", si.getAdult_pee()) %></td>
-							<td><%=String.format("%,d", si.getStudent_pee()) %></td>
-							<td><%=String.format("%,d", si.getChild_pee()) %></td>
+							<td><%=String.format("%,d", si.getAdult_fee()) %></td>
+							<td><%=String.format("%,d", si.getStudent_fee()) %></td>
+							<td><%=String.format("%,d", si.getChild_fee()) %></td>
 							<td><%=si.getTotal_seat() %></td>
 							<td>매진</td>
 						</tr>
@@ -134,9 +134,9 @@ boolean hasSchedule = scheduleList != null ? true : false;
 							<td id="fr_time"><%=si.getFr_time() %></td>
 							<td id="ri_com"><%=si.getRi_com() %></td>
 							<td id="ri_level"><%=si.getLevel() %></td>
-							<td id="adult_pee"><%=String.format("%,d", si.getAdult_pee()) %></td>
-							<td id="student_pee"><%=String.format("%,d", si.getStudent_pee()) %></td>
-							<td id="child_pee"><%=String.format("%,d", si.getChild_pee()) %></td>
+							<td id="adult_fee"><%=String.format("%,d", si.getAdult_fee()) %></td>
+							<td id="student_fee"><%=String.format("%,d", si.getStudent_fee()) %></td>
+							<td id="child_fee"><%=String.format("%,d", si.getChild_fee()) %></td>
 							<td id="total_seat"><%=si.getTotal_seat() %></td>
 							<td id="left_seat"><%=si.getLeft_seat() %></td>
 						</tr>
@@ -163,9 +163,9 @@ $("tr.data").on("click", function() {
 	let to_time = $(this).children("#to_time").text();
 	let company = $(this).children("#ri_com").text();
 	let line_level = $(this).children("#ri_level").text();
-	let adult_pee = $(this).children("#adult_pee").text().replace(",", "");
-	let student_pee = $(this).children("#student_pee").text().replace(",", "");
-	let child_pee = $(this).children("#child_pee").text().replace(",", "");
+	let adult_fee = $(this).children("#adult_fee").text().replace(",", "");
+	let student_fee = $(this).children("#student_fee").text().replace(",", "");
+	let child_fee = $(this).children("#child_fee").text().replace(",", "");
 	let total_seat = $(this).children("#total_seat").text();
 	let left_seat =$(this).children("#left_seat").text();
 	
@@ -174,9 +174,9 @@ $("tr.data").on("click", function() {
 	$("#toTime").val(to_time);
 	$("#company").val(company);
 	$("#lineLevel").val(line_level);
-	$("#adultPee").val(parseInt(adult_pee));
-	$("#teenPee").val(parseInt(student_pee));
-	$("#childPee").val(parseInt(child_pee));
+	$("#adultFee").val(parseInt(adult_fee));
+	$("#teenFee").val(parseInt(student_fee));
+	$("#childFee").val(parseInt(child_fee));
 	$("#totalSeat").val(total_seat);
 	$("#leftSeat").val(left_seat);
 	document.frmSchedule.submit();

@@ -23,16 +23,16 @@ if (request.getParameter("keyword") != null)	keyword = request.getParameter("key
 	display:none;
 }
 </style>
-<section class="probootstrap_section">
+<section class="section">
 <div class="container">
-	<div class="row text-center mb-5 probootstrap-animate fadeInUp probootstrap-animated">
+	<div class="row text-center mb-5">
 		<div class="col-md-12">
-			<h2 class="border-bottom probootstrap-section-heading">터미널 안내</h2>
+			<h2 class="border-bottom heading">터미널 안내</h2>
 		</div>
 	</div>
 <!-- 지역명으로 찾기 -->	
 	<div class="row text-center ml-2 mb-2">
-		<h3 class="probootstrap-section-heading">지역명으로 찾기</h3>
+		<h3 class="heading">지역명으로 찾기</h3>
 	</div>
 	<div class="row">
 		<div class="col-md-12">

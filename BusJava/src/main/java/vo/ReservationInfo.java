@@ -5,7 +5,7 @@ import java.util.List;
 public class ReservationInfo {
 	private String ri_idx, mi_id, ri_line_id, ri_line_type, ri_fr, ri_to, ri_frdate, ri_todate, ri_com; 
 	private String ri_level, ri_date, mode, fr_code, to_code, seat, payment, coupon_type;
-	private int ri_acnt, ri_scnt, ri_ccnt, adult_pee, student_pee, child_pee, totalPee, discountPee, coupon_id;
+	private int ri_acnt, ri_scnt, ri_ccnt, adult_fee, student_fee, child_fee, totalFee, discountFee, coupon_id;
 	private List<String> seatList;
 	public String getRi_idx() {
 		return ri_idx;
@@ -127,35 +127,35 @@ public class ReservationInfo {
 	public void setRi_ccnt(int ri_ccnt) {
 		this.ri_ccnt = ri_ccnt;
 	}
-	public int getAdult_pee() {
-		return adult_pee;
+	public int getAdult_fee() {
+		return adult_fee;
 	}
-	public void setAdult_pee(int adult_pee) {
-		this.adult_pee = adult_pee;
+	public void setAdult_fee(int adult_fee) {
+		this.adult_fee = adult_fee;
 	}
-	public int getStudent_pee() {
-		return student_pee;
+	public int getStudent_fee() {
+		return student_fee;
 	}
-	public void setStudent_pee(int student_pee) {
-		this.student_pee = student_pee;
+	public void setStudent_fee(int student_fee) {
+		this.student_fee = student_fee;
 	}
-	public int getChild_pee() {
-		return child_pee;
+	public int getChild_fee() {
+		return child_fee;
 	}
-	public void setChild_pee(int child_pee) {
-		this.child_pee = child_pee;
+	public void setChild_fee(int child_fee) {
+		this.child_fee = child_fee;
 	}
-	public int getTotalPee() {
-		return totalPee;
+	public int getTotalFee() {
+		return totalFee;
 	}
-	public void setTotalPee(int totalPee) {
-		this.totalPee = totalPee;
+	public void setTotalFee(int totalFee) {
+		this.totalFee = totalFee;
 	}
-	public int getDiscountPee() {
-		return discountPee;
+	public int getDiscountFee() {
+		return discountFee;
 	}
-	public void setDiscountPee(int discountPee) {
-		this.discountPee = discountPee;
+	public void setDiscountFee(int discountFee) {
+		this.discountFee = discountFee;
 	}
 	public int getCoupon_id() {
 		return coupon_id;
@@ -169,6 +169,4 @@ public class ReservationInfo {
 	public void setSeatList(List<String> seatList) {
 		this.seatList = seatList;
 	}
-	
-	
 }

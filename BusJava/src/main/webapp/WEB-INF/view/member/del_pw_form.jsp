@@ -5,11 +5,11 @@ MemberInfo mi = (MemberInfo)session.getAttribute("loginInfo");
 %>
 <script src="${pageContext.request.contextPath}/resources/js/jquery-3.6.4.js"></script>
 
-<section class="probootstrap_section" id="section-city-guides">
+<section class="section">
       <div class="container">
-        <div class="row text-center mb-5 probootstrap-animate">
+        <div class="row text-center mb-5">
           <div class="col-md-12">
-            <h2 class="display-5 border-bottom probootstrap-section-heading">비밀번호 입력</h2>
+            <h2 class="display-5 border-bottom heading">비밀번호 입력</h2>
           </div>
         </div>
         <div class="row mb-4">

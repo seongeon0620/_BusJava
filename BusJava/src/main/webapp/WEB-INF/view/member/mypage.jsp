@@ -11,11 +11,11 @@ if (!isLogin) {		// 로그인이 되어 있지 않다면
 String type = loginInfo.getMi_type(); 
 
 %>
-<section class="probootstrap_section">
+<section class="section">
       <div class="container">
-        <div class="row text-center mb-5 probootstrap-animate fadeInUp probootstrap-animated">
+        <div class="row text-center mb-5">
           <div class="col-md-12">
-            <h2 class="border-bottom probootstrap-section-heading">마이페이지</h2>
+            <h2 class="border-bottom heading">마이페이지</h2>
           </div>
         </div>
         <div class="row">

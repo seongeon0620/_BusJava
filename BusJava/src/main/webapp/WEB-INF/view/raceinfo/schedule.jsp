@@ -1,16 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../_inc/head.jsp" %>
 
-<section class="probootstrap_section">
+<section class="section">
 <div class="container">
-	<div class="row text-center mb-5 probootstrap-animate fadeInUp probootstrap-animated">
+	<div class="row text-center">
 		<div class="col-md-12">
-		<h2 class="border-bottom probootstrap-section-heading">시간표 조회</h2>
+		<h2 class="border-bottom heading">시간표 조회</h2>
 		</div>
 	</div>
 	
 	<div class="col-md-8 m-auto">
-	<form name="frmScheduleInfo" method="post" class="probootstrap-form">
+	<form name="frmScheduleInfo" method="post" class="custom-form">
 		<input type="hidden" name="frCode" id="frCode" />
 		<input type="hidden" name="toCode" id="toCode" />
  		<div class="form-group">
@@ -60,7 +60,7 @@
 					</div>
 				</div>
 				</div>
-             
+ 
 				<div class="row mb-3">
 				<div class="col-md">
 					<input type="button" id="schBtn" value="조회하기" class="btn btn-primary btn-block">	<!-- ID부여 -->
@@ -68,7 +68,7 @@
 				</div>
 				<div class="row mb-3">
 					<ul>
-						<li>실시간 운행상태 조회를 위해서는 <span style="text-decoration : underline;">도착시간 안내 메뉴</span>를 이용하시기 바랍니다.</li>
+						<li>실시간 운행상태 조회를 위해서는 <a href="arrivaltime">도착시간 안내 메뉴</a>를 이용하시기 바랍니다.</li>
 					</ul>
 				</div>
 		</div>

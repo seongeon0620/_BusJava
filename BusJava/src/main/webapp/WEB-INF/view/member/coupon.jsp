@@ -4,10 +4,10 @@
 List<UserResourceInfo> couponList = (ArrayList<UserResourceInfo>)request.getAttribute("couponList");
 List<UserResourceInfo> couponHistoryList = (ArrayList<UserResourceInfo>)request.getAttribute("couponHistoryList");
 %>
-<section class="probootstrap_section">
+<section class="section">
 	<div class="container">
-		<div class="row text-center mb-5 probootstrap-animate fadeInUp probootstrap-animated">
-			<div class="col-md-12"><h2 class="border-bottom probootstrap-section-heading">내 쿠폰</h2></div>
+		<div class="row text-center mb-5">
+			<div class="col-md-12"><h2 class="border-bottom heading">내 쿠폰</h2></div>
 		</div>
 		<div class="row">
 			<div class="col-md-8 text-center mb-5 m-auto">

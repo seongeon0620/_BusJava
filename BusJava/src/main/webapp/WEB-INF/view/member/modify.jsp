@@ -202,21 +202,13 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
 </script>
 
-<section class="probootstrap_section" id="section-city-guides">
+<section class="section">
 <div class="container">
-	<div class="row text-center mb-5 probootstrap-animate fadeInUp probootstrap-animated">
+	<div class="row text-center mb-5">
 		<div class="col-md-12">
-			<h2 class="display-5 border-bottom probootstrap-section-heading">내 정보</h2>
-			<div class="col-md-8 m-auto">
-				<div class="progress-bar-custom">
-				</div>
-			</div>
+			<h2 class="border-bottom heading mb-5">내 정보</h2>
 		</div>
-	</div>
-</div>
-
-<div class="row">
-	<div class="col-md-8 mb-3 m-auto">
+	<div class="col-md-6 m-auto">
 		<table class="table text-center">
 		<colgroup>
 			<col width="25%">
@@ -370,6 +362,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
     </div>
 	</div>
 </div>
+	</div>
 </section>
 
 <script>

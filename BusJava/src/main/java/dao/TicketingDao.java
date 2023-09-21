@@ -103,7 +103,7 @@ public class TicketingDao {
 	public void reservationPayIn(String ri_idx, String mi_id, ReservationInfo ri, int realPrice) {
 	// 회원 결제내역 테이블 insert
 		String sql = "INSERT INTO T_PAYMENT_DETAIL (RI_IDX, MI_ID, PD_PAYMENT, PD_TOTAL_PRICE, PD_TYPE, PD_REAL_PRICE) VALUES ('" +
-				ri_idx + "', '" + mi_id + "', '"+ ri.getPayment() + "', " + ri.getTotalPee() + ", '" + ri.getCoupon_type() + "', " + realPrice + ")";
+				ri_idx + "', '" + mi_id + "', '"+ ri.getPayment() + "', " + ri.getTotalFee() + ", '" + ri.getCoupon_type() + "', " + realPrice + ")";
 		jdbc.update(sql);
 	}
 

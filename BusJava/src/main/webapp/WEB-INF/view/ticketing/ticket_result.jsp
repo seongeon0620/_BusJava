@@ -4,15 +4,16 @@
 request.setCharacterEncoding("utf-8");
 ReservationInfo ri1 = (ReservationInfo) session.getAttribute("ri1");
 ReservationInfo ri2 = null;
-int discount = ri1.getDiscountPee();
-int realPrice = ri1.getTotalPee() - discount;
+int discount = ri1.getDiscountFee();
+int realPrice = ri1.getTotalFee() - discount;
 String reservedDate = request.getAttribute("reservedDate").toString();
 String reservedPayment = request.getAttribute("reservedPayment").toString();
 %>
-<section class="probootstrap_section">
+<section class="section">
 	<div class="container">
-		<div class="row text-center mb-5 probootstrap-animate fadeInUp probootstrap-animated">
-			<div class="col-md-12"><h2 class="border-bottom probootstrap-section-heading"><%=ri1.getRi_line_type().equals("H") ? "고속" : "시외" %>버스 예매</h2>
+		<div class="row text-center">
+			<div class="col-md-12">
+				<h2 class="border-bottom heading"><%=ri1.getRi_line_type().equals("고속") ? "고속" : "시외" %>버스 예매</h2>
 			</div>
 			<div class="col-md-12">
 				<% if (ri1.getMode().equals("p")) { // 편도일 경우 %>
@@ -78,12 +79,9 @@ String reservedPayment = request.getAttribute("reservedPayment").toString();
 		</div>
 		<div class="row">
 			<div class="col-md-12">
-				<div class="allchkbox active mb-5">
+				<div class="allchkbox active mb-5 mt-5">
 					<input type="checkbox" id="chkAll">
-					<label for="chkAll" id="chkAllL">
-					<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-check-all" viewBox="0 0 16 16">
-  					<path d="M8.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L2.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093L8.95 4.992a.252.252 0 0 1 .02-.022zm-.92 5.14.92.92a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 1 0-1.091-1.028L9.477 9.417l-.485-.486-.943 1.179z" />
-					</svg>예매가 완료되었습니다.</label>
+					<label for="chkAll" id="chkAllL"><i class="bi bi-check-lg"></i>예매가 완료되었습니다.</label>
 				</div>
 			</div>
 			<div class="col-md-12 text-center mb-5">
@@ -101,9 +99,9 @@ String reservedPayment = request.getAttribute("reservedPayment").toString();
 					</colgroup>
 					<tbody>
 						<tr>
-							<td class="align-middle"><span class="badge badge-danger">출발지</span></td>
+							<td class="align-middle"><span class="badge badge-danger font-weight-normal">출발지</span></td>
 							<td><%=ri1.getRi_fr() %></td>
-							<td class="align-middle"><span class="badge badge-primary">도착지</span></td>
+							<td class="align-middle"><span class="badge badge-primary text-white font-weight-normal">도착지</span></td>
 							<td><%=ri1.getRi_to() %></td>
 							<td><%=ri1.getRi_frdate().substring(0, 11) %></td>
 							<td>출발 <%=ri1.getRi_frdate().substring(11, 16) %></td>
@@ -123,7 +121,7 @@ String reservedPayment = request.getAttribute("reservedPayment").toString();
 <% 
 	if (ri1.getMode().equals("w")) {
 	ri2 = (ReservationInfo) session.getAttribute("ri2");
-	realPrice += ri2.getTotalPee();
+	realPrice += ri2.getTotalFee();
 %>
 				<h5 class="text-left mt-5">오는편</h5>
 				<table class="table">
@@ -138,9 +136,9 @@ String reservedPayment = request.getAttribute("reservedPayment").toString();
 					</colgroup>
 					<tbody>
 						<tr>
-							<td class="align-middle"><span class="badge badge-danger">출발지</span></td>
+							<td class="align-middle"><span class="badge badge-danger font-weight-normal">출발지</span></td>
 							<td><%=ri2.getRi_fr() %></td>
-							<td class="align-middle"><span class="badge badge-primary">도착지</span></td>
+							<td class="align-middle"><span class="badge badge-primary text-white font-weight-normal">도착지</span></td>
 							<td><%=ri2.getRi_to() %></td>
 							<td><%=ri2.getRi_frdate().substring(0, 11) %></td>
 							<td>출발 <%=ri2.getRi_frdate().substring(11, 16) %></td>

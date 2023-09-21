@@ -10,14 +10,14 @@ PageInfo pi = (PageInfo)request.getAttribute("pageInfo");
 %>
 <section class="section">
 	<div class="container">
-		<div class="row text-center animate fadeInUp animated mb-0">
+		<div class="row text-center">
 			<div class="col-md-12">
-				<h2 class="border-bottom mb-5 heading">예매 내역</h2>
+				<h2 class="border-bottom heading mb-5">예매 내역</h2>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-md-12">
-				<table class="table table-hover">
+				<table class="table">
 					<colgroup>
 						<col width="*">
 						<col width="10%">
@@ -30,7 +30,7 @@ PageInfo pi = (PageInfo)request.getAttribute("pageInfo");
 					<thead>
 						<tr>
 							<th scope="col" class="text-center">예매번호</th>
-							<th scope="col" class="text-center">버스구분</th>
+							<th scope="col" class="text-center">구분</th>
 							<th scope="col" class="text-center">출발지</th>
 							<th scope="col" class="text-center">도착지</th>
 							<th scope="col" class="text-center">출발일자</th>

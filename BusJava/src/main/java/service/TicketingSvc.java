@@ -52,7 +52,7 @@ public class TicketingSvc {
 	// 버스 예매 메서드
 	@Transactional
 	public Map<String, Object> reservationIn(MemberInfo loginInfo, ReservationInfo ri) {
-		int realPrice = ri.getTotalPee() - ri.getDiscountPee();	// 실 결제금액
+		int realPrice = ri.getTotalFee() - ri.getDiscountFee();	// 실 결제금액
 		int unit = 20000;	// 스탬프를 적립하는 단위
 		int maxStamp = 30;	// 최대 보유 스탬프
 		String mi_id = loginInfo.getMi_id();
@@ -170,43 +170,43 @@ public class TicketingSvc {
                 int reserved_seat = ticketingDao.getReservedSeat(where.toString());
                 
                 String level = "";
-                int adult_pee = 0, student_pee = 0, child_pee = 0;
+                int adult_fee = 0, student_fee = 0, child_fee = 0;
                 switch (level_code) { 
                 case 1 :
                 	level = "우등";
-                	adult_pee = Integer.parseInt(response.get("exc_amt_100").toString());
-                	student_pee = hasAmountSchedule(response, "cnt_100", "exc_amt_100");
-                	child_pee = hasAmountSchedule(response, "chg_cnt_100", "exc_amt_100");
+                	adult_fee = Integer.parseInt(response.get("exc_amt_100").toString());
+                	student_fee = hasAmountSchedule(response, "cnt_100", "exc_amt_100");
+                	child_fee = hasAmountSchedule(response, "chg_cnt_100", "exc_amt_100");
                 	break;
                 case 2 :
                 	level = "고속";
-                	adult_pee = Integer.parseInt(response.get("exc_amt_050").toString());
-                	student_pee = hasAmountSchedule(response, "cnt_050", "exc_amt_050");
-                	child_pee = hasAmountSchedule(response, "chg_cnt_050", "exc_amt_050");
+                	adult_fee = Integer.parseInt(response.get("exc_amt_050").toString());
+                	student_fee = hasAmountSchedule(response, "cnt_050", "exc_amt_050");
+                	child_fee = hasAmountSchedule(response, "chg_cnt_050", "exc_amt_050");
                 	break;
                 case 3 : 
                 	level = "심야우등";
-                	adult_pee = Integer.parseInt(response.get("exm_amt_100").toString());
-                	student_pee = hasAmountSchedule(response, "amt_050", "exm_amt_100");
-                	child_pee = hasAmountSchedule(response, "chg_fee_100", "exm_amt_100");
+                	adult_fee = Integer.parseInt(response.get("exm_amt_100").toString());
+                	student_fee = hasAmountSchedule(response, "amt_050", "exm_amt_100");
+                	child_fee = hasAmountSchedule(response, "chg_fee_100", "exm_amt_100");
                 	break;
                 case 4 :
                 	level = "심야고속";
-                	adult_pee = Integer.parseInt(response.get("exc_amt_050").toString());
-                	student_pee = hasAmountSchedule(response, "amt_100", "exc_amt_050");
-                	child_pee = hasAmountSchedule(response, "chg_fee_050", "exc_amt_050");
+                	adult_fee = Integer.parseInt(response.get("exc_amt_050").toString());
+                	student_fee = hasAmountSchedule(response, "amt_100", "exc_amt_050");
+                	child_fee = hasAmountSchedule(response, "chg_fee_050", "exc_amt_050");
                 	break;
                 case 7 :
                 	level = "프리미엄";
-                	adult_pee = Integer.parseInt(response.get("cad_cnt").toString());
-                	student_pee = hasAmountSchedule(response, "pre_cnt", "cad_cnt");
-                	child_pee = hasAmountSchedule(response, "can_cnt", "cad_cnt");
+                	adult_fee = Integer.parseInt(response.get("cad_cnt").toString());
+                	student_fee = hasAmountSchedule(response, "pre_cnt", "cad_cnt");
+                	child_fee = hasAmountSchedule(response, "can_cnt", "cad_cnt");
                 	break;
                 case 8 :
                 	level = "심야프리미엄";
-                	adult_pee = Integer.parseInt(response.get("cst_cnt").toString());
-                	student_pee = hasAmountSchedule(response, "rem_tot_cnt", "cst_cnt");
-                	child_pee = hasAmountSchedule(response, "arr_cnt", "cst_cnt");
+                	adult_fee = Integer.parseInt(response.get("cst_cnt").toString());
+                	student_fee = hasAmountSchedule(response, "rem_tot_cnt", "cst_cnt");
+                	child_fee = hasAmountSchedule(response, "arr_cnt", "cst_cnt");
                 	break;
                 }
                 
@@ -216,9 +216,9 @@ public class TicketingSvc {
                 si.setTo_time(to_time);
                 si.setRi_com(ri_com);
                 si.setLevel(level);
-                si.setAdult_pee(adult_pee);
-                si.setStudent_pee(student_pee);
-                si.setChild_pee(child_pee);
+                si.setAdult_fee(adult_fee);
+                si.setStudent_fee(student_fee);
+                si.setChild_fee(child_fee);
                 si.setTotal_seat(total_seat);
                 si.setLeft_seat(total_seat - reserved_seat);
                 scheduleList.add(si);
@@ -309,15 +309,15 @@ public class TicketingSvc {
 				JSONParser p = new JSONParser();
 		        JSONObject jo = (JSONObject)p.parse(sb.toString());
 		        JSONObject joTmp = (JSONObject) jo.get("response");
-		        int adult_pee = Integer.parseInt(joTmp.get("TCK_FEE1").toString());
-		        int student_pee = Integer.parseInt(joTmp.get("TCK_FEE1").toString());
-		        int child_pee = hasAmountSchedule(joTmp, "TCK_FEE2", "TCK_FEE1");
+		        int adult_fee = Integer.parseInt(joTmp.get("TCK_FEE1").toString());
+		        int student_fee = Integer.parseInt(joTmp.get("TCK_FEE1").toString());
+		        int child_fee = hasAmountSchedule(joTmp, "TCK_FEE2", "TCK_FEE1");
 		        
 		        List<ScheduleInfo> scheduleListAddPrice = new ArrayList<>();
 		        for (ScheduleInfo si: scheduleList) {
-		        	si.setAdult_pee(adult_pee);
-		        	si.setStudent_pee(student_pee);
-		        	si.setChild_pee(child_pee);
+		        	si.setAdult_fee(adult_fee);
+		        	si.setStudent_fee(student_fee);
+		        	si.setChild_fee(child_fee);
 		        	scheduleListAddPrice.add(si);
 				}
 			}

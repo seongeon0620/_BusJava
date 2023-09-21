@@ -1,27 +1,25 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../_inc/head.jsp"%>
 <%
-	request.setCharacterEncoding("utf-8");
-	ReservationInfo ri1 = (ReservationInfo) session.getAttribute("ri1");
-	String mode = ri1.getMode();
+request.setCharacterEncoding("utf-8");
+ReservationInfo ri1 = (ReservationInfo) session.getAttribute("ri1");
+String mode = ri1.getMode();
 
-	int totalSeat = Integer.parseInt(request.getParameter("totalSeat"));
-	int leftSeat = Integer.parseInt(request.getParameter("leftSeat"));
+int totalSeat = Integer.parseInt(request.getParameter("totalSeat"));
+int leftSeat = Integer.parseInt(request.getParameter("leftSeat"));
 
-	List<Integer> seatList = (List<Integer>) session.getAttribute("seatList");
-	int adult_pee = ri1.getAdult_pee(), student_pee = ri1.getStudent_pee(), child_pee = ri1.getChild_pee();
+List<Integer> seatList = (List<Integer>) session.getAttribute("seatList");
+int adult_fee = ri1.getAdult_fee(), student_fee = ri1.getStudent_fee(), child_fee = ri1.getChild_fee();
 
-	/* System.out.println("날짜" + ri1.getRi_frdate());
-	System.out.println(ri1.getRi_todate()); */
-	String action = "";
-	if (mode.equals("p"))	action = "payment";
-	else	action = "step04";
+String action = "";
+if (mode.equals("p"))	action = "payment";
+else	action = "step04";
 %>
-<section class="probootstrap_section">
+<section class="section">
 	<div class="container">
-		<div class="row text-center mb-5 probootstrap-animate fadeInUp probootstrap-animated">
+		<div class="row text-center">
 			<div class="col-md-12">
-				<h2 class="border-bottom probootstrap-section-heading"><%=ri1.getRi_line_type().equals("H") ? "고속" : "시외"%>버스 예매</h2>
+				<h2 class="border-bottom heading"><%=ri1.getRi_line_type().equals("H") ? "고속" : "시외"%>버스 예매</h2>
 			</div>
 			<div class="col-md-12">
 				<%
@@ -93,7 +91,7 @@
 		</div>
 		<div class="row">
 			<div class="col-md-12 text-center mb-5">
-				<h4 class="display-5 probootstrap-section-heading text-left">가는편</h4>
+				<h5 class="text-left">가는편</h5>
 				<table class="table">
 					<colgroup>
 						<col width="5%">
@@ -106,9 +104,9 @@
 					</colgroup>
 					<tbody>
 						<tr class="border-b">
-							<td class="align-middle"><span class="badge badge-danger">출발지</span></td>
+							<td class="align-middle"><span class="badge badge-danger font-weight-normal">출발지</span></td>
 							<td><%=ri1.getRi_fr()%></td>
-							<td class="align-middle"><span class="badge badge-primary">도착지</span></td>
+							<td class="align-middle"><span class="badge badge-primary text-white font-weight-normal">도착지</span></td>
 							<td><%=ri1.getRi_to()%></td>
 							<td><%=ri1.getRi_frdate().substring(0, 11)%></td>
 							<td>출발 <%=ri1.getRi_frdate().substring(11, 16)%></td>
@@ -120,10 +118,10 @@
 			</div>
 		</div>
 		<form name="frmSeat" action="<%=action%>" method="post">
-			<input type="hidden" name="totalPee" class="totalPee" value="" />
+			<input type="hidden" name="totalFee" class="totalFee" value="" />
 			<div class="row justify-content-center">
 				<div class="col-md-6 text-center">
-					<p class="mb-0">
+					<p class="mb-0 h5">
 						좌석선택
 						<%=leftSeat%>/<%=totalSeat%></p>
 					<div
@@ -156,63 +154,44 @@
 				<div class="col-md-6">
 					<div class="col-md-6 mb-5">
 						<h4>매수</h4>
-						<div class="d-flex mb-2 align-items-center">
-							<div class="col-md-5">
-								<span class="mr-3">성인</span>
-							</div>
+						<div class="d-flex mb-2 align-items-center justify-content-between">
+							<span class="mr-3">성인</span>
 							<div class="col-md-7">
 								<div class="btn-group custom">
 									<button type="button" id="minusA" class="btn btn-primary p-1" onclick="setCnt(this.id);">
-										<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-dash" viewBox="0 0 16 16">
-					        			<path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"></path>
-					        			</svg>
+										<i class="bi bi-dash-lg"></i>
 									</button>
 									<input class="form-control text-center bg-white" type="text" name="adultCnt" id="adultCnt" value="0" size="5" readonly>
 									<button type="button" id="plusA" class="btn btn-primary p-1" onclick="setCnt(this.id);">
-										<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
-				          				<path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
-				        				</svg>
+										<i class="bi bi-plus-lg"></i>
 									</button>
 								</div>
 							</div>
 						</div>
-						<div class="d-flex mb-2 align-items-center">
-							<div class="col-md-5">
-								<span class="mr-3">청소년</span>
-							</div>
+						<div class="d-flex mb-2 align-items-center justify-content-between">
+							<span class="mr-3">청소년</span>
 							<div class="col-md-7">
 								<div class="btn-group custom">
 									<button type="button" id="minusT" class="btn btn-primary p-1" onclick="setCnt(this.id);">
-										<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-dash" viewBox="0 0 16 16">
-				        				<path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"></path>
-				        				</svg>
+										<i class="bi bi-dash-lg"></i>
 									</button>
 									<input class="form-control text-center bg-white" type="text" name="teenCnt" id="teenCnt" value="0" size="5" readonly>
 									<button type="button" id="plusT" class="btn btn-primary p-1" onclick="setCnt(this.id);">
-										<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
-				          				<path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
-				        				</svg>
+										<i class="bi bi-plus-lg"></i>
 									</button>
 								</div>
 							</div>
 						</div>
-						<div class="d-flex mb-2 align-items-center">
-							<div class="col-md-5">
-								<span class="mr-3">아동</span>
-							</div>
+						<div class="d-flex mb-2 align-items-center justify-content-between">
+							<span class="mr-3">아동</span>
 							<div class="col-md-7">
 								<div class="btn-group custom">
-									<button type="button" id="minusC" class="btn btn-primary p-1"
-										onclick="setCnt(this.id);">
-										<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-dash" viewBox="0 0 16 16">
-				        				<path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"></path>
-				        				</svg>
+									<button type="button" id="minusC" class="btn btn-primary p-1" onclick="setCnt(this.id);">
+										<i class="bi bi-dash-lg"></i>
 									</button>
 									<input class="form-control text-center bg-white" type="text" name="childCnt" id="childCnt" value="0" size="5" readonly>
 									<button type="button" id="plusC" class="btn btn-primary p-1" onclick="setCnt(this.id);">
-										<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
-				          				<path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
-				        				</svg>
+										<i class="bi bi-plus-lg"></i>
 									</button>
 								</div>
 							</div>
@@ -231,19 +210,19 @@
 						<h4>금액</h4>
 						<div class="d-flex justify-content-between">
 							<span>성인 <span id="adult2">0</span>명
-							</span> <span id="adultPee">0</span>
+							</span> <span id="adultFee">0</span>
 						</div>
 						<div class="d-flex justify-content-between">
 							<span>청소년 <span id="teen2">0</span>명
-							</span> <span id="teenPee">0</span>
+							</span> <span id="teenFee">0</span>
 						</div>
 						<div class="d-flex justify-content-between">
 							<span>아동 <span id="child2">0</span>명
-							</span> <span id="childPee">0</span>
+							</span> <span id="childFee">0</span>
 						</div>
 						<hr />
 						<p class="h5 text-right mb-5">
-							총 <span class="totalPee"></span>원
+							총 <span class="totalFee"></span>원
 						</p>
 						<button type="button" id="submitBtn"
 							class="btn btn-primary btn-block">선택완료</button>
@@ -273,9 +252,9 @@
 			}
 		}
 
-		let adultPee = <%=adult_pee%>;
-		let teenPee = <%=student_pee%>;
-		let childPee = <%=child_pee%>;
+		let adultFee = <%=adult_fee%>;
+		let teenFee = <%=student_fee%>;
+		let childFee = <%=child_fee%>;
 
 		let adultCnt = parseInt($("#adultCnt").val());
 		let teenCnt = parseInt($("#teenCnt").val());
@@ -332,11 +311,11 @@
 		$("#adult2").text(adultCnt);
 		$("#teen2").text(teenCnt);
 		$("#child2").text(childCnt);
-		$("#adultPee").text((adultPee * adultCnt).toLocaleString("ko-KR"));
-		$("#teenPee").text((teenPee * teenCnt).toLocaleString("ko-KR"));
-		$("#childPee").text((childPee * childCnt).toLocaleString("ko-KR"));
-		$(".totalPee").val(adultPee * adultCnt + teenPee * teenCnt + childPee * childCnt);
-		$("span.totalPee").text((adultPee * adultCnt + teenPee * teenCnt + childPee * childCnt).toLocaleString("ko-KR"));
+		$("#adultFee").text((adultFee * adultCnt).toLocaleString("ko-KR"));
+		$("#teenFee").text((teenFee * teenCnt).toLocaleString("ko-KR"));
+		$("#childFee").text((childFee * childCnt).toLocaleString("ko-KR"));
+		$(".totalFee").val(adultFee * adultCnt + teenFee * teenCnt + childFee * childCnt);
+		$("span.totalFee").text((adultFee * adultCnt + teenFee * teenCnt + childFee * childCnt).toLocaleString("ko-KR"));
 	}
 
 	const getSeat = function(obj) {

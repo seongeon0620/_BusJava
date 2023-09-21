@@ -249,9 +249,9 @@ public class TicketingCtrl {
 		String toTime = request.getParameter("toTime");
 		String company = request.getParameter("company");
 		String lineLevel = request.getParameter("lineLevel");
-		int adultPee = Integer.parseInt(request.getParameter("adultPee"));
-		int studentPee = Integer.parseInt(request.getParameter("teenPee"));
-		int childPee = Integer.parseInt(request.getParameter("childPee"));
+		int adultFee = Integer.parseInt(request.getParameter("adultFee"));
+		int studentFee = Integer.parseInt(request.getParameter("teenFee"));
+		int childFee = Integer.parseInt(request.getParameter("childFee"));
 		
 		HttpSession session = request.getSession();
 		ReservationInfo ri1 = (ReservationInfo) session.getAttribute("ri1");
@@ -267,9 +267,9 @@ public class TicketingCtrl {
 		
 		if(ri1.getRi_line_type().equals("S"))	ri1.setRi_line_id(routeId);
 		ri1.setRi_frdate(ri1.getRi_frdate() + " " + frTime + ":00");
-		ri1.setAdult_pee(adultPee);
-		ri1.setStudent_pee(studentPee);
-		ri1.setChild_pee(childPee);
+		ri1.setAdult_fee(adultFee);
+		ri1.setStudent_fee(studentFee);
+		ri1.setChild_fee(childFee);
 		ri1.setRi_level(lineLevel);
 		ri1.setRi_com(company);
 		session.setAttribute("ri1", ri1);
@@ -288,7 +288,7 @@ public class TicketingCtrl {
 		int adultCnt = Integer.parseInt(request.getParameter("adultCnt"));
 		int teenCnt = Integer.parseInt(request.getParameter("teenCnt"));
 		int childCnt = Integer.parseInt(request.getParameter("childCnt"));
-		int totalPee = Integer.parseInt(request.getParameter("totalPee"));
+		int totalFee = Integer.parseInt(request.getParameter("totalFee"));
 		String[] seatsGo = request.getParameterValues("seatBoxDtl");
 		String seatListGo = "";
 		for (String seatGo : seatsGo) {
@@ -298,7 +298,7 @@ public class TicketingCtrl {
 		ri1.setRi_acnt(adultCnt);
 		ri1.setRi_scnt(teenCnt);
 		ri1.setRi_ccnt(childCnt);
-		ri1.setTotalPee(totalPee);
+		ri1.setTotalFee(totalFee);
 		ri1.setSeat(seatListGo.substring(2));
 		ri1.setSeatList(Arrays.asList(seatsGo));
 		
@@ -374,9 +374,9 @@ public class TicketingCtrl {
 		String toTime = request.getParameter("toTime");
 		String company = request.getParameter("company");
 		String lineLevel = request.getParameter("lineLevel");
-		int adultPee = Integer.parseInt(request.getParameter("adultPee"));
-		int studentPee = Integer.parseInt(request.getParameter("teenPee"));
-		int childPee = Integer.parseInt(request.getParameter("childPee"));
+		int adultFee = Integer.parseInt(request.getParameter("adultFee"));
+		int studentFee = Integer.parseInt(request.getParameter("teenFee"));
+		int childFee = Integer.parseInt(request.getParameter("childFee"));
 		
 		HttpSession session = request.getSession();
 		ReservationInfo ri2 = (ReservationInfo) session.getAttribute("ri2");
@@ -403,9 +403,9 @@ public class TicketingCtrl {
 		if(ri2.getRi_line_type().equals("S"))	ri2.setRi_line_id(routeId);
 		
 		ri2.setRi_frdate(ri2.getRi_frdate() + " " + frTime + ":00");
-		ri2.setAdult_pee(adultPee);
-		ri2.setStudent_pee(studentPee);
-		ri2.setChild_pee(childPee);
+		ri2.setAdult_fee(adultFee);
+		ri2.setStudent_fee(studentFee);
+		ri2.setChild_fee(childFee);
 		ri2.setRi_level(lineLevel);
 		ri2.setRi_com(company);
 		session.setAttribute("ri2", ri2);
@@ -442,7 +442,7 @@ public class TicketingCtrl {
 			int adultCnt = Integer.parseInt(request.getParameter("adultCnt"));
 			int teenCnt = Integer.parseInt(request.getParameter("teenCnt"));
 			int childCnt = Integer.parseInt(request.getParameter("childCnt"));
-			int totalPee = Integer.parseInt(request.getParameter("totalPee"));
+			int totalFee = Integer.parseInt(request.getParameter("totalFee"));
 			String[] seatsGo = request.getParameterValues("seatBoxDtl");
 			String seatListGo = "";
 			for (String seat : seatsGo) {
@@ -452,13 +452,13 @@ public class TicketingCtrl {
 			ri1.setRi_acnt(adultCnt);
 			ri1.setRi_scnt(teenCnt);
 			ri1.setRi_ccnt(childCnt);
-			ri1.setTotalPee(totalPee);
+			ri1.setTotalFee(totalFee);
 			ri1.setSeat(seatListGo.substring(2));
 			ri1.setSeatList(Arrays.asList(seatsGo));
 			session.setAttribute("ri1", ri1);
 		} else {	// 왕복일 경우
 			ReservationInfo ri2 = (ReservationInfo)session.getAttribute("ri2");
-			int totalPee = Integer.parseInt(request.getParameter("totalPee"));
+			int totalFee = Integer.parseInt(request.getParameter("totalFee"));
 			String[] seatsCome = request.getParameterValues("seatBoxDtl");
 			String seatListCome = "";
 			for (String seat : seatsCome) {
@@ -466,7 +466,7 @@ public class TicketingCtrl {
 			}
 			
 			ri2.setRi_line_type(ri1.getRi_line_type());
-			ri2.setTotalPee(totalPee);
+			ri2.setTotalFee(totalFee);
 			ri2.setSeat(seatListCome.substring(2));
 			ri2.setSeatList(Arrays.asList(seatsCome));
 			if (ri2.getRi_line_type().equals("고속")) ri2.setRi_line_type("고속");
@@ -480,13 +480,13 @@ public class TicketingCtrl {
 		String couponType = "";
 		if (ri1.getRi_acnt() != 0) {
 			couponType = "성인";
-			discount = ri1.getAdult_pee();
+			discount = ri1.getAdult_fee();
 		} else if (ri1.getRi_scnt() != 0) {
 			couponType = "청소년";
-			discount = ri1.getStudent_pee();
+			discount = ri1.getStudent_fee();
 		} else if (ri1.getRi_ccnt() != 0) { 
 			couponType = "아동";
-			discount = ri1.getChild_pee();  
+			discount = ri1.getChild_fee();  
 		}
 		
 		request.setAttribute("couponType", couponType);
@@ -529,23 +529,23 @@ public class TicketingCtrl {
 		String payment = request.getParameter("paymentOpt");
 		String couponType = request.getParameter("couponType");
 		int couponId = Integer.parseInt(request.getParameter("couponId"));
-		int discountPee = Integer.parseInt(request.getParameter("discount"));
+		int discountFee = Integer.parseInt(request.getParameter("discount"));
 		boolean useCoupon = request.getParameter("useCoupon").equals("true");
 		int totalCnt = ri1.getRi_acnt() + ri1.getRi_scnt() + ri1.getRi_ccnt();
 		
 		if(useCoupon && totalCnt == 1) {
 			ri1.setPayment("쿠폰");
-			ri1.setDiscountPee(discountPee);
+			ri1.setDiscountFee(discountFee);
 			ri1.setCoupon_type(couponType);
 			
 		} else if (useCoupon && totalCnt != 0) {
 			ri1.setPayment(payment);
-			ri1.setDiscountPee(discountPee);
+			ri1.setDiscountFee(discountFee);
 			ri1.setCoupon_type(couponType);
 			
 		} else {
 			ri1.setPayment(payment);
-			ri1.setDiscountPee(0);
+			ri1.setDiscountFee(0);
 			ri1.setCoupon_type(null);
 		}
 				
@@ -557,7 +557,7 @@ public class TicketingCtrl {
 		if (ri1.getMode().equals("w")) {	// 왕복일 경우
 			ri2 = (ReservationInfo)session.getAttribute("ri2");
 			ri2.setPayment(payment);
-			ri2.setDiscountPee(0);
+			ri2.setDiscountFee(0);
 			ri2.setCoupon_type(null);
 			
 			ticketingSvc.reservationIn(loginInfo, ri2);

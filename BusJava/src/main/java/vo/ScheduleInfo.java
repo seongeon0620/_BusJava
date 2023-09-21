@@ -1,25 +1,25 @@
 package vo;
 
 public class ScheduleInfo {
-	private int adult_pee, student_pee, child_pee, total_seat, left_seat, route_sq, dispatch_sq;
+	private int adult_fee, student_fee, child_fee, total_seat, left_seat, route_sq, dispatch_sq;
 	private String fr_time, to_time, ri_com, level, route_id, dispatch_date;
-	public int getAdult_pee() {
-		return adult_pee;
+	public int getAdult_fee() {
+		return adult_fee;
 	}
-	public void setAdult_pee(int adult_pee) {
-		this.adult_pee = adult_pee;
+	public void setAdult_fee(int adult_fee) {
+		this.adult_fee = adult_fee;
 	}
-	public int getStudent_pee() {
-		return student_pee;
+	public int getStudent_fee() {
+		return student_fee;
 	}
-	public void setStudent_pee(int student_pee) {
-		this.student_pee = student_pee;
+	public void setStudent_fee(int student_fee) {
+		this.student_fee = student_fee;
 	}
-	public int getChild_pee() {
-		return child_pee;
+	public int getChild_fee() {
+		return child_fee;
 	}
-	public void setChild_pee(int child_pee) {
-		this.child_pee = child_pee;
+	public void setChild_fee(int child_fee) {
+		this.child_fee = child_fee;
 	}
 	public int getTotal_seat() {
 		return total_seat;

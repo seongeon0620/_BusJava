@@ -6,7 +6,7 @@ String typeCode = (String)request.getAttribute("typeCode");
 %>
 <section class="section">
 	<div class="container">
-		<div class="row text-center mb-5 animate fadeInUp animated">
+		<div class="row text-center mb-5">
 			<div class="col-md-12">
 				<h2 class="border-bottom heading"><%=typeCode.equals("H") ? "고속" : "시외" %>버스 예매</h2>
 			</div>
@@ -71,7 +71,7 @@ String typeCode = (String)request.getAttribute("typeCode");
 			</div>
 
 		</div>
-		<div class="col-md-8 animate fadeInUp animated m-auto">
+		<div class="col-md-8 m-auto">
 			<form name="frmSchSchedule" action="step02?type=<%=typeCode %>" method="POST" class="custom-form">
 				<input type="hidden" name="mode" id="mode" value="p" />
 				<input type="hidden" name="frDate" id="frDate" />
@@ -154,7 +154,7 @@ String typeCode = (String)request.getAttribute("typeCode");
 		</div>
 	</div>
 	<div class="modal fade" id="ViewModal" tabindex="-1" role="dialog">
-		<div class="modal-dialog modal-lg" role="document">
+		<div class="modal-dialog modal-xl" role="document">
 			<div class="modal-content"></div>
 		</div>
 	</div>

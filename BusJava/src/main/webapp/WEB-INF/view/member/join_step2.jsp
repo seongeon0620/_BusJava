@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../_inc/head.jsp"%>
 <!DOCTYPE html>
-<script src="${pageContext.request.contextPath}/resources/js/jquery-3.6.4.js"></script>
 <script src="https://www.google.com/recaptcha/api.js"></script>
 <script>
 $(function() {
@@ -232,27 +231,13 @@ window.addEventListener('DOMContentLoaded', (event) => {
 	    }
 	}); 
 }); 
-
-/* function joinIn() {
-    var idChk = document.getElementById('idChk').value;
-    var pwDup = document.getElementById('pwDup').value;
-    var mailChk = document.getElementById('mailChk').value;
-    var phoneChk = document.getElementById('phoneChk').value;
-
-    if (!(idChk=== 'y' && pwDup === 'y' && mailChk === 'y' && phoneChk === 'y')) {
-        alert('중복검사를 확인하여주세요.');
-        return false; // 이벤트의 기본 동작(폼 제출)을 막음
-    }
-    return 
-} */
-
 </script>
 
-<section class="probootstrap_section" id="section-city-guides">
+<section class="section">
 <div class="container">
-	<div class="row text-center mb-5 probootstrap-animate fadeInUp probootstrap-animated">
+	<div class="row text-center mb-5">
 		<div class="col-md-12">
-			<h2 class="display-5 border-bottom probootstrap-section-heading">회원가입</h2>
+			<h2 class="border-bottom heading">회원가입</h2>
 				<div class="col-md-8 m-auto">
 					<div class="progress-bar-custom">
 						<div class="progress-step">

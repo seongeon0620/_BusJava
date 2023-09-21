@@ -52,7 +52,7 @@ String type = loginInfo.getMi_type();
                 </a>
               </li>
                <li>
-                <a href="/busjavaf/mypage/coupon">
+                <a href="/BusJava/mypage/coupon">
                   <div class="h-100 d-flex justify-content-center align-items-center flex-column">
                   <img src="${pageContext.request.contextPath}/resources/images/Money.svg" />
                   <p class="h5 mt-3">내 쿠폰</p>
@@ -60,7 +60,7 @@ String type = loginInfo.getMi_type();
                 </a>
               </li>
               <li>
-                <a href="/busjavaf/mypage/stamp">
+                <a href="/BusJava/mypage/stamp">
                   <div class="h-100 d-flex justify-content-center align-items-center flex-column">
                   <img src="${pageContext.request.contextPath}/resources/images/Gift.svg" />
                   <p class="h5 mt-3">내 스탬프</p>

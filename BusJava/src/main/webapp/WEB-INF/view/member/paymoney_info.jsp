@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../_inc/head.jsp"%>
-<section class="probootstrap_section">
+<section class="section">
       <div class="container">
-        <div class="row text-center mb-5 probootstrap-animate fadeInUp probootstrap-animated">
+        <div class="row text-center mb-5">
           <div class="col-md-12">
-            <h2 class="border-bottom probootstrap-section-heading">페이머니 구매</h2>
+            <h2 class="border-bottom heading">페이머니 구매</h2>
           </div>
         </div>
         <div class="row">

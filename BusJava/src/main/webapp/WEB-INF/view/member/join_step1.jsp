@@ -1,11 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../_inc/head.jsp"%>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<section class="probootstrap_section" id="section-city-guides">
+<section class="section">
 <div class="container">
 	<div class="row text-center mb-5 ">
 		<div class="col-md-12">
-			<h2 class="display-5 border-bottom probootstrap-section-heading">회원가입</h2>
+			<h2 class="border-bottom heading">회원가입</h2>
 			<p>
 					고속버스 통합 예매 홈페이지에서 제공하는 다양한 서비스를 이용하기 위하여 고객님의 동의가 필요합니다.<br /> 본 서비스는 만 14세 이상만 이용이 가능하며, 서비스 이용 전 아래 사항을 확인하시고 동의하여 주시기 바랍니다.
 			</p>

@@ -2,7 +2,7 @@
 <%@ include file="../_inc/head.jsp"%>
 <section class="section">
 	<div class="container">
-		<div class="row text-center mb-5 animate fadeInUp animated">
+		<div class="row text-center mb-5">
 			<div class="col-md-12">
 				<h2 class="display-5 border-bottom heading">로그인</h2>
 			</div>
@@ -21,7 +21,7 @@
 					</div>
 					<button type="submit" class="btn btn-primary btn-block">로그인</button>
 				</form>
-				<div class="d-flex justify-content-center mt-2">
+				<div class="d-flex justify-content-center mt-2 mb-3">
 					<a href="memberJoinStep1" class="mr-3">회원가입</a>
 					<a href="memberFind">아이디/비밀번호 찾기</a>
 				</div>

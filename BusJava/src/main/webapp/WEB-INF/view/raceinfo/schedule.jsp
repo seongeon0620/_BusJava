@@ -1,101 +1,94 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ include file="../_inc/head.jsp" %>
+<%@ include file="../_inc/head.jsp"%>
 
 <section class="section">
-<div class="container">
-	<div class="row text-center">
-		<div class="col-md-12">
-		<h2 class="border-bottom heading">시간표 조회</h2>
+	<div class="container">
+		<div class="row text-center mb-5">
+			<div class="col-md-12">
+				<h2 class="border-bottom heading">시간표 조회</h2>
+			</div>
 		</div>
-	</div>
-	
-	<div class="col-md-8 m-auto">
-	<form name="frmScheduleInfo" method="post" class="custom-form">
-		<input type="hidden" name="frCode" id="frCode" />
-		<input type="hidden" name="toCode" id="toCode" />
- 		<div class="form-group">
-			<div class="col-md">
-				<div class="form-check custom">
-					<input class="form-check-input" type="radio" name="busType" id="highBus" value="H" checked>
-						<label class="form-check-label" for="highBus">고속</label>
-				</div>
-				<div class="form-check custom">
-					<input class="form-check-input" type="radio" name="busType" id="slowBus" value="S">
-						<label class="form-check-label" for="slowBus">시외</label>
-				</div>
-			</div>
-			<div class="tab-content" id="pills-tabContent">
-			<div class="tab-pane active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" aria-expanded="false">
-				<div class="row mb-3">
-				<div class="col-md">
-					<div class="form-group">
-					<label for="sday1">가는날</label>
-					<div class="probootstrap-date-wrap">
-						<span class="icon ion-calendar"></span> 
-						<input type="text" id="frDate" class="form-control bg-white" value="" readonly>
-					</div>
-					</div>
-				</div>
-				</div>
-			</div>
-			</div>
 
-				<div class="row mb-3">
-				<div class="col-md">
-					<div class="form-group">
-					<label for="btsname">출발지</label>
-						<div class="probootstrap-date-wrap">
-							<span class="icon ion-android-pin"></span>
-							<input type="text" class="form-control bg-white" id="sPoint" name="sPoint" readonly>
+		<div class="col-md-8 m-auto">
+			<form name="frmScheduleInfo" method="post" class="custom-form">
+				<input type="hidden" name="frCode" id="frCode" /> <input type="hidden" name="toCode" id="toCode" />
+				<div class="form-group">
+					<div class="mb-2">
+						<div class="form-check custom">
+							<input class="form-check-input" type="radio" name="busType" id="highBus" value="H" checked> <label class="form-check-label" for="highBus">고속</label>
+						</div>
+						<div class="form-check custom">
+							<input class="form-check-input" type="radio" name="busType" id="slowBus" value="S"> <label class="form-check-label" for="slowBus">시외</label>
 						</div>
 					</div>
-				</div>
-				<div class="col-md">
-					<div class="form-group">
-					<label for="btename">도착지</label>
-						<div class="probootstrap-date-wrap">
-							<span class="icon ion-android-pin"></span>
-							<input type="text" class="form-control bg-white" id="ePoint" name="ePoint" readonly>
+					<div class="tab-content" id="pills-tabContent">
+						<div class="tab-pane active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" aria-expanded="false">
+							<div class="row mb-3">
+								<div class="col-md">
+									<div class="form-group">
+										<label for="sday1">가는날</label>
+										<div class="input-with-icon-wrap">
+											<i class="icon bi bi-calendar"></i><input type="text" id="frDate" class="form-control bg-white" value="" readonly>
+										</div>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
+
+					<div class="row mb-3">
+						<div class="col-md">
+							<div class="form-group">
+								<label for="btsname">출발지</label>
+								<div class="input-with-icon-wrap">
+									<i class="icon bi bi-geo-alt-fill"></i><input type="text" class="form-control bg-white" id="sPoint" name="sPoint" readonly>
+								</div>
+							</div>
+						</div>
+						<div class="col-md">
+							<div class="form-group">
+								<label for="btename">도착지</label>
+								<div class="input-with-icon-wrap">
+									<i class="icon bi bi-geo-alt-fill"></i><input type="text" class="form-control bg-white" id="ePoint" name="ePoint" readonly>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="row mb-3">
+						<div class="col-md">
+							<input type="button" id="schBtn" value="조회하기" class="btn btn-primary btn-block">
+						</div>
+					</div>
+					<div class="row">
+						<ul class="mb-0">
+							<li>실시간 운행상태 조회를 위해서는 <a href="arrivaltime">도착시간 안내 메뉴</a>를 이용하시기 바랍니다.
+							</li>
+						</ul>
+					</div>
 				</div>
-				</div>
- 
-				<div class="row mb-3">
-				<div class="col-md">
-					<input type="button" id="schBtn" value="조회하기" class="btn btn-primary btn-block">	<!-- ID부여 -->
-				</div>
-				</div>
-				<div class="row mb-3">
-					<ul>
-						<li>실시간 운행상태 조회를 위해서는 <a href="arrivaltime">도착시간 안내 메뉴</a>를 이용하시기 바랍니다.</li>
-					</ul>
-				</div>
+			</form>
 		</div>
-	</form>
+		<div class="row">
+			<div class="col-md-12 text-center mb-5" style="display: none;" id="timetable-container">
+				<div id="timetable"></div>
+			</div>
+		</div>
 	</div>
-	<div class="row">
-    	<div class="col-md-12 text-center mb-5" style="display: none;" id="timetable-container">
-        	<div id="timetable">
-        	</div>
-    	</div>
-	</div>	 
-</div>
-<div class="modal fade" id="ViewModal" tabindex="-1" role="dialog">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-        </div>
-    </div>
-</div>
+	<div class="modal fade" id="ViewModal" tabindex="-1" role="dialog">
+		<div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+			<div class="modal-content"></div>
+		</div>
+	</div>
 </section>
 <!-- END section -->
 
-<%@ include file="../_inc/foot.jsp" %>
+<%@ include file="../_inc/foot.jsp"%>
 <script>
 
 $("#sPoint").click(function() {
 	const isHighBusSelected = document.getElementById("highBus").checked;
-	const url = isHighBusSelected ? "/busjavaf/pickSpot?typeCode=H" : "/busjavaf/pickSpot?typeCode=S";
+	const url = isHighBusSelected ? "/BusJava/pickSpot?typeCode=H" : "/BusJava/pickSpot?typeCode=S";
 	
 	$('#ViewModal .modal-content').load(url);
 	$('#ViewModal').modal('show');

@@ -32,9 +32,7 @@ if (mi.getMi_pmoney() > 0) {
 						<col width="25%">
 					</colgroup>
 					<tbody>
-
-						<p class="h4 mt-5 text-left text">내 페이머니</p>
-						<!-- 페이머니 잔액 출력 / if문 사용  -->
+						<p class="h4 text-left text">보유 페이머니</p>
 						<tr>
 							<%
 							if (mi.getMi_pmoney() <= 0) {
@@ -110,9 +108,6 @@ if (mi.getMi_pmoney() > 0) {
 				<p class="h4 mt-5 text-left text">페이머니 충전 내역</p>
 				<div class="btn-wrap justify-content-start">
 					<p class="mb-0">최근 3개월 내역만 노출됩니다.</p>
-					<!--          <button type="button" class="btn btn-primary" onclick="" >3개월</button>
-        	  <button type="button" class="btn btn-secondary" onclick="" >6개월</button>
-              <button type="button" class="btn btn-secondary" onclick="" >1년</button> -->
 				</div>
 				<table class="table text-center mt-2">
 					<colgroup>

@@ -17,7 +17,7 @@ List<TerminalInfo> areaList = (List<TerminalInfo>)request.getAttribute("areaList
 			<div class="d-flex">
 				<div class="form-group col-md">
 					<label for="departureArea">출발 지역</label>
-					<select id="departureArea" class="form-control custom-select">
+					<select id="departureArea" class="form-control">
 						<option value="" selected disabled>지역 선택</option>
 <%if (areaList.size() > 0) {
 	for (TerminalInfo ti : areaList) {	
@@ -30,7 +30,7 @@ List<TerminalInfo> areaList = (List<TerminalInfo>)request.getAttribute("areaList
 				</div>
 				<div class="form-group col-md">
 					<label for="departureTerminal">출발 터미널</label>
-					<select id="departureTerminal" name="departureTerminal" class="form-control custom-select">
+					<select id="departureTerminal" name="departureTerminal" class="form-control">
 						<option value="" selected disabled>터미널 선택</option>
 					</select>
 				</div>
@@ -38,7 +38,7 @@ List<TerminalInfo> areaList = (List<TerminalInfo>)request.getAttribute("areaList
 			<div class="d-flex align-items-end">
 				<div class="form-group col-md mb-0">
 					<label for="arrivalTerminal" name="arrivalTerminal">도착 터미널</label>
-					<select id="arrivalTerminal" class="form-control custom-select">
+					<select id="arrivalTerminal" class="form-control">
 						<option value="" selected disabled>터미널 선택</option>
 					</select>
 				</div>

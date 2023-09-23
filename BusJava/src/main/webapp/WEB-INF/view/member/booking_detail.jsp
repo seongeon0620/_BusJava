@@ -132,7 +132,7 @@ if (diffMinutes >= 2 * 24 * 60) {
 						%>
 					</tr>
 				</table>
-				<h5 class="text-left bg-light">결제정보</h5>
+				<h5 class="text-left">결제정보</h5>
 				<table class="table" class="thead-light">
 					<colgroup>
 						<col width="25%">

@@ -2,56 +2,53 @@
 <div class="modal-header">
 	<h5 class="modal-title" id="exampleModalLabel">페이머니 충전</h5>
 	<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
+		<span aria-hidden="true">&times;</span>
 	</button>
 </div>
 <div class="modal-body">
 	<form name="frm" action="" method="">
 		<label for="chagePay" class="font-weight-bold">충전 금액</label>
-		<div class="probootstrap-date-wrap">
-			<span id="resetVal" class="icon ion-android-close"></span> 
-			<input type="text" id="chargeFluid" class="form-control form-control-lg" required maxlength="8">
+		<div class="input-with-icon-wrap">
+			<i id="resetVal" class="icon bi bi-x-lg"></i><input type="text" id="chargeFluid" class="form-control form-control-lg" required maxlength="8">
 		</div>
 		<div class="mt-2">
-			<button type="button" class="btn-success btn-sm plus-charge" value="10000">+1만</button>
-			<button type="button" class="btn-success btn-sm plus-charge" value="50000">+5만</button>
-			<button type="button" class="btn-success btn-sm plus-charge" value="100000">+10만</button>
-			<button type="button" class="btn-success btn-sm plus-charge" value="500000">+50만</button>
+			<button type="button" class="btn-success btn-sm plus-charge text-white" value="10000">+1만</button>
+			<button type="button" class="btn-success btn-sm plus-charge text-white" value="50000">+5만</button>
+			<button type="button" class="btn-success btn-sm plus-charge text-white" value="100000">+10만</button>
+			<button type="button" class="btn-success btn-sm plus-charge text-white" value="500000">+50만</button>
 		</div>
-	    <div class="mt-2 d-flex justify-content-between">
+		<div class="mt-2 d-flex justify-content-between">
 			<span>결제 금액</span><span id="realAmount"></span>
-	    </div>
-	    <div class="d-flex justify-content-between">
-			<span>추가 적립(<span id="bonusVal"></span>%)</span><span id="bonusAmount"></span>
-	    </div>
-	    <hr class="mt-0"/>
-	    <div class="mt-2 d-flex justify-content-between">
-			<p class="h6">충전 예정 페이머니</p><p class="h6" id="totalPoint"></p>
-	    </div>
-	    <p class="font-weight-bold mt-2 mb-1">결제 방법</p>
-	    <div>
+		</div>
+		<div class="d-flex justify-content-between">
+			<span>추가 적립(<span id="bonusVal"></span>%)
+			</span><span id="bonusAmount"></span>
+		</div>
+		<hr class="mt-0" />
+		<div class="mt-2 d-flex justify-content-between">
+			<p class="h6">충전 예정 페이머니</p>
+			<p class="h6" id="totalPoint"></p>
+		</div>
+		<p class="font-weight-bold mt-2 mb-1">결제 방법</p>
+		<div>
 			<div class="form-check custom ml-0">
-				<input class="form-check-input" type="radio" name="payment" id="card" value="card" checked />
-				<label class="form-check-label" for="card">카드</label>
+				<input class="form-check-input" type="radio" name="payment" id="card" value="card" checked /> <label class="form-check-label" for="card">카드</label>
 			</div>
 			<div class="form-check custom">
-				<input class="form-check-input" type="radio" name="payment" id="bankbook" value="bankbook" />
-				<label class="form-check-label" for="bankbook">무통장입금</label>
+				<input class="form-check-input" type="radio" name="payment" id="bankbook" value="bankbook" /> <label class="form-check-label" for="bankbook">무통장입금</label>
 			</div>
 			<div class="form-check custom">
-				<input class="form-check-input" type="radio" name="payment" id="simplepay" value="simplepay" />
-				<label class="form-check-label" for="simplepay">간편결제</label>
+				<input class="form-check-input" type="radio" name="payment" id="simplepay" value="simplepay" /> <label class="form-check-label" for="simplepay">간편결제</label>
 			</div>
-	    </div>
-	    <div class="form-check custom ml-0">
-			<input class="form-check-input" type="checkbox" id="agreeP">
-			<label class="form-check-label" for="agreeP"><span class="text-danger">[필수]</span> 상품, 가격, 결제 전 주의사항 확인</label>
-	    </div>
+		</div>
+		<div class="form-check custom ml-0">
+			<input class="form-check-input" type="checkbox" id="agreeP"> <label class="form-check-label" for="agreeP"><span class="text-danger">[필수]</span> 상품, 가격, 결제 전 주의사항 확인</label>
+		</div>
 	</form>
 </div>
 <div class="modal-footer">
-  <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
-  <button type="button" id="PopBtnPaymoney" class="btn btn-primary">충전</button>
+	<button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
+	<button type="button" id="PopBtnPaymoney" class="btn btn-primary">충전</button>
 </div>
 <script>
 	

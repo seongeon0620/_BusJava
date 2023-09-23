@@ -2,7 +2,7 @@
 <%@ include file="../_inc/head.jsp"%>
 <section class="section">
 	<div class="container">
-		<div class="row text-center mb-5">
+		<div class="row text-center mb-3">
 			<div class="col-md-12">
 				<h2 class="border-bottom heading">비밀번호 입력</h2>
 			</div>

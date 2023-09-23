@@ -235,7 +235,6 @@ button.btn-sm { padding: 0.25rem 0.5rem; font-size: 0.875rem;}
 .mypage li a {display: block;  color: #333; height: 200px; border: 1px solid #c0c0c0;}
 .mypage li a:hover {transition: unset; border: 2px solid #7db249;}
 
-button.w-120p {width: 120px;}
 .table.stamp td { height: 88px;}
 
 .datepicker {padding: 10px;}
@@ -298,6 +297,10 @@ tr.sold-out:hover td { background:none; }
 
 .custom-form { box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.13); }
 .custom-form .form-group label {font-size: 1rem;}
+.custom-form select.form-control {  
+	background: #fff url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='%23333' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3E%3C/svg%3E") no-repeat right 0.75rem center;
+    background-size: 16px;
+}
 
 .custom-file-label {
     position: absolute;
@@ -502,6 +505,8 @@ h1.logo {margin: 0; line-height: 0;}
 
 footer {padding: 2em 0;}
 .mh-400 {min-height: 400px;}
+
+.is-valid .vaild-feedback {display: block;}
 
 @media (max-width: 991px) {
 	#indexBox { max-width: 800px;}

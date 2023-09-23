@@ -7,8 +7,6 @@ List<NoticeInfo> noticeList = (List<NoticeInfo>) request.getAttribute("noticeLis
 PageInfo pi = (PageInfo) request.getAttribute("pi");
 String fullUrl = (String) request.getAttribute("fullUrl");
 %>
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <section class="section">
 	<div class="container" id="app">
 		<div class="row text-center mb-5">
@@ -34,7 +32,7 @@ String fullUrl = (String) request.getAttribute("fullUrl");
 			</div>
 		</form>
 		<div class="row">
-			<div class="col-md-12 text-center mb-5">
+			<div class="col-md-12 text-center">
 				<table class="table">
 					<colgroup>
 						<col width="10%">
@@ -51,18 +49,15 @@ String fullUrl = (String) request.getAttribute("fullUrl");
 						</tr>
 					</thead>
 					<tbody>
-						<!-- 				<div v-for="(item, index) in arrANotiList" v-bind:key="item.nlidx">
-					<a-noti-list v-bind:object="item"></a-noti-list>
-				</div> -->
 						<%
 						if (aNoticeList != null && aNoticeList.size() > 0) {
 							for (NoticeInfo ani : aNoticeList) {
 						%>
 						<tr>
-							<td>
-								<span class="badge rounded-pill bg-primary">중요</span>
+							<td class="align-middle">
+								<span class="badge rounded-pill bg-primary text-white font-weight-normal">중요</span>
 							</td>
-							<td class="text-left click" onclick="location.href='noticeView?nlidx=<%=ani.getNl_idx() + pi.getArgs()%>';"><%=ani.getNl_title()%></td>
+							<td class="text-left"><a class="text-dark" href="noticeView?nlidx=<%=ani.getNl_idx() + pi.getArgs()%>"><%=ani.getNl_title()%></a></td>
 							<td><%=ani.getNl_date()%></td>
 							<td><%=ani.getNl_read()%></td>
 						</tr>
@@ -77,7 +72,7 @@ String fullUrl = (String) request.getAttribute("fullUrl");
 						%>
 						<tr>
 							<td><%=num%></td>
-							<td class="text-left click" onclick="location.href='noticeView?nlidx=<%=ni.getNl_idx() + pi.getArgs()%>';"><%=ni.getNl_title()%></td>
+							<td class="text-left"><a class="text-dark" href="noticeView?nlidx=<%=ni.getNl_idx() + pi.getArgs()%>"><%=ni.getNl_title()%></a></td>
 							<td><%=ni.getNl_date()%></td>
 							<td><%=ni.getNl_read()%></td>
 						</tr>
@@ -107,41 +102,7 @@ String fullUrl = (String) request.getAttribute("fullUrl");
 	</div>
 </section>
 <%@ include file="../_inc/foot.jsp"%>
-
 <script>
-<%-- var aNotiList = {
-	props: ["object"], 
-	template: `
-		<tr>
-			<td><span class="badge rounded-pill bg-primary">중요</span></td>
-			<td class="text-left click" v-on:click="location.href='noticeView?nlidx={{object.nlidx}}<%=pi.getArgs()%>';">{{object.nltitle}}</td>
-			<td>{{object.nldate}}</td>
-			<td>{{object.nlread}}</td>
-		</tr>	
-	`
-}
-
-new Vue({
-	el: "#app", 
-	data: {
-		aNotiList: [
-<%if (aNoticeList != null && aNoticeList.size() > 0) {
-	for (int i = 0 ; i < aNoticeList.size() ;  i++) {
-		NoticeInfo ani = new NoticeInfo();
-		ani = aNoticeList.get(i); %>
-		{
-			nlidx: <%=ani.getNl_idx() %>, no:<%=pi.getNum() %>, 
-			nltitle:"<%=ani.getNl_title() %>", nldate:"<%=ani.getNl_date() %>", nlread:<%=ani.getNl_read() %>
-		}<%if (i < aNoticeList.size() - 1) {%>,<%} %>
-<%	}
-}%>			
-		]
-	}, 
-	components: {
-		"a-noti-list":ANotiList
-	}
-}); --%>
-
 $("#schBtn").click(function(event) {
 	var schtype = $("select[name='schtype']").val();
 	var keyword = $("input[name='keyword']").val();

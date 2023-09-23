@@ -20,24 +20,20 @@ function checkPassword() {
 
 	if (mi_pw === mi_pw2) {
 		if(mi_pw.length < 4 || mi_pw.length > 15) {
-			
 			pwDup.value = "N";
 			passwordInput.focus();
 		}else {
-			pwRed.innerHTML = "<div class='valid-feedback text-left' >비밀번호가 일치합니다.</div>";
 			$("#mi_pw").removeClass("is-invalid").addClass("is-valid");
 			$("#mi_pw2").removeClass("is-invalid").addClass("is-valid");
 			pwDup.value = "Y";
 		}
 	} else if (mi_pw.length < 4 || mi_pw2.length < 4 ){
-		 pwRed.innerHTML = "<div class='valid-feedback text-left' style='color: red;' >4-15자의 영문, 숫자, 특수문자로 입력해주세요.</div>";
-		 $("#mi_pw").removeClass("is-invalid").addClass("is-invalid");
-		 $("#mi_pw2").removeClass("is-invalid").addClass("is-invalid");
+		 $("#mi_pw").removeClass("is-valid").addClass("is-invalid");
+		 $("#mi_pw2").removeClass("is-valid").addClass("is-invalid");
 		 pwDup.value = "N";
 	} else {
-		 pwRed.innerHTML = "<div class='valid-feedback text-left' style='color: red;' >비밀번호가 일치하지않습니다.</div>";
-		 $("#mi_pw").removeClass("is-invalid").addClass("is-invalid");
-		 $("#mi_pw2").removeClass("is-invalid").addClass("is-invalid");
+		 $("#mi_pw").removeClass("is-valid").addClass("is-invalid");
+		 $("#mi_pw2").removeClass("is-valid").addClass("is-invalid");
 		 pwDup.value = "N";
 	}
 }
@@ -85,13 +81,22 @@ function chkDupMail(e1, e3) {
 			success : function(chkRs){
 				var msg = "";
 				if (chkRs == 0) {
-					msg = "<div class='valid-feedback text-left'>사용가능한 이메일 입니다.</div>";
+					$("#e1").removeClass("is-invalid").addClass("is-valid");
+					$("#e2").removeClass("is-invalid").addClass("is-valid");
+					$("#e3").removeClass("is-invalid").addClass("is-valid");
+					$("#mailMsg").removeClass("invalid-feedback").addClass("valid-feedback").addClass("d-block");
+					msg = "사용가능한 이메일 입니다.";
 					$("#mailChk").val("Y");
 				} else {
-					msg = "<div class='valid-feedback text-left' style='color: red;'>이미 등록된 이메일 입니다.</div>";
+					$("#e1").removeClass("is-valid").addClass("is-invalid");
+					$("#e2").removeClass("is-valid").addClass("is-invalid");
+					$("#e3").removeClass("is-valid").addClass("is-invalid");
+					msg = "이미 등록된 이메일 입니다.";
+					$("#mailMsg").removeClass("valid-feedback").addClass("invalid-feedback").addClass("d-block");
 					$("#mailChk").val("N");
+					
 				}
-				$("#mailMsg").html(msg); // .html : ()안의 태그를 바꿔라
+				$("#mailMsg").text(msg); // .html : ()안의 태그를 바꿔라
 			}
 		});
 		$("#mailChk").val("Y");
@@ -134,13 +139,19 @@ function chkDupPhone(p2, p3) {
 			success : function(chkRs){
 				var msg = "";
 				if (chkRs == 0) {
-					msg = "<div class='valid-feedback text-left'>사용가능한 번호 입니다.</div>";
+					$("#p2").removeClass("is-invalid").addClass("is-valid");
+					$("#p3").removeClass("is-invalid").addClass("is-valid");
+					$("#phoneMsg").removeClass("invalid-feedback").addClass("valid-feedback").addClass("d-block");
+					msg = "사용가능한 번호 입니다.";
 					$("#phoneChk").val("Y");
 				} else {
-					msg = "<div class='valid-feedback text-left' style='color: red;'>이미 등록된 번호 입니다.</div>";
+					$("#p2").removeClass("is-valid").addClass("is-invalid");
+					$("#p3").removeClass("is-valid").addClass("is-invalid");
+					$("#phoneMsg").removeClass("valid-feedback").addClass("invalid-feedback").addClass("d-block");
+					msg = "이미 등록된 번호 입니다.";
 					$("#phoneChk").val("N");
 				}
-				$("#phoneMsg").html(msg); // .html : ()안의 태그를 바꿔라
+				$("#phoneMsg").text(msg); // .html : ()안의 태그를 바꿔라
 			}
 		});
 		$("#phoneChk").val("Y");
@@ -205,134 +216,131 @@ window.addEventListener('DOMContentLoaded', (event) => {
 <section class="section">
 	<div class="container">
 		<div class="row text-center mb-5">
-			<div class="col-md-12">
+			<div class="col-sm-12">
 				<h2 class="border-bottom heading mb-5">내 정보</h2>
 			</div>
-			<div class="col-md-6 m-auto">
+			<div class="col-sm-8 m-auto">
 				<table class="table text-center">
 					<colgroup>
 						<col width="25%">
 						<col width="*">
-						<col width="10">
 					</colgroup>
 					<tbody>
 						<tr>
-							<th>이름</th>
-							<td>
-								<input type="text" class="form-control" value="<%=mi.getMi_name()%>" readonly />
-							</td>
+							<th class="align-middle">이름</th>
+							<td class="text-left"><%=mi.getMi_name()%></td>
 						</tr>
 						<tr>
-							<th>아이디</th>
-							<td>
-								<!-- form-control class가 is-valid => 성공, in-invalid => 실패 (테두리 색변화) -->
-								<input type="text" class="form-control" value="<%=mi.getMi_id()%>" readonly>
-							</td>
+							<th class="align-middle">아이디</th>
+							<td class="text-left"><%=mi.getMi_id()%></td>
 						</tr>
 						<tr>
-							<th>비밀번호</th>
+							<th class="align-middle">비밀번호</th>
 							<td>
-								<!--if조건줘야함 form-control class가 is-valid => 성공, in-invalid => 실패 (테두리 색변화) -->
-								<input type="password" class="form-control" value="<%=mi.getMi_pw()%>" readonly>
-							</td>
-							<td>
-								<button type="button" class="btn btn-primary" id="change_pw" name="change_pw" onclick="changePw();">변경</button>
+								<div class="form-row">
+									<div class="col-sm-10 pl-0">
+										<input type="password" class="form-control" value="<%=mi.getMi_pw()%>" readonly>
+									</div>
+									<button type="button" class="btn btn-primary col-sm-2" id="change_pw" name="change_pw" onclick="changePw();">변경</button>
+								</div>
 							</td>
 						</tr>
-						<form name="frmUpPw" action=memberUpPw method="post">
+						<form name="frmUpPw" action=memberUpPw method="post" class="was-validated">
 							<input type="hidden" id="pwDup" name="pwDup" value="N" />
 							<tr id="pwChangeform1" style="display: none;">
-								<th>새 비밀번호</th>
+								<th class="align-middle">새 비밀번호</th>
 								<td>
 									<input type="password" class="form-control" oninput="restrictPw(this)" onkeyup="checkPassword()" id="mi_pw" name="mi_pw" placeholder="4-15자의 영문, 숫자, 특수문자로 입력해주세요.">
 								</td>
 							</tr>
 							<tr id="pwChangeform2" style="display: none;">
-								<th>새 비밀번호확인</th>
+								<th class="align-middle">새 비밀번호 확인</th>
 								<td>
 									<input type="password" class="form-control" oninput="restrictPw(this)" onkeyup="checkPassword()" id="mi_pw2" name="mi_pw2" placeholder="4-15자의 영문, 숫자, 특수문자로 입력해주세요.">
-									<div id="pwRed" class="valid-feedback text-left"></div>
-									<div class="invalid-feedback text-left"></div>
+									<div id="pwRed" class="valid-feedback text-left">비밀번호가 일치합니다.</div>
+									<div class="invalid-feedback text-left">비밀번호가 일치하지않습니다.</div>
 								</td>
 							</tr>
 							<tr id="pwChangeform3" style="display: none;">
-								<td colspan="3">
-									<button type="button" class="btn btn-primary" onclick="changePw();">취소</button>
-									<button type="submit" id="pwChange" class="btn btn-primary">확인</button>
+								<td colspan="2">
+									<button type="button" class="btn btn-outline-secondary" onclick="changePw();">취소</button>
+									<button type="submit" id="pwChange" class="btn btn-outline-primary">확인</button>
 								</td>
 							</tr>
 						</form>
 
 						<tr>
 							<th>성별</th>
-							<td>
-								<input type="text" class="form-control" value="<%=mi.getMi_gender()%>" readonly />
-							</td>
+							<td class="text-left"><%=mi.getMi_gender()%></td>
 						</tr>
 						<tr>
-							<th>이메일</th>
+							<th class="align-middle">이메일</th>
 							<td>
-								<input type="text" class="form-control" value="<%=mi.getMi_email()%>" readonly />
-							</td>
-							<td>
-								<button type="button" class="btn btn-primary" id="change_mail" name="change_mail" onclick="changeEmail();">변경</button>
+								<div class="form-row">
+									<div class="col-sm-10 pl-0">
+										<input type="text" class="form-control" value="<%=mi.getMi_email()%>" readonly />
+									</div>
+									<button type="button" class="btn btn-primary col-sm-2" id="change_mail" name="change_mail" onclick="changeEmail();">변경</button>
+								</div>
 							</td>
 						</tr>
 						<form name="frmUpMail" action=memberUpMail method="post">
 							<input type="hidden" name="mailChk" id="mailChk" value="N" />
 							<tr id="mailChangeform1" style="display: none;">
-								<th>이메일</th>
+								<th class="align-middle">새 이메일</th>
 								<td>
 									<div class="form-row align-items-center justify-content-between">
 										<div class="col-sm-3 my-1">
 											<input type="text" class="form-control" name="e1" id="e1" oninput="restrictEm1(this)" onchange="checkMchange()">
 										</div>
-										<div class="col-sm-3 my-1">
+										<div class="col-sm-4 my-1">
 											<div class="input-group">
 												<div class="input-group-prepend d-flex align-items-center">
-													<div class="input-group-text">@ &nbsp;&nbsp;&nbsp;</div>
+													<div class="input-group-text">@</div>
 												</div>
 												<input type="text" class="form-control" name="e3" id="e3" size="10" oninput="restrictEm2(this)" disabled>
 											</div>
 										</div>
-										<select class="custom-select my-1 mr-sm-2" name="e2" id="e2">
-											<option value="" selected disabled>이메일 선택</option>
-											<option value="gmail.com">gmail.com</option>
-											<option value="naver.com">naver.com</option>
-											<option value="daum.net">daum.net</option>
-											<option value="direct">직접입력</option>
-										</select>
-										<div class="col-auto my-1">
-											<button type="button" class="btn btn-primary" onclick="mailButtonClick()">중복검사</button>
+										<div class="col-sm-3">
+											<select class="form-control my-1 mr-sm-2" name="e2" id="e2">
+												<option value="" selected disabled>이메일 선택</option>
+												<option value="gmail.com">gmail.com</option>
+												<option value="naver.com">naver.com</option>
+												<option value="daum.net">daum.net</option>
+												<option value="direct">직접입력</option>
+											</select>
 										</div>
-										<!-- <div class="invalid-feedback text-left">이미 등록된 이메일 입니다.</div> -->
+										<button type="button" class="btn btn-primary col-sm-2" onclick="mailButtonClick()">중복검사</button>
+										
 									</div>
-									<div class="valid-feedback text-left" id="mailMsg"></div>
+									<div class="text-left" id="mailMsg"></div>
 								</td>
 							</tr>
 							<tr id="mailChangeform2" style="display: none;">
-								<td colspan="3">
-									<button type="button" class="btn btn-primary" onclick="changeEmail();">취소</button>
-									<button type="submit" id="mailChange" class="btn btn-primary">확인</button>
+								<td colspan="2">
+									<button type="button" class="btn btn-outline-secondary" onclick="changeEmail();">취소</button>
+									<button type="submit" id="mailChange" class="btn btn-outline-primary">확인</button>
 								</td>
 							</tr>
 						</form>
 						<tr>
-							<th>전화번호</th>
+							<th class="align-middle">전화번호</th>
 							<td>
-								<input type="text" class="form-control" id="mi_phone" name="mi_phone" value="<%=mi.getMi_phone()%>" readonly />
-							</td>
-							<td>
-								<button type="button" class="btn btn-primary" id="change_pw" name="change_pw" onclick="changePhone();">변경</button>
+								<div class="form-row">
+									<div class="col-sm-10 pl-0">
+										<input type="text" class="form-control" id="mi_phone" name="mi_phone" value="<%=mi.getMi_phone()%>" readonly />
+									</div>
+									<button type="button" class="btn btn-primary col-sm-2" id="change_pw" name="change_pw" onclick="changePhone();">변경</button>
+								</div>
 							</td>
 						</tr>
 						<form name="frmUpPhone" action=memberUpPhone method="post">
 							<input type="hidden" name="phoneChk" id="phoneChk" value="N" />
 							<tr id="phoneChangeform1" style="display: none;">
-								<th>전화번호</th>
+								<th class="align-middle">새 전화번호</th>
 								<td>
-									<div class="row align-items-center">
-										<div class="col">
+									<div class="form-row align-items-center">
+										<div class="col pl-0">
 											<input type="text" class="form-control" placeholder="010" readonly>
 										</div>
 										-
@@ -348,22 +356,21 @@ window.addEventListener('DOMContentLoaded', (event) => {
 										</div>
 
 									</div>
-									<div id="phoneMsg" class="valid-feedback text-left"></div>
-									<!-- <div class="invalid-feedback text-left">이미 등록된 전화번호 입니다.</div> -->
+									<div class="text-left" id="phoneMsg"></div>
 								</td>
 							</tr>
 							<tr id="phoneChangeform2" style="display: none;">
-								<td colspan="3">
-									<button type="button" class="btn btn-primary" onclick="changePhone();">취소</button>
-									<button type="submit" id="phoneChange" class="btn btn-primary">확인</button>
+								<td colspan="2">
+									<button type="button" class="btn btn-outline-secondary" onclick="changePhone();">취소</button>
+									<button type="submit" id="phoneChange" class="btn btn-outline-primary">확인</button>
 								</td>
 							</tr>
 						</form>
 					</tbody>
 				</table>
 				<div class="btn-wrap">
-					<button type="button" class="btn btn-primary w-120p " onclick="location.href='memberMypage'">취소</button>
-					<button type="button" class="btn btn-secondary w-120p " onclick="memberDel();">회원탈퇴</button>
+					<button type="button" class="btn btn-primary col-sm-2" onclick="location.href='./'">취소</button>
+					<button type="button" class="btn btn-light col-sm-2" onclick="memberDel();">회원탈퇴</button>
 				</div>
 			</div>
 		</div>

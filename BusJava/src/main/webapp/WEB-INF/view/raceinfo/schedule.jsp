@@ -21,21 +21,6 @@
 							<input class="form-check-input" type="radio" name="busType" id="slowBus" value="S"> <label class="form-check-label" for="slowBus">시외</label>
 						</div>
 					</div>
-					<div class="tab-content" id="pills-tabContent">
-						<div class="tab-pane active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" aria-expanded="false">
-							<div class="row mb-3">
-								<div class="col-md">
-									<div class="form-group">
-										<label for="sday1">가는날</label>
-										<div class="input-with-icon-wrap">
-											<i class="icon bi bi-calendar"></i><input type="text" id="frDate" class="form-control bg-white" value="" readonly>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-
 					<div class="row mb-3">
 						<div class="col-md">
 							<div class="form-group">
@@ -50,6 +35,16 @@
 								<label for="btename">도착지</label>
 								<div class="input-with-icon-wrap">
 									<i class="icon bi bi-geo-alt-fill"></i><input type="text" class="form-control bg-white" id="ePoint" name="ePoint" readonly>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row mb-3">
+						<div class="col-md">
+							<div class="form-group">
+								<label for="sday1">가는날</label>
+								<div class="input-with-icon-wrap">
+									<i class="icon bi bi-calendar"></i><input type="text" id="frDate" class="form-control bg-white" value="" readonly>
 								</div>
 							</div>
 						</div>
@@ -76,7 +71,7 @@
 		</div>
 	</div>
 	<div class="modal fade" id="ViewModal" tabindex="-1" role="dialog">
-		<div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+		<div class="modal-dialog modal-xl modal-dialog-centered" role="document">
 			<div class="modal-content"></div>
 		</div>
 	</div>
@@ -178,7 +173,7 @@ const choosePosition = function(type) {	// 출발지 입력
 	   	  let keywordList = "";
 	   	  if (data.length > 0) {
 	   	    data.forEach(function (terminal) {
-	   	    	keywordList += '<li><a class="' + type + ' btn-sm btn-primary" href="'+ terminal.bt_code +'">' + terminal.bt_name + '</a></li>';
+	   	    	keywordList += '<li><a class="' + type + ' btn-sm btn-primary text-white" href="'+ terminal.bt_code +'">' + terminal.bt_name + '</a></li>';
 	   	    });
 	   	  } else {
 	   		  keywordList = '<li>검색결과가 없습니다.</li>';
@@ -301,7 +296,7 @@ $("#schBtn").click(function() {	// 조회하기 버튼 클릭
         success: function(data) {
 			console.log(data);
             if (data != null && data.length > 0) {
-                let tableHTML = "<table class='table table-hover'>" + 
+                let tableHTML = "<table class='table'>" + 
                					"<colgroup><col width='10%'><col width='14%'><col width='15%'><col width='15%'>" +
 								"<col width='15%'><col width='15%'><col width='8%'><col width='8%'></colgroup>" + 
 	            				"<thead class='bg-light'><tr>" + 
@@ -314,9 +309,9 @@ $("#schBtn").click(function() {	// 조회하기 버튼 클릭
                     tableHTML += "<td>" + table.fr_time + "</td>";
                     tableHTML += "<td>" + table.ri_com + "</td>";
                     tableHTML += "<td>" + table.level + "</td>";
-                    tableHTML += "<td>" + number_format(table.adult_pee); + "</td>";
-                    tableHTML += "<td>" + number_format(table.student_pee); + "</td>";
-                    tableHTML += "<td>" + number_format(table.child_pee); + "</td>";
+                    tableHTML += "<td>" + number_format(table.adult_fee); + "</td>";
+                    tableHTML += "<td>" + number_format(table.student_fee); + "</td>";
+                    tableHTML += "<td>" + number_format(table.child_fee); + "</td>";
                     tableHTML += "<td>" + table.total_seat + "</td>";
                     tableHTML += "<td>" + table.left_seat + "</td>";
                     tableHTML += "</tr>";

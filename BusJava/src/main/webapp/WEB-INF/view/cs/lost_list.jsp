@@ -14,31 +14,34 @@ PageInfo pi = (PageInfo) request.getAttribute("pi");
 		</div>
 		<form name="frmSch">
 			<div class="row mb-2 justify-content-end">
-				<div class="col-md">
+				<div class="d-flex align-items-center justify-content-end col-sm-6 p-0">
+				<div class="col-sm-4">
 					<div class="form-group">
-						<div class="probootstrap-date-wrap">
-							<span class="icon ion-calendar"></span> <input type="text" id="sDate" value="<%=pi.getSdate()%>" name="sDate" class="form-control bg-white" readonly>
+						<div class="input-with-icon-wrap">
+							<i class="icon bi bi-calendar"></i><input type="text" id="sDate" value="<%=pi.getSdate()%>" name="sDate" class="form-control bg-white" readonly>
 						</div>
 					</div>
 				</div>
-				<div class="col-md">
+				<p>-</p>
+				<div class="col-sm-4">
 					<div class="form-group">
-						<div class="probootstrap-date-wrap">
-							<span class="icon ion-calendar"></span> <input type="text" id="eDate" value="<%=pi.getEdate()%>" name="eDate" class="form-control bg-white" readonly>
+						<div class="input-with-icon-wrap">
+							<i class="icon bi bi-calendar"></i><input type="text" id="eDate" value="<%=pi.getEdate()%>" name="eDate" class="form-control bg-white" readonly>
 						</div>
 					</div>
 				</div>
-				<div class="col-md-2">
+				</div>
+				<div class="col-sm-2 pl-0">
 					<select class="form-control" name="schtype">
 						<option value="all">검색조건</option>
 						<option value="title" <%if (pi.getSchtype().equals("title")) {%> selected="selected" <%}%>>습득물명</option>
 						<option value="tername" <%if (pi.getSchtype().equals("tername")) {%> selected="selected" <%}%>>보관장소</option>
 					</select>
 				</div>
-				<div class="col-md-3">
+				<div class="col-sm-3 pl-0">
 					<div class="input-group">
 						<input type="text" class="form-control" name="keyword" value="<%=pi.getKeyword()%>">
-						<button class="btn btn-primary btn-sm click" type="submit" id="schBtn">검색</button>
+						<button class="btn btn-primary click" type="submit" id="schBtn">검색</button>
 					</div>
 				</div>
 			</div>
@@ -70,7 +73,7 @@ PageInfo pi = (PageInfo) request.getAttribute("pi");
 						%>
 						<tr>
 							<td><%=num%></td>
-							<td class="text-left click" onclick="location.href='lostView?ll_idx=<%=li.getLl_idx() + pi.getArgs()%>';"><%=li.getLl_title()%></td>
+							<td class="text-left"><a class="text-dark" href="lostView?ll_idx=<%=li.getLl_idx() + pi.getArgs()%>"><%=li.getLl_title()%></a></td>
 							<td><%=li.getLl_tername()%></td>
 							<td>보관중</td>
 							<td><%=li.getLl_getdate()%></td>

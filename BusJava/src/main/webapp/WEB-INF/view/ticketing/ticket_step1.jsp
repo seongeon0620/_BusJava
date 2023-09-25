@@ -154,7 +154,7 @@ String typeCode = (String)request.getAttribute("typeCode");
 		</div>
 	</div>
 	<div class="modal fade" id="ViewModal" tabindex="-1" role="dialog">
-		<div class="modal-dialog modal-xl" role="document">
+		<div class="modal-dialog modal-xl modal-dialog-centered" role="document">
 			<div class="modal-content"></div>
 		</div>
 	</div>
@@ -180,7 +180,7 @@ const addTerminalToTab = function (data, targetTabId) {
 	let tabContent = "";
 	if (data.length > 0) {
 		data.forEach(function (terminal) {
-			tabContent += '<li><a href="'+ terminal.bt_code +'">' + terminal.bt_name + '</a></li>';
+			tabContent += '<li><a href="'+ terminal.bt_code +'" class="text-decoration-none">' + terminal.bt_name + '</a></li>';
 		});
 	} else {
 		tabContent = "해당 지역의 도착지 터미널이 존재하지 않습니다.";

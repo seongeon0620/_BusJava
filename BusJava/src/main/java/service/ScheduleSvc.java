@@ -36,10 +36,12 @@ public class ScheduleSvc {
 				int total_seat = Integer.parseInt(linObject.get("web_cnt").toString()); // 총 좌석수
 
 				String where = "RI_STATUS = '예매' AND RI_LINE_ID = '" + ri.getFr_code() + ri.getTo_code() + "' ";
-				if (fr_time.substring(0, 2).equals("24")) {	// 출발시간이 24:mm 일 때 날짜에 +1일 시간은 00:mm 로 변경
-					where += " AND date(RI_FRDATE) = adddate('" + ri.getRi_frdate() + "', 1) and time(RI_FRDATE) = '00:" + fr_time.substring(2);
+				if (fr_time.substring(0, 2).equals("24")) { // 출발시간이 24:mm 일 때 날짜에 +1일 시간은 00:mm 로 변경
+					where += " AND date(RI_FRDATE) = adddate('" + ri.getRi_frdate() + "', 1) and time(RI_FRDATE) = '00:"
+							+ fr_time.substring(2) + ":00'";
 				} else {
-					where += " AND RI_FRDATE = '" + ri.getRi_frdate() + " " + fr_time.substring(0, 2) + ":" + fr_time.substring(2);
+					where += " AND RI_FRDATE = '" + ri.getRi_frdate() + " " + fr_time.substring(0, 2) + ":"
+							+ fr_time.substring(2) + ":00'";
 				}
 				int reserved_seat = scheduleDao.getReservedSeat(where.toString()); // 예약된 좌석 개수
 
@@ -114,17 +116,19 @@ public class ScheduleSvc {
 					// 시외버스의 경우 api출발시간 파라미터가 작동안하는 이슈로 시간 비교후 이후시간 인 경우 작업 시작
 
 					String where = "RI_STATUS = '예매' AND RI_LINE_ID = '" + ri.getFr_code() + ri.getTo_code() + "' ";
-					if (fr_time.substring(0, 2).equals("24")) {	// 출발시간이 24:mm 일 때 날짜에 +1일 시간은 00:mm 로 변경
-						where += " AND date(RI_FRDATE) = adddate('" + ri.getRi_frdate() + "', 1) and time(RI_FRDATE) = '00:" + fr_time.substring(2);
+					if (fr_time.substring(0, 2).equals("24")) { // 출발시간이 24:mm 일 때 날짜에 +1일 시간은 00:mm 로 변경
+						where += " AND date(RI_FRDATE) = adddate('" + ri.getRi_frdate()
+								+ "', 1) and time(RI_FRDATE) = '00:" + fr_time.substring(2);
 					} else {
-						where += " AND RI_FRDATE = '" + ri.getRi_frdate() + " " + fr_time.substring(0, 2) + ":" + fr_time.substring(2);
+						where += " AND RI_FRDATE = '" + ri.getRi_frdate() + " " + fr_time.substring(0, 2) + ":"
+								+ fr_time.substring(2);
 					}
 
 					int reserved_seat = scheduleDao.getReservedSeat(where.toString());
 
 					/*
-					 * 등급코드 IDB 프리미엄 프리미엄(일반) IDG 일반 IDP 우등 IDW 프리미엄 프리미엄(주말) INB 심야프리미엄(일반)
-					 * ING 심야일반 INP 심야우등 INW 심야프리미엄(주말)
+					 * 등급코드 IDB 프리미엄 프리미엄(일반) IDG 일반 IDP 우등 IDW 프리미엄 프리미엄(주말) INB 심야프리미엄(일반) ING
+					 * 심야일반 INP 심야우등 INW 심야프리미엄(주말)
 					 */
 					String level = "";
 					if (level_code.equals("IDB") || level_code.equals("IDW"))

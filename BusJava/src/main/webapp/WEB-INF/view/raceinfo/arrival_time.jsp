@@ -152,7 +152,7 @@ $(document).ready(function() {
 		        dataType: "json",
 		        success: function(data) {
 		            if (data.length > 0) {
-		                let tableHTML = "<table class='table table-hover'>" + 
+		                let tableHTML = "<table class='table'>" + 
 		               					"<colgroup><col width='15%'><col width='10%'><col width='15%'><col width='15%'>" +
 										"<col width='15%'><col width='15%'><col width='15%'></colgroup>" + 
 			            				"<thead class='bg-light'><tr>" + 
@@ -162,9 +162,9 @@ $(document).ready(function() {
 			            				"<th scope='col' class='text-center'>상태</th></tr></thead><tbody>";
 		                data.forEach(function(table) {
 		                	if (table.status == "도착") {
-		                		table.status = "<span class='badge rounded-pill bg-secondary'>도착</span>";
+		                		table.status = "<span class='badge rounded-pill bg-secondary text-white font-weight-normal'>도착</span>";
 		                	} else if (table.status == "운행중") {
-		                		table.status = "<span class='badge rounded-pill bg-primary'>운행중</span>";
+		                		table.status = "<span class='badge rounded-pill bg-primary text-white font-weight-normal'>운행중</span>";
 		                	}
 		                    tableHTML += "<tr>";
 		                    tableHTML += "<td>" + table.stime + "</td>";
@@ -173,7 +173,7 @@ $(document).ready(function() {
 		                    tableHTML += "<td>" + table.num + "</td>";
 		                    tableHTML += "<td>" + table.etime + "</td>";
 		                    tableHTML += "<td>" + table.ltime + "</td>";
-		                    tableHTML += "<td>" + table.status + "</td>";
+		                    tableHTML += "<td class='align-middle'>" + table.status + "</td>";
 		                    tableHTML += "</tr>";
 		                });
 		                tableHTML += "</tbody></table>";

@@ -41,86 +41,79 @@
 </script>
 <section class="section">
 	<div class="container">
-		<div class="row text-center mb-5">
+		<div class="row text-center mb-3">
 			<div class="col-md-12">
 				<h2 class="border-bottom heading">아이디 찾기</h2>
 			</div>
 		</div>
-		<div class="row mb-4">
+		<div class="row mb-5">
 			<div class="col-md-6 m-auto">
 				<form name="frmFindId" action="memberFindId" method="post">
-					<tr>
-						<th>이메일</th>
-						<td>
-							<div class="form-row align-items-center justify-content-between">
-								<div class="col-sm-3 my-1">
-									<input type="text" class="form-control" name="idE1" id="idE1" oninput="restrictEm1(this)">
+					이메일
+					<div class="form-row align-items-center justify-content-between">
+						<div class="col-sm-3 my-1">
+							<input type="text" class="form-control" name="idE1" id="idE1" oninput="restrictEm1(this)">
+						</div>
+						<div class="col-sm-4 my-1">
+							<div class="input-group">
+								<div class="input-group-prepend d-flex align-items-center">
+									<div class="input-group-text">@</div>
 								</div>
-								<div class="col-sm-4 my-1">
-									<div class="input-group">
-										<div class="input-group-prepend d-flex align-items-center">
-											<div class="input-group-text">@ &nbsp;&nbsp;&nbsp;</div>
-										</div>
-										<input type="text" class="form-control" name="idE3" id="idE3" size="10" oninput="restrictEm2(this)" disabled>
-									</div>
-								</div>
-								<select class="custom-select my-1 mr-sm-2" name="idE2" id="idE2">
-									<option value="" selected disabled>이메일 선택</option>
-									<option value="gmail.com">gmail.com</option>
-									<option value="naver.com">naver.com</option>
-									<option value="daum.net">daum.net</option>
-									<option value="direct">직접입력</option>
-								</select>
+								<input type="text" class="form-control" name="idE3" id="idE3" size="10" oninput="restrictEm2(this)" disabled>
 							</div>
-						</td>
-					</tr>
-					<button type="submit" id="findId" class="btn btn-primary btn-block">전송</button>
+						</div>
+						<div class="col-sm-3 my-1">
+							<select class="form-control my-1 mr-sm-2" name="idE2" id="idE2">
+								<option value="" selected disabled>이메일 선택</option>
+								<option value="gmail.com">gmail.com</option>
+								<option value="naver.com">naver.com</option>
+								<option value="daum.net">daum.net</option>
+								<option value="direct">직접입력</option>
+							</select>
+						</div>
+						<div class="col-sm-2">
+							<button type="submit" id="findId" class="btn btn-primary btn-block">전송</button>
+						</div>
+					</div>
 				</form>
 			</div>
 		</div>
-		<div class="row text-center mb-5 probootstrap-animate">
+		<div class="row text-center mb-3">
 			<div class="col-md-12">
-				<br />
-				<br />
-				<br />
-				<h2 class="display-5 border-bottom probootstrap-section-heading">비밀번호 찾기</h2>
+				<h2 class="display-5 border-bottom heading">비밀번호 찾기</h2>
 			</div>
 		</div>
 		<div class="row mb-4">
 			<div class="col-md-6 m-auto">
 				<form name="frmFindPw" action="memberFindPw" method="post">
-					<tr>
-						<th>아이디</th>
-						<td>
-							<input type="text" class="form-control" name="mi_id" id="mi_id" oninput="restrictId(this)" required>
-						</td>
-					</tr>
-					<tr>
-						<th>이메일</th>
-						<td>
-							<div class="form-row align-items-center justify-content-between">
-								<div class="col-sm-3 my-1">
-									<input type="text" class="form-control" name="pwE1" id="pwE1" oninput="restrictEm1(this)" onchange="checkMchange()">
+					아이디 <input type="text" class="form-control mb-3" name="mi_id" id="mi_id" oninput="restrictId(this)" required>
+					이메일
+					<div class="form-row align-items-center justify-content-between">
+						<div class="col-sm-3 my-1">
+							<input type="text" class="form-control" name="pwE1" id="pwE1" oninput="restrictEm1(this)" onchange="checkMchange()">
+						</div>
+						<div class="col-sm-4 my-1">
+							<div class="input-group">
+								<div class="input-group-prepend d-flex align-items-center">
+									<div class="input-group-text">@</div>
 								</div>
-								<div class="col-sm-4 my-1">
-									<div class="input-group">
-										<div class="input-group-prepend d-flex align-items-center">
-											<div class="input-group-text">@ &nbsp;&nbsp;&nbsp;</div>
-										</div>
-										<input type="text" class="form-control" name="pwE3" id="pwE3" size="10" oninput="restrictEm2(this)" disabled>
-									</div>
-								</div>
-								<select class="custom-select my-1 mr-sm-2" name="pwE2" id="pwE2">
-									<option value="" selected disabled>이메일 선택</option>
-									<option value="gmail.com">gmail.com</option>
-									<option value="naver.com">naver.com</option>
-									<option value="daum.net">daum.net</option>
-									<option value="direct">직접입력</option>
-								</select>
+								<input type="text" class="form-control" name="pwE3" id="pwE3" size="10" oninput="restrictEm2(this)" disabled>
 							</div>
-						</td>
-					</tr>
-					<button type="submit" id="findPw" class="btn btn-primary btn-block">전송</button>
+						</div>
+						<div class="col-sm-3 my-1">
+							<select class="form-control my-1 mr-sm-2" name="pwE2" id="pwE2">
+							<option value="" selected disabled>이메일 선택</option>
+							<option value="gmail.com">gmail.com</option>
+							<option value="naver.com">naver.com</option>
+							<option value="daum.net">daum.net</option>
+							<option value="direct">직접입력</option>
+						</select>
+						</div>
+						<div class="col-sm-2">
+							<button type="submit" id="findPw" class="btn btn-primary btn-block">전송</button>
+						</div>
+					</div>
+					
 				</form>
 			</div>
 		</div>

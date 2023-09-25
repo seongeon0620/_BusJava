@@ -26,6 +26,7 @@ public class CsNotiCtrl {
 		request.setCharacterEncoding("utf-8");
 		
 		int cpage = 1, pcnt = 0, spage = 0, rcnt = 0, psize = 10, bsize = 5, num = 0;
+		int nomalCnt = 0;
 		// 현재페이지 번호, 페이지 수, 시작 페이지, 게시글 수, 페이지 크기, 블록 크기, 번호
 		if (request.getParameter("cpage") != null)
 			cpage = Integer.parseInt(request.getParameter("cpage"));
@@ -50,6 +51,8 @@ public class CsNotiCtrl {
 		
 		rcnt = csNotiSvc.getNoticeListCount(where);
 		// 검색된 게시글의 총 개수로 게시글 일련번호 출력과 전체 페이지수 계산을 위한 값
+		nomalCnt = csNotiSvc.getNoticeListNomalCnt(where);
+		if (nomalCnt == 0 && rcnt > 0)	nomalCnt = 1;
 		
 
 		if (cpage == 1) { // 중요공지는 첫페이지에만 노출 
@@ -58,7 +61,7 @@ public class CsNotiCtrl {
 		} 
 		List<NoticeInfo> noticeList = csNotiSvc.getNoticeList(where, cpage, psize);
 		
-		pcnt = rcnt / psize;	if (rcnt % psize > 0)	pcnt++;
+		pcnt = nomalCnt / psize;	if (nomalCnt % psize > 0)	pcnt++;
 		spage = (cpage - 1) / bsize * bsize + 1;
 		num = rcnt - (psize * (cpage - 1));
 		

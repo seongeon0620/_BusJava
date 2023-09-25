@@ -23,11 +23,25 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>BusJava</title>
 <link rel="icon" type="image/png" sizes="16x16" href="${pageContext.request.contextPath}/resources/images/favicon.png">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/animate.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap-datepicker.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/custom.css">
+
+<script>
+	function openPopup() {
+		window.open('http://pf.kakao.com/_xmhzxdG/chat', 'kakaoChat', 'width=600,height=800,resizable=yes,scrollbars=yes,status=yes');
+	}
+</script>
+<script src="${pageContext.request.contextPath}/resources/js/jquery.min.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/popper.min.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/owl.carousel.min.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/jquery.waypoints.min.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/jquery.easing.1.3.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/select2.min.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/bootstrap-datepicker.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/bootstrap-datepicker.kr.js" charset="UTF-8"></script>
 </head>
 <body>
 	<nav class="navbar navbar-expand-lg navbar-dark custom_navbar p-0">
@@ -51,10 +65,10 @@
 	</div>
 	<div class="container">
 		<h1><a class="navbar-brand" href="/BusJava"><img src="${pageContext.request.contextPath}/resources/images/logo.png" /></a></h1>
-		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#probootstrap-menu" aria-controls="probootstrap-menu" aria-expanded="false" aria-label="Toggle navigation">
-			<span><i class="ion-navicon"></i></span>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu" aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
+			<span><i class="bi bi-list"></i></span>
 		</button>
-		<div class="collapse navbar-collapse justify-content-end">
+		<div class="collapse navbar-collapse justify-content-end" id="main-menu">
 			<ul class="navbar-nav">
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown">버스예매</a>

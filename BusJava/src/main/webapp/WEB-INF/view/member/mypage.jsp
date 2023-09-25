@@ -27,7 +27,7 @@ String type = loginInfo.getMi_type();
             <ul class="mypage">
             <% if (type.equals("b")) { %>
               <li>
-                <a href="pwChk">
+                <a href="pwChk" class="text-decoration-none">
                   <div class="h-100 d-flex justify-content-center align-items-center flex-column">
                   <img src="${pageContext.request.contextPath}/resources/images/User.svg" />
                   <p class="h5 mt-3">내 정보</p>
@@ -36,7 +36,7 @@ String type = loginInfo.getMi_type();
               </li>
             <% } %>
               <li>
-                <a href="booking">
+                <a href="booking" class="text-decoration-none">
                   <div class="h-100 d-flex justify-content-center align-items-center flex-column">
                   <img src="${pageContext.request.contextPath}/resources/images/Newspaper.svg" />
                   <p class="h5 mt-3">예매 내역</p>
@@ -44,7 +44,7 @@ String type = loginInfo.getMi_type();
                 </a>
               </li>
               <li>
-                <a href="payMoney">
+                <a href="payMoney" class="text-decoration-none">
                   <div class="h-100 d-flex justify-content-center align-items-center flex-column">
                   <img src="${pageContext.request.contextPath}/resources/images/Copyright.svg" />
                   <p class="h5 mt-3">내 페이머니</p>
@@ -52,7 +52,7 @@ String type = loginInfo.getMi_type();
                 </a>
               </li>
                <li>
-                <a href="mypage/coupon">
+                <a href="mypage/coupon" class="text-decoration-none">
                   <div class="h-100 d-flex justify-content-center align-items-center flex-column">
                   <img src="${pageContext.request.contextPath}/resources/images/Money.svg" />
                   <p class="h5 mt-3">내 쿠폰</p>
@@ -60,7 +60,7 @@ String type = loginInfo.getMi_type();
                 </a>
               </li>
               <li>
-                <a href="mypage/stamp">
+                <a href="mypage/stamp" class="text-decoration-none">
                   <div class="h-100 d-flex justify-content-center align-items-center flex-column">
                   <img src="${pageContext.request.contextPath}/resources/images/Gift.svg" />
                   <p class="h5 mt-3">내 스탬프</p>

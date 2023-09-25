@@ -3,7 +3,6 @@ package config;
 import org.apache.tomcat.jdbc.pool.*;
 import org.springframework.context.annotation.*;
 import dao.*;
-import service.CsSugSvc;
 import service.CsLostSvc;
 import service.CsNotiSvc;
 
@@ -22,18 +21,6 @@ public class DbConfig {
 		ds.setMinEvictableIdleTimeMillis(60000 * 3);
 		ds.setMinEvictableIdleTimeMillis(10 * 1000);
 		return ds;
-	}
-	
-	@Bean
-	public CsSugDao csSugDao() {
-		return new CsSugDao(dataSource());
-	}
-	
-	@Bean
-	public CsSugSvc csSugSvc() {
-		CsSugSvc csSugSvc = new CsSugSvc();
-		csSugSvc.setCsSugDao(csSugDao());
-		return csSugSvc;
 	}
 	
 	@Bean

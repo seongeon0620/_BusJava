@@ -42,8 +42,8 @@
 					<div class="accordion col-md-8 m-auto">
 						<div class="card">
 							<div class="card-header p-1" id="headingTwo">
-								<button class="btn btn-link btn-block text-left collapsed text-dark d-flex align-items-center justify-content-between" type="button" data-toggle="collapse" data-target="#${fl.getFl_idx() }" aria-expanded="false" aria-controls="collapseTwo">
-									${fl.getFl_title() }<i class="bi bi-chevron-down"></i>
+								<button class="faq btn btn-link btn-block text-left collapsed text-dark shadow-none text-decoration-none" type="button" data-toggle="collapse" data-target="#${fl.getFl_idx() }" aria-expanded="false" aria-controls="collapseTwo">
+									${fl.getFl_title() }
 								</button>
 							</div>
 							<div id="${fl.getFl_idx() }" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">

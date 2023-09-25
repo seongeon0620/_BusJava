@@ -47,11 +47,6 @@
 				</table>
 				<p class="h4 mt-5 text-left text">스탬프 적립&사용 내역</p>
 				<p class="mb-0 text-left">최근 3개월 내역만 노출됩니다.</p>
-				<!-- <div class="btn-wrap justify-content-start">
-              <button type="button" class="btn btn-primary">3개월</button>
-              <button type="button" class="btn btn-secondary">6개월</button>
-              <button type="button" class="btn btn-secondary">1년</button>
-            </div> -->
 				<table class="table text-center mt-2">
 					<colgroup>
 						<col width="15%">

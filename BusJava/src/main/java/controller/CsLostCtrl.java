@@ -82,8 +82,10 @@ public class CsLostCtrl {
 		pi.setSchtype(schtype);		pi.setArgs(args);		pi.setSchargs(schargs);	pi.setKeyword(keyword);
 		pi.setEdate(eDate);			pi.setSdate(sDate);
 		
+		String fullUrl = request.getRequestURI();
 		model.addAttribute("pi", pi);
 		model.addAttribute("lostList", lostList);
+		model.addAttribute("url", fullUrl);
 		
 		return "/cs/lost_list";
 	}

@@ -45,7 +45,6 @@ public class TicketingCtrl {
 
 		if (loginInfo == null) {
 			out.println("<script>");
-			out.println("alert('해당 메뉴는 회원 전용 메뉴입니다. 로그인 후 다시 시도하세요.');");
 			out.println("location.href='memberLogin?returnUrl=pmoneyInfo';");
 			out.println("</script>");
 			out.close();

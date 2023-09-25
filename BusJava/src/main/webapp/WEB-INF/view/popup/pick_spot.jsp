@@ -62,7 +62,7 @@ List<TerminalInfo> terminalList = (List<TerminalInfo>) request.getAttribute("ter
 			TerminalInfo ti = terminalList.get(i);
 		String btcode = ti.getBt_code() < 100 ? "0" + ti.getBt_code() : String.valueOf(ti.getBt_code());
 %>
-					<li><a href="<%=btcode%>"><%=ti.getBt_name()%></a></li>
+					<li><a href="<%=btcode%>" class="text-decoration-none"><%=ti.getBt_name()%></a></li>
 <%
 	}
 %>
@@ -72,7 +72,7 @@ List<TerminalInfo> terminalList = (List<TerminalInfo>) request.getAttribute("ter
 	for (TerminalInfo ti: terminalList) { // 서울
 		if (ti.getBt_area().startsWith("서울")) {
 %>
-					<li><a href="<%=ti.getBt_code()%>"><%=ti.getBt_name()%></a></li>
+					<li><a href="<%=ti.getBt_code()%>" class="text-decoration-none"><%=ti.getBt_name()%></a></li>
 <%
 		}
 	}
@@ -83,7 +83,7 @@ List<TerminalInfo> terminalList = (List<TerminalInfo>) request.getAttribute("ter
 	for (TerminalInfo ti: terminalList) { // 경기
 		if (ti.getBt_area().startsWith("경기")) {
 %>
-					<li><a href="<%=ti.getBt_code()%>"><%=ti.getBt_name()%></a></li>
+					<li><a href="<%=ti.getBt_code()%>" class="text-decoration-none"><%=ti.getBt_name()%></a></li>
 <%
 		}
 	}
@@ -94,7 +94,7 @@ List<TerminalInfo> terminalList = (List<TerminalInfo>) request.getAttribute("ter
 	for (TerminalInfo ti: terminalList) { // 인천
 		if (ti.getBt_area().startsWith("인천")) {
 %>
-					<li><a href="<%=ti.getBt_code()%>"><%=ti.getBt_name()%></a></li>
+					<li><a href="<%=ti.getBt_code()%>" class="text-decoration-none"><%=ti.getBt_name()%></a></li>
 <%
 		}
 	}
@@ -105,7 +105,7 @@ List<TerminalInfo> terminalList = (List<TerminalInfo>) request.getAttribute("ter
 	for (TerminalInfo ti: terminalList) { // 강원
 		if (ti.getBt_area().startsWith("강원")) {
 %>
-					<li><a href="<%=ti.getBt_code()%>"><%=ti.getBt_name()%></a></li>
+					<li><a href="<%=ti.getBt_code()%>" class="text-decoration-none"><%=ti.getBt_name()%></a></li>
 <%
 		}
 	}
@@ -116,7 +116,7 @@ List<TerminalInfo> terminalList = (List<TerminalInfo>) request.getAttribute("ter
 	for (TerminalInfo ti: terminalList) { // 대전
 		if (ti.getBt_area().startsWith("대전")) {
 %>
-					<li><a href="<%=ti.getBt_code()%>"><%=ti.getBt_name()%></a></li>
+					<li><a href="<%=ti.getBt_code()%>" class="text-decoration-none"><%=ti.getBt_name()%></a></li>
 <%
 		}
 	}
@@ -127,7 +127,7 @@ List<TerminalInfo> terminalList = (List<TerminalInfo>) request.getAttribute("ter
 	for (TerminalInfo ti: terminalList) { // 충남
 		if (ti.getBt_area().indexOf("충") == 0 && ti.getBt_area().indexOf("남") == 2) {
 %>
-					<li><a href="<%=ti.getBt_code()%>"><%=ti.getBt_name()%></a></li>
+					<li><a href="<%=ti.getBt_code()%>" class="text-decoration-none"><%=ti.getBt_name()%></a></li>
 <%
 		}
 	}
@@ -138,7 +138,7 @@ List<TerminalInfo> terminalList = (List<TerminalInfo>) request.getAttribute("ter
 	for (TerminalInfo ti: terminalList) { // 충북
 		if (ti.getBt_area().indexOf("충") == 0 && ti.getBt_area().indexOf("북") == 2) {
 %>
-					<li><a href="<%=ti.getBt_code()%>"><%=ti.getBt_name()%></a></li>
+					<li><a href="<%=ti.getBt_code()%>" class="text-decoration-none"><%=ti.getBt_name()%></a></li>
 <%
 		}
 	}
@@ -149,7 +149,7 @@ List<TerminalInfo> terminalList = (List<TerminalInfo>) request.getAttribute("ter
 	for (TerminalInfo ti: terminalList) { // 광주
 		if (ti.getBt_area().startsWith("광주")) {
 %>
-					<li><a href="<%=ti.getBt_code()%>"><%=ti.getBt_name()%></a></li>
+					<li><a href="<%=ti.getBt_code()%>" class="text-decoration-none"><%=ti.getBt_name()%></a></li>
 <%
 		}
 	}
@@ -160,7 +160,7 @@ List<TerminalInfo> terminalList = (List<TerminalInfo>) request.getAttribute("ter
 	for (TerminalInfo ti: terminalList) { // 전남
 		if (ti.getBt_area().indexOf("전") == 0 && ti.getBt_area().indexOf("남") == 2) {
 %>
-					<li><a href="<%=ti.getBt_code()%>"><%=ti.getBt_name()%></a></li>
+					<li><a href="<%=ti.getBt_code()%>" class="text-decoration-none"><%=ti.getBt_name()%></a></li>
 <%
 		}
 	}
@@ -171,7 +171,7 @@ List<TerminalInfo> terminalList = (List<TerminalInfo>) request.getAttribute("ter
 	for (TerminalInfo ti: terminalList) { // 전북
 		if (ti.getBt_area().indexOf("전") == 0 && ti.getBt_area().indexOf("북") == 2) {
 %>
-					<li><a href="<%=ti.getBt_code()%>"><%=ti.getBt_name()%></a></li>
+					<li><a href="<%=ti.getBt_code()%>" class="text-decoration-none"><%=ti.getBt_name()%></a></li>
 <%
 		}
 	}
@@ -182,7 +182,7 @@ List<TerminalInfo> terminalList = (List<TerminalInfo>) request.getAttribute("ter
 	for (TerminalInfo ti: terminalList) { // 부산
 		if (ti.getBt_area().startsWith("부산")) {
 %>
-					<li><a href="<%=ti.getBt_code()%>"><%=ti.getBt_name()%></a></li>
+					<li><a href="<%=ti.getBt_code()%>" class="text-decoration-none"><%=ti.getBt_name()%></a></li>
 <%
 		}
 	}
@@ -193,7 +193,7 @@ List<TerminalInfo> terminalList = (List<TerminalInfo>) request.getAttribute("ter
 	for (TerminalInfo ti: terminalList) { // 경남
 		if (ti.getBt_area().indexOf("경") == 0 && ti.getBt_area().indexOf("남") == 2) {
 %>
-					<li><a href="<%=ti.getBt_code()%>"><%=ti.getBt_name()%></a></li>
+					<li><a href="<%=ti.getBt_code()%>" class="text-decoration-none"><%=ti.getBt_name()%></a></li>
 <%
 		}
 	}
@@ -204,7 +204,7 @@ List<TerminalInfo> terminalList = (List<TerminalInfo>) request.getAttribute("ter
 	for (TerminalInfo ti: terminalList) { // 대구
 		if (ti.getBt_area().startsWith("대구")) {
 %>
-					<li><a href="<%=ti.getBt_code()%>"><%=ti.getBt_name()%></a></li>
+					<li><a href="<%=ti.getBt_code()%>" class="text-decoration-none"><%=ti.getBt_name()%></a></li>
 <%
 		}
 	}
@@ -215,7 +215,7 @@ List<TerminalInfo> terminalList = (List<TerminalInfo>) request.getAttribute("ter
 	for (TerminalInfo ti: terminalList) { // 경북
 		if (ti.getBt_area().indexOf("경") == 0 && ti.getBt_area().indexOf("북") == 2) {
 %>
-					<li><a href="<%=ti.getBt_code()%>"><%=ti.getBt_name()%></a></li>
+					<li><a href="<%=ti.getBt_code()%>" class="text-decoration-none"><%=ti.getBt_name()%></a></li>
 <%
 		}
 	}
@@ -226,7 +226,7 @@ List<TerminalInfo> terminalList = (List<TerminalInfo>) request.getAttribute("ter
 	for (TerminalInfo ti: terminalList) { // 울산
 		if (ti.getBt_area().startsWith("울산")) {
 %>
-					<li><a href="<%=ti.getBt_code()%>"><%=ti.getBt_name()%></a></li>
+					<li><a href="<%=ti.getBt_code()%>" class="text-decoration-none"><%=ti.getBt_name()%></a></li>
 <%
 		}
 	}

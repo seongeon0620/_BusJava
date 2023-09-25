@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../_inc/head.jsp"%>
-<% 
-String mi_id = (String)request.getAttribute("mi_id");
-String mi_name = (String)request.getAttribute("mi_name");
+<%
+String mi_id = (String) request.getAttribute("mi_id");
+String mi_name = (String) request.getAttribute("mi_name");
 %>
 <section class="section">
 	<div class="container">
@@ -32,14 +32,11 @@ String mi_name = (String)request.getAttribute("mi_name");
 									</div>
 								</div>
 							</div>
-							<h1>
-								<a class="join"><img src="${pageContext.request.contextPath}/resources/images/welcome.svg" /></a>
-							</h1>
-
+							<img class="mt-5" src="${pageContext.request.contextPath}/resources/images/welcome.svg" />
 							<div class="col-md-12">
 								<h3>
 									<p>
-										<span><%=mi_name %>(<%=mi_id.substring(0,4) + "***" %>)님</span>
+										<span><%=mi_name%>(<%=mi_id.substring(0, 4) + "***"%>)님</span>
 									</p>
 								</h3>
 								<h3>
@@ -48,7 +45,7 @@ String mi_name = (String)request.getAttribute("mi_name");
 							</div>
 						</table>
 						<div class="btn-wrap">
-							<button type="button" onclick="location.href='memberLogin'" class="btn btn-primary btn-block w-120p m-auto">로그인</button>
+							<button type="button" onclick="location.href='memberLogin'" class="btn btn-primary col-md-2 m-auto">로그인</button>
 						</div>
 					</div>
 				</div>

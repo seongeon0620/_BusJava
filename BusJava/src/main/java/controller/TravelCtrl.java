@@ -273,7 +273,7 @@ public class TravelCtrl {
 		return joArr;
 	}
 	
-	@GetMapping("/detaile")
+	@GetMapping("/detail")
 	public String detaile(HttpServletRequest request) throws Exception {
 		request.setCharacterEncoding("utf-8");
 		String id = request.getParameter("id");
@@ -393,7 +393,7 @@ public class TravelCtrl {
 		
         
         request.setAttribute("joArr", joArr);
-		return "popup/detaile";
+		return "popup/detail";
 	}
 	
 }

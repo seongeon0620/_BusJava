@@ -44,6 +44,13 @@ if (diffMinutes >= 2 * 24 * 60) {
 } else {
 	cancelPrice = (realPrice / 100) * 30;
 }
+
+String date = bi.getRi_todate().replace(".", "-");
+String time = bi.getRi_totime();
+String dateTimeString = date + " " + time;
+SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+Date date1 = new Date();
+Date date2 = sdf.parse(dateTimeString);
 %>
 
 <section class="section">
@@ -90,9 +97,10 @@ if (diffMinutes >= 2 * 24 * 60) {
 					<tr>
 						<th scope="col" class="text-center bg-light">매수</th>
 						<td>
-							어른 <%=bi.getRi_acnt()%>명, 
-							청소년 <%=bi.getRi_scnt()%>명, 
-							아동 <%=bi.getRi_ccnt()%>명
+							어른
+							<%=bi.getRi_acnt()%>명, 청소년
+							<%=bi.getRi_scnt()%>명, 아동
+							<%=bi.getRi_ccnt()%>명
 						</td>
 						<th scope="col" class="text-center bg-light">좌석</th>
 						<td>
@@ -150,19 +158,20 @@ if (diffMinutes >= 2 * 24 * 60) {
 						<th scope="col" class="text-center bg-light">할인금액</th>
 						<td><%=bi.getPd_payment()%></td>
 						<th scope="col" class="text-center bg-light">결제금액</th>
-						<td id="pay"><%=formattedNumber%>원</td>
+						<td id="pay"><%=formattedNumber%>원
+						</td>
 					</tr>
 				</table>
-				<div class="btn-wrap">
+				<div class="d-flex justify-content-center">
 					<%
-					if (!bi.getRi_status().equals("예매취소")) {
+					if (!bi.getRi_status().equals("예매취소") && date1.before(date2)) {
 					%>
-					<button type="button" class="btn btn-secondary btn-lg" data-toggle="modal" data-target="#ViewModal" onclick="openModal('<%=bi.getRi_idx()%>');">예매취소</button>
-					<button type="submit" class="btn btn-primary btn-lg" onclick="history.back()">확인</button>
+					<button type="button" class="btn waves-effect waves-light btn-secondary mb-2 mr-2" onclick="openModal('<%=bi.getRi_idx()%>');">예매취소</button>
+					<button type="button" class="btn waves-effect waves-light btn-primary mb-2" onclick="history.back()">확인</button>
 					<%
 					} else {
 					%>
-					<button type="submit" class="btn btn-primary btn-lg" onclick="history.back()">확인</button>
+					<button type="button" class="btn btn-primary" onclick="location.href='booking'">확인</button>
 					<%
 					}
 					%>
@@ -178,9 +187,9 @@ if (diffMinutes >= 2 * 24 * 60) {
 	</div>
 </section>
 <script>
-function openModal(riidx) {
-	$('#ViewModal .modal-content').load("/busjavaf/cancel?riidx=" + riidx);
-	$('#ViewModal').modal();
-  }
+	function openModal(riidx) {
+		$('#ViewModal .modal-content').load("/busjavaf/cancel?riidx=" + riidx);
+		$('#ViewModal').modal();
+	}
 </script>
 <%@ include file="../_inc/foot.jsp"%>

@@ -44,20 +44,16 @@ function chkDupId(uid) {
 			success : function(chkRs){
 				var msg = "";
 				if (chkRs == 0) {
-					msg = "<div class='valid-feedback text-left'>사용가능한 아이디 입니다.</div>";
 					$("#idChk").val("Y");
 					$("#mi_id").removeClass("is-invalid").addClass("is-valid");
 				} else {
-					msg = "<div class='valid-feedback text-left' style='color: red;'>이미 사용중인 아이디 입니다.</div>";
 					$("#idChk").val("N");
 					$("#mi_id").removeClass("is-valid").addClass("is-invalid");
 				}
-				$("#idMsg").html(msg); // .html : ()안의 태그를 바꿔라
 			}
 		});
 		$("#idChk").val("Y");
 	} else {
-		$("#idMsg").text("아이디는 4 ~ 20자로 입력하세요."); // .text :()안의 내용을 바꿔라
 		$("#idChk").val("N"); //기본적으로 val값이 "N"이지만  4자 이상 입력했다가 지웠을 경우를 대비해서 넣어줌
 		$("#mi_id").removeClass("is-valid").addClass("is-invalid");
 	}
@@ -72,31 +68,25 @@ function checkPassword() {
 	var passwordInput = document.getElementById("mi_pw");
 	var passwordchkInput = document.getElementById("mi_pw2");
 	var pwDup = document.getElementById("pwDup");
-	
 	var mi_pw = passwordInput.value;
 	var mi_pw2 = passwordchkInput.value;
-	var pwRed = document.getElementById("pwRed");
 
 	if (mi_pw === mi_pw2) {
 		if(mi_pw.length < 4 || mi_pw.length > 15) {
-			
 			pwDup.value = "N";
 			passwordInput.focus();
 		}else {
-			pwRed.innerHTML = "<div class='valid-feedback text-left' >비밀번호가 일치합니다.</div>";
 			$("#mi_pw").removeClass("is-invalid").addClass("is-valid");
 			$("#mi_pw2").removeClass("is-invalid").addClass("is-valid");
 			pwDup.value = "Y";
 		}
 	} else if (mi_pw.length < 4 || mi_pw2.length < 4 ){
-		 pwRed.innerHTML = "<div class='valid-feedback text-left' style='color: red;' >4-15자의 영문, 숫자, 특수문자로 입력해주세요.</div>";
-		 $("#mi_pw").removeClass("is-invalid").addClass("is-invalid");
-		 $("#mi_pw2").removeClass("is-invalid").addClass("is-invalid");
+		 $("#mi_pw").removeClass("is-valid").addClass("is-invalid");
+		 $("#mi_pw2").removeClass("is-valid").addClass("is-invalid");
 		 pwDup.value = "N";
 	} else {
-		 pwRed.innerHTML = "<div class='valid-feedback text-left' style='color: red;' >비밀번호가 일치하지않습니다.</div>";
-		 $("#mi_pw").removeClass("is-invalid").addClass("is-invalid");
-		 $("#mi_pw2").removeClass("is-invalid").addClass("is-invalid");
+		 $("#mi_pw").removeClass("is-valid").addClass("is-invalid");
+		 $("#mi_pw2").removeClass("is-valid").addClass("is-invalid");
 		 pwDup.value = "N";
 	}
 }
@@ -135,24 +125,34 @@ function mailButtonClick() {
 
 
 function chkDupMail(e1, e3) {
+
 	if (e1 != null && e3 != null) {
 		$.ajax({
 			type : "POST", url : "./dupMail", data : {"e1" : e1, "e3" : e3 },
 			success : function(chkRs){
 				var msg = "";
 				if (chkRs == 0) {
-					msg = "<div class='valid-feedback text-left'>사용가능한 이메일 입니다.</div>";
+					$("#e1").removeClass("is-invalid").addClass("is-valid");
+					$("#e2").removeClass("is-invalid").addClass("is-valid");
+					$("#e3").removeClass("is-invalid").addClass("is-valid");
+					$("#mailMsg").removeClass("invalid-feedback").addClass("valid-feedback").addClass("d-block");
+					msg = "사용가능한 이메일 입니다.";
 					$("#mailChk").val("Y");
 				} else {
-					msg = "<div class='valid-feedback text-left' style='color: red;'>이미 등록된 이메일 입니다.</div>";
+					$("#e1").removeClass("is-valid").addClass("is-invalid");
+					$("#e2").removeClass("is-valid").addClass("is-invalid");
+					$("#e3").removeClass("is-valid").addClass("is-invalid");
+					msg = "이미 등록된 이메일 입니다.";
+					$("#mailMsg").removeClass("valid-feedback").addClass("invalid-feedback").addClass("d-block");
 					$("#mailChk").val("N");
+					
 				}
-				$("#mailMsg").html(msg); // .html : ()안의 태그를 바꿔라
+				$("#mailMsg").text(msg); // .html : ()안의 태그를 바꿔라
 			}
 		});
 		$("#mailChk").val("Y");
 	} else {
-		$("#mailChk").val("N"); //기본적으로 val값이 "N"이지만  4자 이상 입력했다가 지웠을 경우를 대비해서 넣어줌
+		$("#mailChk").val("Y"); //기본적으로 val값이 "N"이지만  4자 이상 입력했다가 지웠을 경우를 대비해서 넣어줌
 	}
 }
 
@@ -175,19 +175,26 @@ function phoneButtonClick() {
 
 
 function chkDupPhone(p2, p3) {
+	
 	if (p2 != null && p3 != null) {
 		$.ajax({
 			type : "POST", url : "./dupPhone", data : {"p2" : p2, "p3" : p3 },
 			success : function(chkRs){
 				var msg = "";
 				if (chkRs == 0) {
-					msg = "<div class='valid-feedback text-left'>사용가능한 번호 입니다.</div>";
+					$("#p2").removeClass("is-invalid").addClass("is-valid");
+					$("#p3").removeClass("is-invalid").addClass("is-valid");
+					$("#phoneMsg").removeClass("invalid-feedback").addClass("valid-feedback").addClass("d-block");
+					msg = "사용가능한 번호 입니다.";
 					$("#phoneChk").val("Y");
 				} else {
-					msg = "<div class='valid-feedback text-left' style='color: red;'>이미 등록된 번호 입니다.</div>";
+					$("#p2").removeClass("is-valid").addClass("is-invalid");
+					$("#p3").removeClass("is-valid").addClass("is-invalid");
+					$("#phoneMsg").removeClass("valid-feedback").addClass("invalid-feedback").addClass("d-block");
+					msg = "이미 등록된 번호 입니다.";
 					$("#phoneChk").val("N");
 				}
-				$("#phoneMsg").html(msg); // .html : ()안의 태그를 바꿔라
+				$("#phoneMsg").text(msg); // .html : ()안의 태그를 바꿔라
 			}
 		});
 		$("#phoneChk").val("Y");
@@ -234,10 +241,10 @@ window.addEventListener('DOMContentLoaded', (event) => {
 </script>
 
 <section class="section">
-<div class="container">
-	<div class="row text-center mb-5">
-		<div class="col-md-12">
-			<h2 class="border-bottom heading">회원가입</h2>
+	<div class="container">
+		<div class="row text-center mb-5">
+			<div class="col-md-12">
+				<h2 class="border-bottom heading">회원가입</h2>
 				<div class="col-md-8 m-auto">
 					<div class="progress-bar-custom">
 						<div class="progress-step">
@@ -249,140 +256,127 @@ window.addEventListener('DOMContentLoaded', (event) => {
 							<div class="step-description">정보입력</div>
 						</div>
 						<div class="progress-step">
-						<div class="step-count"></div>
-					<div class="step-description">가입완료</div>
+							<div class="step-count"></div>
+							<div class="step-description">가입완료</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-</div>
-</div>
-<form name="frmJoin" id="frmJoin" action=memberJoinStep2 method="post">
-<input type="hidden" name="idChk" id="idChk" value="N" />
-<input type="hidden" id="pwDup" name="pwDup" value="N" />
-<input type="hidden" name="mailChk" id="mailChk" value="N" />
-<input type="hidden" name="phoneChk" id="phoneChk" value="N" />
-<input type="hidden" name="mi_type" id="mi_type" value="b" />
-<div class="row">
-	<div class="container">
-		<div class="col-md-8 mb-3 m-auto">
-			<table class="table text-center">
-			<colgroup>
-				<col width="25%">
-				<col width="*">
-			</colgroup>
-			<tbody>
-			<tr>
-				<th>이름</th>
-				<td><input type="text" class="form-control" id="mi_name" name="mi_name" required /></td>
-			</tr>
-			<tr>
-			<th>아이디</th>
-				<td><!-- form-control class가 is-valid => 성공, in-invalid => 실패 (테두리 색변화) -->
-					<input type="text" class="form-control " name="mi_id" id="mi_id" 
-					placeholder="4-15자의 영문, 숫자로 입력해주세요." onkeyup="chkDupId(this.value);" 
-					oninput="restrictId(this)" required>
-					<div class="valid-feedback text-left" id="idMsg" ></div>
-					<!-- <div class="invalid-feedback text-left">이미 사용중인 아이디 입니다.</div> -->
-				</td>
-			</tr>
-			<tr>
-				<th>비밀번호</th>
-				<td>
-					<!--if조건줘야함 form-control class가 is-valid => 성공, in-invalid => 실패 (테두리 색변화) -->
-					<input type="password" class="form-control " oninput="restrictPw(this)"
-					onkeyup="checkPassword()" id="mi_pw" name="mi_pw"
-					placeholder="4-15자의 영문, 숫자, 특수문자로 입력해주세요." required>
-				</td>
-			</tr>
-			<tr>
-				<th>비밀번호 확인</th>
-				<td>
-				<!-- form-control class가 is-valid => 성공, in-invalid => 실패 (테두리 색변화) -->
-					<input type="password" class="form-control " oninput="restrictPw(this)"
-					onkeyup="checkPassword()" id="mi_pw2" name="mi_pw2"
-					placeholder="4-15자의 영문, 숫자, 특수문자로 입력해주세요." required>
-					<div id="pwRed" class="valid-feedback text-left"></div>
-					<!-- <div class="invalid-feedback text-left">비밀번호가 일치하지 않습니다</div> -->
-				</td>
-			</tr>
-			<tr>
-				<th>성별</th>
-				<td class="text-left">
-					<div class="form-check custom">
-						<input class="form-check-input " type="radio" name="mi_gender" value="남" id="male" checked> 
-						<label class="form-check-label" for="male">남자</label>
-					</div>
-					<div class="form-check custom">
-						<input class="form-check-input" " type="radio" name="mi_gender" value="여" id="fmale"> 
-						<label class="form-check-label" for="fmale">여자</label>
-					</div>
-				</td>
-			</tr>
-			<tr>
-				<th>이메일</th>
-				<td>
-					<div class="form-row align-items-center justify-content-between">
-						<div class="col-sm-3 my-1">
-							<input type="text" class="form-control" name="e1" id="e1" oninput="restrictEm1(this)" onchange="checkMchange()">
-						</div>
-						<div class="col-sm-3 my-1">
-							<div class="input-group">
-								<div class="input-group-prepend d-flex align-items-center">
-									<div class="input-group-text">@ </div>
-								</div>
-								<input type="text" class="form-control  bg-white" name="e3" id="e3" size="10" oninput="restrictEm2(this)" readonly>
-							</div>
-						</div>
-						<select class="custom-select my-1 mr-sm-2" name="e2" id="e2" >
-							<option value="" selected disabled>이메일 선택</option>
-							<option value="gmail.com" >gmail.com</option>
-							<option value="naver.com" >naver.com</option>
-							<option value="daum.net" >daum.net</option>
-							<option value="direct" >직접입력</option>
-						</select>
-						<div class="col-auto my-1" >
-							<button type="button" class="btn btn-primary p-2" onclick="mailButtonClick()">중복검사</button>
-						</div>
-						<!-- <div class="invalid-feedback text-left">이미 등록된 이메일 입니다.</div> -->
-					</div>
-						<div class="valid-feedback text-left" id="mailMsg"></div>
-				</td>
-			</tr>
-			<tr>
-				<th>전화번호</th>
-				<td>
-					<div class="row align-items-center">
-						<div class="col">
-							<input type="text" class="form-control bg-white" placeholder="010" readonly>
-						</div>
-						-
-						<div class="col">
-							<input type="text" class="form-control" name="p2" id="p2" size="4" maxlength="4" onkeyup="checkPlength()" >
-						</div>
-						-
-						<div class="col">
-							<input type="text" class="form-control" name="p3" id="p3" size="4" maxlength="4" onkeyup="checkPlength()" >
-						</div>
-						<div class="col-auto my-1 pl-0">
-							<button type="button" class="btn btn-primary p-2" onclick="phoneButtonClick();">중복검사</button>
-						</div>
-	
-					</div>
-					<div id="phoneMsg" class="valid-feedback text-left"></div>
-					<!-- <div class="invalid-feedback text-left">이미 등록된 전화번호 입니다.</div> -->
-				</td>
-			</tr>
-				
-			</tbody>
-		</table> 
-	<!-- 	<button type="button" class="btn btn-primary btn-block" onclick="joinIn();">회원가입</button> -->
-		<div class="g-recaptcha d-flex justify-content-center" data-sitekey="6Lc_X-4nAAAAAMaXDEuJpQzcwAysW83EAUAnI-Xj"></div>
-		<button type="submit" class="btn btn-primary btn-block mt-4" id="signIn" name="signIn">회원가입</button>
-		</div>
-	</div>
-</div>
-</form>
-</section>
+	<form name="frmJoin" id="frmJoin" action=memberJoinStep2 method="post">
+		<input type="hidden" name="idChk" id="idChk" value="N" /> <input type="hidden" id="pwDup" name="pwDup" value="N" /> <input type="hidden" name="mailChk" id="mailChk" value="N" /> <input type="hidden" name="phoneChk" id="phoneChk" value="N" /> <input type="hidden" name="mi_type" id="mi_type" value="b" />
+		<div class="row">
+			<div class="container">
+				<div class="col-sm-8 mb-3 m-auto">
+					<table class="table text-center">
+						<colgroup>
+							<col width="20%">
+							<col width="*">
+						</colgroup>
+						<tbody>
+							<tr>
+								<th class="align-middle">이름</th>
+								<td>
+									<input type="text" class="form-control" id="mi_name" name="mi_name" required />
+								</td>
+							</tr>
+							<tr>
+								<th class="align-middle">아이디</th>
+								<td>
+									<input type="text" class="form-control " name="mi_id" id="mi_id" placeholder="4-15자의 영문, 숫자로 입력해주세요." onkeyup="chkDupId(this.value);" oninput="restrictId(this)" required>
+									<div class="valid-feedback text-left">사용가능한 아이디 입니다.</div>
+									<div class="invalid-feedback text-left">이미 사용중인 아이디 입니다.</div>
+								</td>
+							</tr>
+							<tr>
+								<th class="align-middle">비밀번호</th>
+								<td>
+									<input type="password" class="form-control " oninput="restrictPw(this)" onkeyup="checkPassword()" id="mi_pw" name="mi_pw" placeholder="4-15자의 영문, 숫자, 특수문자로 입력해주세요." required>
+								</td>
+							</tr>
+							<tr>
+								<th class="align-middle">비밀번호 확인</th>
+								<td>
+									<input type="password" class="form-control " oninput="restrictPw(this)" onkeyup="checkPassword()" id="mi_pw2" name="mi_pw2" placeholder="4-15자의 영문, 숫자, 특수문자로 입력해주세요." required>
+									<div class="valid-feedback text-left">비밀번호가 일치합니다.</div>
+									<div class="invalid-feedback text-left">비밀번호가 일치하지않습니다.</div>
+								</td>
+							</tr>
+							<tr>
+								<th>성별</th>
+								<td class="text-left">
+									<div class="form-check custom">
+										<input class="form-check-input" type="radio" name="mi_gender" value="남" id="male" checked> <label class="form-check-label" for="male">남자</label>
+									</div>
+									<div class="form-check custom">
+										<input class="form-check-input" type="radio" name="mi_gender" value="여" id="fmale"> <label class="form-check-label" for="fmale">여자</label>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<th class="align-middle">이메일</th>
+								<td>
+									<div class="form-row align-items-center justify-content-between">
+										<div class="col-sm-3 my-1">
+											<input type="text" class="form-control" name="e1" id="e1" oninput="restrictEm1(this)" onchange="checkMchange()">
+										</div>
+										<div class="col-sm-4 my-1">
+											<div class="input-group">
+												<div class="input-group-prepend d-flex align-items-center">
+													<div class="input-group-text">@</div>
+												</div>
+												<input type="text" class="form-control" name="e3" id="e3" size="10" oninput="restrictEm2(this)" disabled="">
+											</div>
+										</div>
+										<div class="col-sm-3">
+											<select class="form-control my-1 mr-sm-2" name="e2" id="e2">
+												<option value="" selected="" disabled="">이메일 선택</option>
+												<option value="gmail.com">gmail.com</option>
+												<option value="naver.com">naver.com</option>
+												<option value="daum.net">daum.net</option>
+												<option value="direct">직접입력</option>
+											</select>
+										</div>
+										<button type="button" class="btn btn-primary col-sm-2" onclick="mailButtonClick()">중복검사</button>
 
+									</div>
+									<div class="text-left" id="mailMsg"></div>
+								</td>
+							</tr>
+							<tr>
+								<th class="align-middle">전화번호</th>
+								<td>
+									<div class="form-row align-items-center">
+										<div class="col pl-0">
+											<input type="text" class="form-control" placeholder="010" readonly="">
+										</div>
+										-
+										<div class="col">
+											<input type="text" class="form-control" name="p2" id="p2" size="4" maxlength="4" onkeyup="checkPlength()">
+										</div>
+										-
+										<div class="col">
+											<input type="text" class="form-control" name="p3" id="p3" size="4" maxlength="4" onkeyup="checkPlength()">
+										</div>
+										<div class="col-auto my-1 pl-0">
+											<button type="button" class="btn btn-primary" onclick="phoneButtonClick();">중복검사</button>
+										</div>
+
+									</div>
+									<div id="phoneMsg" class="text-left"></div>
+								</td>
+							</tr>
+
+						</tbody>
+					</table>
+					<div class="g-recaptcha d-flex justify-content-center" data-sitekey="6Lc_X-4nAAAAAMaXDEuJpQzcwAysW83EAUAnI-Xj"></div>
+					<div class="btn-wrap">
+						<button type="submit" class="btn btn-primary col-sm-2" id="signIn" name="signIn">회원가입</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+</section>
 <%@ include file="../_inc/foot.jsp"%>

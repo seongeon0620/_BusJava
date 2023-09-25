@@ -222,7 +222,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 			<div class="col-sm-8 m-auto">
 				<table class="table text-center">
 					<colgroup>
-						<col width="25%">
+						<col width="20%">
 						<col width="*">
 					</colgroup>
 					<tbody>

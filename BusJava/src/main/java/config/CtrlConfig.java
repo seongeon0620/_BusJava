@@ -20,9 +20,6 @@ public class CtrlConfig {
 	private TravelSvc travelSvc;
 	
 	@Autowired
-	private CsSugSvc csSugSvc;
-	
-	@Autowired
 	private FaqListSvc faqListSvc;
 	
 	@Autowired
@@ -70,13 +67,6 @@ public class CtrlConfig {
 		TravelCtrl travelCtrl = new TravelCtrl();
 		travelCtrl.setTravelSvc(travelSvc);
 		return travelCtrl;
-	}
-	
-	@Bean
-	public CsSugCtrl csSugCtrl() {
-		CsSugCtrl csSugCtrl = new CsSugCtrl();
-		csSugCtrl.setCsSugSvc(csSugSvc);
-		return csSugCtrl;
 	}
 
 	@Bean

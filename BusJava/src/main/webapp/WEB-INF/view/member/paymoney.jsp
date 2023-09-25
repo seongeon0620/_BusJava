@@ -63,9 +63,6 @@ if (mi.getMi_pmoney() > 0) {
 				<p class="h4 mt-5 text-left text">페이머니 사용 내역</p>
 				<div class="btn-wrap justify-content-start">
 					<p class="mb-0">최근 3개월 내역만 노출됩니다.</p>
-					<!--          <button type="button" class="btn btn-primary" onclick="" >3개월</button>
-        	  <button type="button" class="btn btn-secondary" onclick="" >6개월</button>
-              <button type="button" class="btn btn-secondary" onclick="" >1년</button> -->
 				</div>
 				<table class="table text-center mt-2">
 					<colgroup>
@@ -75,13 +72,13 @@ if (mi.getMi_pmoney() > 0) {
 					</colgroup>
 					<tbody>
 						<%
-						for (paymoneyInfo pl : pList) {
-							String Total_cr_pmoney = "";
-							if (pl.getPd_real_price() > 0) {
-								nf = NumberFormat.getInstance();
-								Total_cr_pmoney = nf.format(pl.getPd_real_price());
-								// 이제 formattedNumber는 세 자리마다 쉼표가 찍힌 숫자를 문자열 형태로 저장합니다.
-							}
+						if (pList.size() > 0) {
+							for (paymoneyInfo pl : pList) {
+								String Total_cr_pmoney = "";
+								if (pl.getPd_real_price() > 0) {
+							nf = NumberFormat.getInstance();
+							Total_cr_pmoney = nf.format(pl.getPd_real_price());
+								}
 						%>
 						<tr>
 							<td class="align-middle">
@@ -92,12 +89,19 @@ if (mi.getMi_pmoney() > 0) {
 								<p class="mb-0"><%=pl.getRi_line_type()%>버스 예매
 								</p>
 								<p class="mb-0"><%=pl.getRi_fr()%>
-									->
+									<i class="bi bi-arrow-right"></i>
 									<%=pl.getRi_to()%></p>
 							</td>
 							<td class="text-right">
 								<span class="font-weight-bold mr-1">사용일시</span>
 								<%=pl.getPd_date().substring(0, 16)%></td>
+						</tr>
+						<%
+						}
+						} else {
+						%>
+						<tr>
+							<td colspan="3" class="text-left text-muted pl-0">페이머니 사용 내역이 존재하지 않습니다.</td>
 						</tr>
 						<%
 						}
@@ -116,8 +120,8 @@ if (mi.getMi_pmoney() > 0) {
 						<col width="*">
 					</colgroup>
 					<tbody>
-						<!-- 페이머니 내역 for문 동려서 출력  -->
 						<%
+						if (mphList.size() > 0) {
 						for (paymoneyInfo mpl : mphList) {
 							String Ph_pmoney = "";
 							if (mpl.getPh_pmoney() > 0) {
@@ -132,7 +136,7 @@ if (mi.getMi_pmoney() > 0) {
 									+<%=Ph_pmoney%></p>
 							</td>
 							<td class="text-left">
-								<p class="mb-0"><%=mpl.getPh_real_price() / 10000%>만원권 충전
+								<p class="mb-0"><%=mpl.getPh_real_price() / 10000%>만원 충전
 								</p>
 								<p class="mb-0">10% 추가 적립</p>
 							</td>
@@ -142,7 +146,12 @@ if (mi.getMi_pmoney() > 0) {
 						</tr>
 						<%
 						}
+						} else {
 						%>
+						<tr>
+							<td colspan="3" class="text-left text-muted pl-0">페이머니 충전 내역이 존재하지 않습니다.</td>
+						</tr>
+						<% } %>
 					</tbody>
 				</table>
 			</div>

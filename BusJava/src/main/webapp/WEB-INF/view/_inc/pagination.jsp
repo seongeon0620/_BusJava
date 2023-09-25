@@ -1,4 +1,4 @@
-<nav aria-label="Page navigation example" class="mt-4">
+<nav aria-label="Page navigation" class="mt-4">
 	<ul class="pagination justify-content-center">
 			<% if (pi.getCpage() == 1 ) { %>          
 				<li class="page-item">

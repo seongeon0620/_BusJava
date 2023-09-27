@@ -21,8 +21,8 @@ if (pageInfo != null && pageInfo.getSchargs() != "") {
 		<div class="d-flex align-items-center">
 			<nav aria-label="breadcrumb">
 				<ol class="breadcrumb m-0 p-0">
-					<li class="breadcrumb-item"><a href="/adminbusj" class="text-muted">홈</a></li>
-					<li class="breadcrumb-item text-muted active" aria-current="page">전체 매출</li>
+					<li class="breadcrumb-item"><a href="/Admin_BusJava" class="text-muted">홈</a></li>
+					<li class="breadcrumb-item active" aria-current="page">전체 매출</li>
 				</ol>
 			</nav>
 		</div>
@@ -87,14 +87,14 @@ if (pageInfo != null && pageInfo.getSchargs() != "") {
 										<td class="text-left">
 											<div class="d-flex align-center">
 												<div class="col-lg-2 pl-0">
-													<div class="form-group mb-0 custom-date">
+													<div class="form-group mb-0 custom-input-icon">
 														<span><i class="icon-calender"></i></span>
 														<input type="text" id="fromDate" name="fromDate" class="form-control" readonly>
 													</div>
 												</div>
 												<span style="line-height: 2.1;"> ~ </span>
 												<div class="col-lg-2 pr-0">
-													<div class="form-group mb-0 custom-date">
+													<div class="form-group mb-0 custom-input-icon">
 														<span><i class="icon-calender"></i></span>
 														<input type="text" id="toDate" name="toDate" class="form-control" readonly>
 													</div>
@@ -110,7 +110,7 @@ if (pageInfo != null && pageInfo.getSchargs() != "") {
 								</button>
 							</div>
 						</form>
-						<table id="table" class="table text-center padding-size-sm mt-3 mb-0">
+						<table id="table" class="table text-center table-sm mt-3 mb-0">
 							<colgroup>
 								<col width="10%">
 								<col width="10%">
@@ -133,7 +133,7 @@ if (pageInfo != null && pageInfo.getSchargs() != "") {
 									<th>매출 합계</th>
 								</tr>
 							</thead>
-							<tbody class="border border-primary">
+							<tbody class="border">
 <% if (salesList.size() > 0) {	// 매출내역이 있을경우
 	for (SalesInfo si : salesList) {
 	realTotal += si.getTotalFee();
@@ -181,7 +181,7 @@ if (pageInfo != null && pageInfo.getSchargs() != "") {
 <%@ include file="../_inc/foot.jsp"%>
 <script>
 function openModal() {
-	$('#pickModal .modal-content').load("/admin_busjavaF/pickTerminal");
+	$('#pickModal .modal-content').load("/Admin_BusJava/pickTerminal");
 	$('#pickModal').modal();
 }
 

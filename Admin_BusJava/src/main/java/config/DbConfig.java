@@ -68,18 +68,6 @@ public class DbConfig {
 	}
 	
 	@Bean
-	public TravelDao travelDao() {
-		return new TravelDao(dataSource());
-	}
-	
-	@Bean
-	public TravelSvc travelSvc() {
-		TravelSvc travelSvc = new TravelSvc();
-		travelSvc.setTravelDao(travelDao());
-		return travelSvc;
-	}
-	
-	@Bean
 	public SalesDao salesDao() {
 		return new SalesDao(dataSource());
 	}
@@ -89,18 +77,6 @@ public class DbConfig {
 		SalesSvc salesSvc = new SalesSvc();
 		salesSvc.setSalesDao(salesDao());
 		return salesSvc;
-	}
-	
-	@Bean
-	public CsSugDao csSugDao() {
-		return new CsSugDao(dataSource());
-	}
-	
-	@Bean
-	public CsSugSvc csSugSvc() {
-		CsSugSvc csSugSvc = new CsSugSvc();
-		csSugSvc.setCsSugDao(csSugDao());
-		return csSugSvc;
 	}
 	
 	@Bean

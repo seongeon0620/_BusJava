@@ -19,9 +19,9 @@ if (!isLogin) {		// 로그인이 되어 있지 않다면
 	<div class="d-flex align-items-center">
 		<nav aria-label="breadcrumb">
 			<ol class="breadcrumb m-0 p-0">
-	            <li class="breadcrumb-item"><a href="/adminbusj" class="text-muted">홈</a></li>
+	            <li class="breadcrumb-item"><a href="/Admin_BusJava" class="text-muted">홈</a></li>
 	            <li class="breadcrumb-item"><a href="noticeList" class="text-muted">FAQ 목록</a></li>
-	            <li class="breadcrumb-item text-muted active" aria-current="page">FAQ 글보기</li>
+	            <li class="breadcrumb-item active" aria-current="page">FAQ 글보기</li>
 	        </ol>
 		</nav>
 	</div>

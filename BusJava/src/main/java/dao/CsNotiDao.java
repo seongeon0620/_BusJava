@@ -89,7 +89,7 @@ public class CsNotiDao {
 				NoticeInfo ni = new NoticeInfo();
 				ni.setNl_idx(nlidx);
 				ni.setNl_title(rs.getString("nl_title"));
-				ni.setNl_content(rs.getString("nl_content"));
+				ni.setNl_content(rs.getString("nl_content").replaceAll("\r\n", "<br />"));
 				ni.setNl_read(rs.getInt("nl_read"));
 				ni.setNl_accent(rs.getString("nl_accent"));
 				ni.setNl_date(rs.getString("wdate"));

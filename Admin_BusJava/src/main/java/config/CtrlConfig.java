@@ -20,13 +20,7 @@ public class CtrlConfig {
 	private MemberSvc memberSvc;
 	
 	@Autowired
-	private TravelSvc travelSvc;
-	
-	@Autowired
 	private SalesSvc salesSvc;
-	
-	@Autowired
-	private CsSugSvc csSugSvc;
 	
 	@Autowired
 	private CsNoticeSvc csNoticeSvc;
@@ -65,13 +59,6 @@ public class CtrlConfig {
 	}
 	
 	@Bean
-	public TravelCtrl travelCtrl() {
-		TravelCtrl travelCtrl = new TravelCtrl();
-		travelCtrl.setTravelSvc(travelSvc);
-		return travelCtrl;
-	}
-	
-	@Bean
 	public MemberCtrl memberCtrl() {
 		MemberCtrl memberCtrl = new MemberCtrl();
 		memberCtrl.setMemberSvc(memberSvc);
@@ -83,13 +70,6 @@ public class CtrlConfig {
 		SalesCtrl salesCtrl = new SalesCtrl();
 		salesCtrl.setSalesSvc(salesSvc);
 		return salesCtrl;
-	}
-	
-	@Bean
-	public CsSugCtrl csSugCtrl() {
-		CsSugCtrl csSugCtrl = new CsSugCtrl();
-		csSugCtrl.setCsSugSvc(csSugSvc);
-		return csSugCtrl;
 	}
 	
 	@Bean

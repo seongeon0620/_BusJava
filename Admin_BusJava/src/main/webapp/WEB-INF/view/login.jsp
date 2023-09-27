@@ -26,7 +26,7 @@
 				<div class="col-lg-7 col-md-5 modal-bg-img" style="background-image: url(${pageContext.request.contextPath}/resources/images/login.png);"></div>
 				<div class="col-lg-5 col-md-7 bg-white">
 					<div class="p-3">
-						<h2 class="mt-3 text-center text-primary">로그인</h2>
+						<h2 class="mt-3 text-center text-primary font-weight-bold">LOGIN</h2>
 						<form name="frmLogin" action="adminLogin" method="post">
 							<div class="row">
 								<div class="col-lg-12">

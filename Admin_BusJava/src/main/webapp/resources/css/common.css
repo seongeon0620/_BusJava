@@ -36,55 +36,20 @@ table th.bg-gray, table td.bg-gray {
 
 .padding-0 { padding:0; }
 
-.filebox {display: flex;}
-.filebox .upload-name {
-    display: none;
-    height: 40px;
-    padding: 0 10px;
-    vertical-align: middle;
-    border: 1px solid #dddddd;
-    width: 78%;
-    color: #999999;
-}
-.filebox label {
-    display: inline-block;
-    padding: 7px 20px;
-    vertical-align: middle;
-    background-color: #e6e6e6;
-    cursor: pointer;
-    width: 150px;
-    margin: 0;
-    font-weight: 600;
-}
-.filebox input[type="file"] {
-    position: absolute;
-    width: 0;
-    height: 0;
-    padding: 0;
-    overflow: hidden;
-    border: 0;
-}
+.custom-file label.custom::after {content: none;} 
+.file-img-wrap {width: 480px; height: 270px;}
+.file-img-wrap img {object-fit: contain; width: 100%; height: 100%;}
 
-#fileName {margin-left: 10px;}
-
-.file-wrap { border-top: 1px solid #e6e6e6; padding: 20px 0;}
-.file-wrap > * { margin-right: 20px; }
-.file-wrap > a:hover { text-decoration: underline; }
-.file-wrap > span { font-weight: 600; }
-
-.custom-date { position: relative;}
-.custom-date > span {position: absolute;
-    top: 50%;
-    left: 80%;
-    transform: translateY(-50%);}
-.custom-date .form-control { background: #fff;}
+.custom-input-icon { position: relative;}
+.custom-input-icon > span {position: absolute; top: 50%; left: 85%; transform: translateY(-50%); z-index: 100;}
+.custom-input-icon .form-control { background: #fff;}
 
 #keywordArea { margin: 1rem 0; padding: 0 0 1rem 0; border-bottom: 1px solid #eee; list-style: none; display: flex; flex-wrap: wrap;}
 #keywordArea p {margin-bottom: 0; font-size: 1rem;}
 #keywordArea button {border :none; margin-bottom: 5px; margin-right: 5px;}
 
 .scroll-box .nav-link {padding: 1rem; border: none; outline: none;}
-.scroll-box { overflow-y: auto; height: 200px; border: 1px solid #e3e3e3; padding: 20px; font-size: 14px;}
+.scroll-box { overflow-y: auto; height: 200px; border: 1px solid #e3e3e3; padding: 20px; font-size: 16px;}
 .scroll-box a { color: black ; display: block;}
 
 .modal-body ul.scroll-box {list-style: none;}

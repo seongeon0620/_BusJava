@@ -13,7 +13,7 @@ PageInfo pi = (PageInfo)request.getAttribute("pi");
 		<div class="d-flex align-items-center">
 			<nav aria-label="breadcrumb">
 				<ol class="breadcrumb m-0 p-0">
-		            <li class="breadcrumb-item"><a href="busjava_admin" class="text-muted">홈</a></li>
+		            <li class="breadcrumb-item"><a href="Admin_BusJava" class="text-muted">홈</a></li>
 		            <li class="breadcrumb-item active" aria-current="page">예매 목록</li>
 		        </ol>
 			    </nav>
@@ -46,7 +46,7 @@ PageInfo pi = (PageInfo)request.getAttribute("pi");
 				                        </td> 
 				                    </tr>
 									<tr>
-										<th scope="row" class="text-center bg-gray">노선</th>
+										<th scope="row" class="text-center bg-gray align-middle">노선</th>
 										<td class="text-left" colspan="3">
 											<div class="d-flex">
 												<div class="col-lg-2 pl-0">
@@ -74,10 +74,10 @@ PageInfo pi = (PageInfo)request.getAttribute("pi");
 										</td>
 									</tr>    
 				                    <tr>
-				                        <th scope="row" class="text-center bg-gray align-middle">일자</th>
+				                        <th scope="row" class="text-center bg-gray align-middle">출발일자</th>
 				                        <td class="text-left">
 				                            <div class="d-flex">
-				                            	<div class="form-group mb-0 custom-date">
+				                            	<div class="form-group mb-0 custom-input-icon">
 				                                	<span><i class="icon-calender"></i></span>
 				                                	<input type="text" id="Date" class="form-control" value="<%=pi.getDate() %>" readonly name="date">
 				                                </div>
@@ -98,9 +98,9 @@ PageInfo pi = (PageInfo)request.getAttribute("pi");
 				                </tbody>
 				            </table>
 				            <div class="d-flex justify-content-center">
-				            	<button type="submit" class="btn waves-effect waves-light btn-secondary mb-2 mr-2">검색
+				            	<button type="button" class="btn waves-effect waves-light btn-light mb-2" onclick="location.href='ticketList'">필터 초기화</button>
+				            	<button type="submit" class="btn waves-effect waves-light btn-secondary mb-2 ml-2">검색
 				            	<i class="icon-magnifier"></i></button>
-				            	<button type="button" class="btn waves-effect waves-light btn-secondary mb-2" onclick="location.href='ticketList'">전체보기</button>
 				            </div>
 						</form>
 						<form name="frm">

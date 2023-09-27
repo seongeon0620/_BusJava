@@ -5,29 +5,31 @@ import java.time.*;
 import java.util.*;
 import javax.sql.*;
 import org.springframework.jdbc.core.*;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import vo.*;
 
 public class SalesDao {
 	private JdbcTemplate jdbc;
-	
+
 	public SalesDao(DataSource dataSource) {
 		this.jdbc = new JdbcTemplate(dataSource);
 	}
 
 	public List<SalesInfo> getSalesList(String lineType, String terName, String fromDate, String toDate) {
-	// 기본 일주일 매출목록 불러옴
+		// 기본 일주일 매출목록 불러옴
 		LocalDate nowDate = LocalDate.now();
 
-		String sql = "SELECT RI.RI_LINE_TYPE, RI.RI_FR, RI.RI_TO, COUNT(RI.RI_LINE_ID) AS NUM_OF_TRIPS," +
-		" SUM(CASE WHEN CR.CR_PAYMENT = '카드' THEN CR.CR_PAY ELSE 0 END) AS CARD_SALES," +
-		" SUM(CASE WHEN CR.CR_PAYMENT = '무통장입금' THEN CR.CR_PAY ELSE 0 END) AS BANK_SALES," +
-		" SUM(CASE WHEN CR.CR_PAYMENT = '간편결제' THEN CR.CR_PAY ELSE 0 END) AS MOBILE_SALES," +
-		" SUM(CASE WHEN CR.CR_PAYMENT IN ('카드', '무통장입금', '간편결제') THEN CR.CR_PAY ELSE 0 END) AS TOTAL_SALES" +
-		" FROM T_RESERVATION_INFO RI" +
-		" JOIN T_COUNT_RINFO CR ON RI.RI_IDX = CR.RI_IDX" +
-		" WHERE RI.RI_STATUS = '예매'"+ lineType + terName + "AND RI.RI_DATE BETWEEN ? AND ?" +
-		" GROUP BY RI.RI_LINE_TYPE, RI.RI_FR, RI.RI_TO" +
-		" ORDER BY TOTAL_SALES DESC";
+		String sql = "SELECT RI.RI_LINE_TYPE, RI.RI_FR, RI.RI_TO, COUNT(RI.RI_LINE_ID) AS NUM_OF_TRIPS,"
+				+ " SUM(CASE WHEN CR.CR_PAYMENT = '카드' THEN CR.CR_PAY ELSE 0 END) AS CARD_SALES,"
+				+ " SUM(CASE WHEN CR.CR_PAYMENT = '무통장입금' THEN CR.CR_PAY ELSE 0 END) AS BANK_SALES,"
+				+ " SUM(CASE WHEN CR.CR_PAYMENT = '간편결제' THEN CR.CR_PAY ELSE 0 END) AS MOBILE_SALES,"
+				+ " SUM(CASE WHEN CR.CR_PAYMENT IN ('카드', '무통장입금', '간편결제') THEN CR.CR_PAY ELSE 0 END) AS TOTAL_SALES"
+				+ " FROM T_RESERVATION_INFO RI" + " JOIN T_COUNT_RINFO CR ON RI.RI_IDX = CR.RI_IDX"
+				+ " WHERE RI.RI_STATUS = '예매'" + lineType + terName + "AND RI.RI_DATE BETWEEN ? AND ?"
+				+ " GROUP BY RI.RI_LINE_TYPE, RI.RI_FR, RI.RI_TO" + " ORDER BY TOTAL_SALES DESC";
 		System.out.println(sql);
 		List<SalesInfo> salesList = jdbc.query(sql, (ResultSet rs, int rowNum) -> {
 			SalesInfo sl = new SalesInfo();
@@ -41,16 +43,16 @@ public class SalesDao {
 			sl.setTotalFee(rs.getInt("TOTAL_SALES"));
 			return sl;
 		}, fromDate, toDate);
-		
+
 		return salesList;
-		
+
 	}
-	
+
 	public List<PaymoneyInfo> getPaymoneyList() {
 		String sql = "select sum(CASE WHEN ph_payment = '카드' THEN ph_real_price ELSE 0 END) card_salse,"
-			+ " sum(CASE WHEN ph_payment = '무통장입금' THEN ph_real_price ELSE 0 END) bank_salse, "
-			+ " sum(CASE WHEN ph_payment = '간편결제' THEN ph_real_price ELSE 0 END) mobile_salse, left(ph_date, 7) wdate" +
-			" from t_paymoney_history group by wdate";
+				+ " sum(CASE WHEN ph_payment = '무통장입금' THEN ph_real_price ELSE 0 END) bank_salse, "
+				+ " sum(CASE WHEN ph_payment = '간편결제' THEN ph_real_price ELSE 0 END) mobile_salse, left(ph_date, 7) wdate"
+				+ " from t_paymoney_history where left(ph_date, 4) = left(now(), 4) group by wdate";
 
 		List<PaymoneyInfo> paymoneyList = jdbc.query(sql, (ResultSet rs, int rowNum) -> {
 			PaymoneyInfo pi = new PaymoneyInfo();
@@ -64,29 +66,57 @@ public class SalesDao {
 	}
 
 	public List<TerminalInfo> getTerminalList() {
-		String sql = "SELECT BH_NAME, BH_AREA FROM T_BUS_HTERMINAL WHERE BH_STATUS = 'Y'" +
-		" UNION ALL SELECT BS_NAME, BS_AREA FROM T_BUS_STERMINAL WHERE BS_STATUS = 'Y'";
+		String sql = "SELECT BH_NAME, BH_AREA FROM T_BUS_HTERMINAL WHERE BH_STATUS = 'Y'"
+				+ " UNION ALL SELECT BS_NAME, BS_AREA FROM T_BUS_STERMINAL WHERE BS_STATUS = 'Y'";
 		List<TerminalInfo> terminalList = jdbc.query(sql, (ResultSet rs, int rowNum) -> {
 			TerminalInfo ti = new TerminalInfo();
 			ti.setBh_name(rs.getString("BH_NAME"));
 			ti.setBh_area(rs.getString("BH_AREA"));
 			return ti;
 		});
-		
+
 		return terminalList;
 	}
 
 	public List<TerminalInfo> getTerminalList(String whereH, String whereS) {
-		String sql = "SELECT BH_NAME, BH_AREA FROM T_BUS_HTERMINAL WHERE BH_STATUS = 'Y'" + whereH +
-		" UNION ALL SELECT BS_NAME, BS_AREA FROM T_BUS_STERMINAL WHERE BS_STATUS = 'Y'" + whereS;
+		String sql = "SELECT BH_NAME, BH_AREA FROM T_BUS_HTERMINAL WHERE BH_STATUS = 'Y'" + whereH
+				+ " UNION ALL SELECT BS_NAME, BS_AREA FROM T_BUS_STERMINAL WHERE BS_STATUS = 'Y'" + whereS;
 		List<TerminalInfo> terminalList = jdbc.query(sql, (ResultSet rs, int rowNum) -> {
 			TerminalInfo ti = new TerminalInfo();
 			ti.setBh_name(rs.getString("BH_NAME"));
 			ti.setBh_area(rs.getString("BH_AREA"));
 			return ti;
 		});
-		
+
 		return terminalList;
 	}
-	
+
+	public String getTopCtgr() throws JsonProcessingException {
+		String sql = "select distinct ph_payment, sum(ph_real_price) salse from t_paymoney_history group by ph_payment order by salse desc";
+		List<HashMap<String, Object>> topCtgrList = jdbc.query(sql, new RowMapper<HashMap<String, Object>>() {
+			@Override
+			public HashMap<String, Object> mapRow(ResultSet rs, int rowNum) throws SQLException {
+				HashMap<String, Object> result = new HashMap<String, Object>();
+				result.put("payment", rs.getString("ph_payment"));
+				result.put("salse", rs.getString("salse").substring(0, rs.getString("salse").length() - 3));
+
+				return result;
+			}
+		});
+
+		// ObjectMapper를 사용하여 List를 JSON 문자열로 변환
+		ObjectMapper objectMapper = new ObjectMapper();
+		return objectMapper.writeValueAsString(topCtgrList);
+	}
+
+	public List<String> getSales(int i) {
+		String sql = "select sum(ph_real_price) salse from t_paymoney_history "
+				+ " where YEAR(ph_date) = LEFT(curdate(), 4) - " + i + " group by left(ph_date, 7) "
+				+ " order by left(ph_date, 7) asc";
+		List<String> salesList = jdbc.query(sql, (ResultSet rs, int rowNum) -> {
+			return rs.getString("salse").substring(0, rs.getString("salse").length() - 3);
+		});
+
+		return salesList;
+	}
 }

@@ -70,7 +70,7 @@ if (ti.getSeatInfo().size() > 0) {
 		<div class="d-flex align-items-center">
 			<nav aria-label="breadcrumb">
 				<ol class="breadcrumb m-0 p-0">
-		            <li class="breadcrumb-item"><a href="busjava_admin" class="text-muted">홈</a></li>
+		            <li class="breadcrumb-item"><a href="Admin_BusJava" class="text-muted">홈</a></li>
 		            <li class="breadcrumb-item text-muted" aria-current="page">예매 목록</li>
 		            <li class="breadcrumb-item active" aria-current="page">예매 상세내역</li>
 		        </ol>
@@ -124,15 +124,15 @@ if (ti.getSeatInfo().size() > 0) {
    	</thead>
    	<thead class="text-black">
 		<th class="bg-gray">상태</th>
-		<td><%=ti.getRi_status() %></td>
+		<td class="border-bottom"><%=ti.getRi_status() %></td>
 		<th class="bg-gray">환불금액</th>
 <% if (!ti.getRi_status().equals("예매취소")) { %>
-		<td>-</td>
+		<td class="border-bottom">-</td>
 <% } else { 
 	int returnCount = (ti.getPd_total_price() - cancelPrice);
 	NumberFormat nft = NumberFormat.getInstance();
 	String result = nft.format(returnCount);  // tmp 값을 세 자리마다 쉼표가 찍힌 문자열로 변환 */ %>
-	<td><%=result %>원</td>
+	<td class="border-bottom"><%=result %>원</td>
 <% } %>
    	</thead>
 </table>
@@ -152,9 +152,9 @@ if (ti.getSeatInfo().size() > 0) {
    	</thead>
    	<thead class="text-black">
 		<th class="bg-gray">결제수단</th>
-		<td><%=ti.getPd_payment() %></td>
+		<td class="border-bottom"><%=ti.getPd_payment() %></td>
 		<th class="bg-gray">결제금액</th>
-		<td><%=formattedNumber %></td>
+		<td class="border-bottom"><%=formattedNumber %></td>
    	</thead>
 </table>
 <div class="d-flex justify-content-center">

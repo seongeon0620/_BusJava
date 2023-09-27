@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ include file="../_inc/head.jsp" %>
+<%@ include file="../_inc/head.jsp"%>
 <c:set var="kind" value="${param.kind }" />
 <script>
 function ctgrAll(all) {
@@ -90,17 +90,14 @@ function chkChange(status) {
 </script>
 
 <div class="page-wrapper">
-<div class="page-breadcrumb">
-		<h3 class="page-title text-truncate text-dark font-weight-bold"><c:if test="${kind == 'h'}">고속</c:if>
-		<c:if test="${kind == 's'}">시외</c:if> 터미널 목록</h3>
+	<div class="page-breadcrumb">
+		<h3 class="page-title text-truncate text-dark font-weight-bold">터미널 관리</h3>
 		<div class="d-flex align-items-center">
 			<nav aria-label="breadcrumb">
-			    <ol class="breadcrumb m-0 p-0">
-		            <li class="breadcrumb-item"><a href="/busjava_admin" class="text-muted">홈</a></li>
-		            <li class="breadcrumb-item active" aria-current="page">
-		            <c:if test="${kind == 'h'}">고속</c:if>
-					<c:if test="${kind == 's'}">시외</c:if> 버스 터미널 목록</li>
-		        </ol>
+				<ol class="breadcrumb m-0 p-0">
+					<li class="breadcrumb-item"><a href="/Admin_BusJava" class="text-muted">홈</a></li>
+					<li class="breadcrumb-item active" aria-current="page"><c:if test="${kind == 'h'}">고속</c:if> <c:if test="${kind == 's'}">시외</c:if> 버스 터미널 목록</li>
+				</ol>
 			</nav>
 		</div>
 	</div>
@@ -110,166 +107,168 @@ function chkChange(status) {
 				<div class="card">
 					<div class="card-body">
 						<form name="frmSch">
-							<c:if test="${kind == 'h' }" ><input type="hidden" name="schctgr" value="tt" /></c:if>
+							<c:if test="${kind == 'h' }">
+								<input type="hidden" name="schctgr" value="tt" />
+							</c:if>
 							<input type="hidden" id="kind" name="kind" value="${kind }" />
-				            <table class="table table-sm custom v-middle">
-				                <colgroup>
-				                    <col width="20%">
-				                    <col width="*">
-				                </colgroup>
-				                <tbody>
-				                    <tr>
-				                        <th scope="row" class="text-center bg-gray align-middle">검색어</th>
-				                        <td class="text-left">
-				                            <div class="d-flex">
-				                                <select class="form-control w-auto" name="schtype">
-				                                	<option value="all" <c:if test="${param.schtype == 'all' }">selected="selected"</c:if>>전체</option>
-				                                	<option value="name" <c:if test="${param.schtype == 'name' }">selected="selected"</c:if>>터미널명</option>
-				                                	<option value="addr" <c:if test="${param.schtype == 'addr' }">selected="selected"</c:if>>주소</option>
-				                                </select>
-				                                <input type="text" name="keyword" value="${param.keyword }" class="form-control">
-				                            </div>
-				                        </td> 
-				                    </tr>
-<c:forEach items="${areaList }" var="al" varStatus="status">
-<c:if test="${al.getBh_status() == 'Y'}"><c:set var="count" value="${count + 1}" /></c:if>
-</c:forEach>
-<c:if test="${areaList.size() > 0 }">
-	<c:forEach items="${areaList }" var="al" varStatus="status">
-		<c:if test="${status.index == 0}">
-			<th scope="row" class="text-center bg-gray">지역</th>
-			<td><div class="d-table">
-		</c:if>
-		
-		<c:if test="${status.index == 0}">
-				<div class="form-check form-check-inline">
-					<div class="custom-control custom-checkbox">
-						<input type="checkbox" name="all" value="all" class="custom-control-input" id="${status.index}"
-			            onclick="ctgrAll(this);"
-			            <c:choose>
+							<table class="table table-sm custom v-middle">
+								<colgroup>
+									<col width="20%">
+									<col width="10%">
+									<col width="*">
+								</colgroup>
+								<tbody>
+									<tr>
+										<th scope="row" class="text-center bg-gray align-middle">검색어</th>
+										<td class="pr-0">
+											<select class="form-control" name="schtype">
+												<option value="all" <c:if test="${param.schtype == 'all' }">selected="selected"</c:if>>전체</option>
+												<option value="name" <c:if test="${param.schtype == 'name' }">selected="selected"</c:if>>터미널명</option>
+												<option value="addr" <c:if test="${param.schtype == 'addr' }">selected="selected"</c:if>>주소</option>
+											</select>
+										</td>
+										<td>
+											<input type="text" name="keyword" value="${param.keyword }" class="form-control">
+										</td>
+									</tr>
+									<c:forEach items="${areaList }" var="al" varStatus="status">
+										<c:if test="${al.getBh_status() == 'Y'}">
+											<c:set var="count" value="${count + 1}" />
+										</c:if>
+									</c:forEach>
+									<c:if test="${areaList.size() > 0 }">
+										<c:forEach items="${areaList }" var="al" varStatus="status">
+											<c:if test="${status.index == 0}">
+												<th scope="row" class="text-center bg-gray">지역</th>
+												<td colspan="2">
+													<div class="d-table">
+											</c:if>
+
+											<c:if test="${status.index == 0}">
+												<div class="form-check form-check-inline">
+													<div class="custom-control custom-checkbox">
+														<input type="checkbox" name="all" value="all" class="custom-control-input" id="${status.index}" onclick="ctgrAll(this);" <c:choose>
 							<c:when test="${kind == 'h'}">
 							<c:if test="${count == 15}">checked="checked"</c:if></c:when>
 							<c:when test="${kind == 's'}">
 							<c:if test="${count == 17 }">checked="checked"</c:if></c:when>
-						</c:choose> />
-			        	<label class="custom-control-label" for="${status.index}">전체</label>
-			    	</div>
-				</div>
-		</c:if>
-		<div class="form-check form-check-inline">
-			<div class="custom-control custom-checkbox">
-				<input type="checkbox" name="schctgr" value="${al.getBh_area() }" class="custom-control-input" id="${status.count}"
-				 onclick="ctgrOne(this);" <c:if test="${al.getBh_status() == 'Y'}">checked="checked"</c:if> />
-				<label class="custom-control-label" for="${status.count}">${al.getBh_area() }</label>
-			</div>
-		</div>
-		<c:if test="${status.index == areaList.size()}">
-			</div></td>
-		</c:if>
-	</c:forEach>
-</c:if>
-				                    <tr>
-				                        <th scope="row" class="text-center bg-gray align-middle">사용여부</th>
-				                        <td class="text-left">
-				                            <div class="d-flex">
-				                                <select class="form-control w-auto" name="isview">
-				                                    <option value="">전체</option>
-				                                    <option <c:if test="${param.isview == 'Y' }">selected='selected'</c:if>>Y</option>
-				                                    <option <c:if test="${param.isview == 'N' }">selected='selected'</c:if>>N</option>
-				                                </select>
-				                            </div>
-				                        </td> 
-				                    </tr>
-				                </tbody>
-				            </table>
-				            <div class="d-flex justify-content-center">
-				            	<button type="submit" class="btn waves-effect waves-light btn-secondary mb-2">검색
-				            	<i class="icon-magnifier"></i></button>
-				            </div>
-            			</form>
-            			<form name="frm">
-            			<div class="text-right mt-2">
-							<button type="button" class="btn waves-effect waves-light btn-primary" onclick="chkChange('Y');">사용으로변경</button>
-							<button type="button" class="btn waves-effect waves-light btn-secondary ml-2" onclick="chkChange('N');" value="">미사용으로변경</button>
-						</div>
-        					<input type="hidden" name="chk" value="" />
-							<table id="table" class="table text-center mt-3 mb-0 table-sm table-hover">
-			                <colgroup>
-			                    <col width="5%">
-								<col width="5%">
-								<col width="12%">
-								<col width="15%">
-								<col width="*">
-								<col width="10%">
-			                </colgroup>
-			                <thead class="bg-primary text-white">
-			                <tr>
-			                    <th class="align-middle"><input type="checkbox" name="chechkall" style="width:18px; height:18px;" onclick="chkAll(this);" /></th>
-			                    <th>No</th>
-			                    <th>지역</th>
-			                    <th>터미널명</th>
-			                    <th class="text-left">주소</th>
-			                    <th>사용여부</th>
-			                </tr>
-			            	</thead>  
-			            	<c:if test="${terminalList.size() > 0 }">
-								<c:forEach items="${terminalList }" var="tl" varStatus="status">
-					                <tbody class="border">
-					                <tr class="tr">
-					                    <td class="align-middle"><input type="checkbox" name="chk" value="${tl.getBh_code() }" style="width:18px; height:18px;" onclick="chkOne(this);" /></td>
-					                    <td>${pi.getNum() - status.index}</td>
-					                    <td>${tl.getBh_area()}</td>
-					                    <td><span class="text-primary">${tl.getBh_name() }</span></td>
-					                    <td class="text-left">${tl.getBh_addr()}</td>
-										<td>${tl.getBh_status() }</td>
-					                </tr>
-					           		</tbody>
-					           	</c:forEach>
-							</c:if>
-			           		<c:if test="${terminalList.size() == 0 }">
-								<tbody class="border">
-					                <tr>
-					                    <td colspan="6">검색결과가 없습니다.</td>
-					                </tr>
-					           	</tbody>
-							</c:if>
+						</c:choose> /> <label class="custom-control-label" for="${status.index}">전체</label>
+													</div>
+												</div>
+											</c:if>
+											<div class="form-check form-check-inline">
+												<div class="custom-control custom-checkbox">
+													<input type="checkbox" name="schctgr" value="${al.getBh_area() }" class="custom-control-input" id="${status.count}" onclick="ctgrOne(this);" <c:if test="${al.getBh_status() == 'Y'}">checked="checked"</c:if> /> <label class="custom-control-label" for="${status.count}">${al.getBh_area() }</label>
+												</div>
+											</div>
+											<c:if test="${status.index == areaList.size()}">
+												</div>
+												</td>
+											</c:if>
+										</c:forEach>
+									</c:if>
+									<tr>
+										<th scope="row" class="text-center bg-gray align-middle">사용여부</th>
+										<td class="text-left" colspan="2">
+											<div class="d-flex">
+												<select class="form-control w-auto" name="isview">
+													<option value="">전체</option>
+													<option <c:if test="${param.isview == 'Y' }">selected='selected'</c:if>>Y</option>
+													<option <c:if test="${param.isview == 'N' }">selected='selected'</c:if>>N</option>
+												</select>
+											</div>
+										</td>
+									</tr>
+								</tbody>
 							</table>
-				            <nav aria-label="Page navigation m-auto" class="mt-4">
-								<ul class="pagination justify-content-center">
+							<div class="d-flex justify-content-center">
+								<button type="button" class="btn waves-effect waves-light btn-light mb-2" onclick="location.href='terminal?kind=${kind}'">필터 초기화</button>
+								<button type="submit" class="btn waves-effect waves-light btn-secondary mb-2 ml-2">
+									검색 <i class="icon-magnifier"></i>
+								</button>
+							</div>
+						</form>
+						<form name="frm">
+							<div class="text-right mt-2">
+								<button type="button" class="btn waves-effect waves-light btn-primary" onclick="chkChange('Y');">사용으로변경</button>
+								<button type="button" class="btn waves-effect waves-light btn-secondary ml-2" onclick="chkChange('N');" value="">미사용으로변경</button>
+							</div>
+							<input type="hidden" name="chk" value="" />
+							<table id="table" class="table text-center mt-3 mb-0 table-sm table-hover">
+								<colgroup>
+									<col width="5%">
+									<col width="5%">
+									<col width="12%">
+									<col width="15%">
+									<col width="*">
+									<col width="10%">
+								</colgroup>
+								<thead class="bg-primary text-white">
+									<tr>
+										<th class="align-middle"><input type="checkbox" name="chechkall" style="width: 18px; height: 18px;" onclick="chkAll(this);" /></th>
+										<th>No</th>
+										<th>지역</th>
+										<th>터미널명</th>
+										<th class="text-left">주소</th>
+										<th>사용여부</th>
+									</tr>
+								</thead>
 								<c:if test="${terminalList.size() > 0 }">
-								    <li class="page-item">
-								    <c:choose>
-										<c:when test="${ pi.getCpage() == 1 }">
-										<a class="page-link" href="terminal?kind=${kind }&cpage=1${pi.getSchargs()}" aria-label="Previous"></c:when>
-										<c:when test="${ pi.getCpage() > 1 }">
-										<a class="page-link" href="terminal?kind=${kind }&cpage=${pi.getCpage() - 1}${pi.getSchargs()}" aria-label="Previous"></c:when>
-									</c:choose>
-								            <span aria-hidden="true">«</span>
-								            <span class="sr-only">Previous</span>
-								        </a>
-								    </li>
-								    <c:forEach var="i" begin="${pi.getSpage() }" end="${pi.getSpage() + pi.getBsize() - 1 <= pi.getPcnt() ? pi.getSpage() + pi.getBsize() - 1 : pi.getPcnt()}">
-											<li class="page-item <c:if test='${pi.getCpage() == i }'>active</c:if>"><a class="page-link"  href="terminal?kind=${kind }&cpage=${i }${pi.getSchargs() }">${i }</a></li>
+									<c:forEach items="${terminalList }" var="tl" varStatus="status">
+										<tbody class="border">
+											<tr class="tr">
+												<td class="align-middle">
+													<input type="checkbox" name="chk" value="${tl.getBh_code() }" style="width: 18px; height: 18px;" onclick="chkOne(this);" />
+												</td>
+												<td>${pi.getNum() - status.index}</td>
+												<td>${tl.getBh_area()}</td>
+												<td>
+													<span class="text-primary">${tl.getBh_name() }</span>
+												</td>
+												<td class="text-left">${tl.getBh_addr()}</td>
+												<td>${tl.getBh_status() }</td>
+											</tr>
+										</tbody>
 									</c:forEach>
-								    <li class="page-item">
-								    <c:choose>
-										<c:when test="${pi.getCpage() == pi.getPcnt()}">
-										<a class="page-link" href="terminal?kind=${kind }&cpage=${pi.getCpage()}${pi.getSchargs() }" aria-label="Next"></c:when>
-										<c:when test="${pi.getCpage() <  pi.getPcnt()}">
-										<a class="page-link" href="terminal?kind=${kind }&cpage=${pi.getCpage() + 1 }${pi.getSchargs() }" aria-label="Next"></c:when>
-									</c:choose>
-								            <span aria-hidden="true">»</span>
-								            <span class="sr-only">Next</span>
-								        </a>
-								    </li>
 								</c:if>
+								<c:if test="${terminalList.size() == 0 }">
+									<tbody class="border">
+										<tr>
+											<td colspan="6">검색결과가 없습니다.</td>
+										</tr>
+									</tbody>
+								</c:if>
+							</table>
+							<nav aria-label="Page navigation m-auto" class="mt-4">
+								<ul class="pagination justify-content-center">
+									<c:if test="${terminalList.size() > 0 }">
+										<li class="page-item"><c:choose>
+												<c:when test="${ pi.getCpage() == 1 }">
+													<a class="page-link" href="terminal?kind=${kind }&cpage=1${pi.getSchargs()}" aria-label="Previous">
+												</c:when>
+												<c:when test="${ pi.getCpage() > 1 }">
+													<a class="page-link" href="terminal?kind=${kind }&cpage=${pi.getCpage() - 1}${pi.getSchargs()}" aria-label="Previous">
+												</c:when>
+											</c:choose> <span aria-hidden="true">«</span> <span class="sr-only">Previous</span> </a></li>
+										<c:forEach var="i" begin="${pi.getSpage() }" end="${pi.getSpage() + pi.getBsize() - 1 <= pi.getPcnt() ? pi.getSpage() + pi.getBsize() - 1 : pi.getPcnt()}">
+											<li class="page-item <c:if test='${pi.getCpage() == i }'>active</c:if>"><a class="page-link" href="terminal?kind=${kind }&cpage=${i }${pi.getSchargs() }">${i }</a></li>
+										</c:forEach>
+										<li class="page-item"><c:choose>
+												<c:when test="${pi.getCpage() == pi.getPcnt()}">
+													<a class="page-link" href="terminal?kind=${kind }&cpage=${pi.getCpage()}${pi.getSchargs() }" aria-label="Next">
+												</c:when>
+												<c:when test="${pi.getCpage() <  pi.getPcnt()}">
+													<a class="page-link" href="terminal?kind=${kind }&cpage=${pi.getCpage() + 1 }${pi.getSchargs() }" aria-label="Next">
+												</c:when>
+											</c:choose> <span aria-hidden="true">»</span> <span class="sr-only">Next</span> </a></li>
+									</c:if>
 								</ul>
 							</nav>
-        				</form>
-        			</div> 
+						</form>
+					</div>
 				</div>
-    		</div>
+			</div>
 		</div>
 	</div>
 </div>
-<%@ include file="../_inc/foot.jsp" %>
+<%@ include file="../_inc/foot.jsp"%>

@@ -6,7 +6,7 @@ request.setCharacterEncoding("utf-8");
 
 if (!isLogin) {		// 로그인이 되어 있지 않다면
 	out.println("<script>");
-	out.println("alert('로그인 후 이용해 주세요.'); location.href='login?returnUrl=faqForm'; ");
+	out.println("location.href='login?returnUrl=faqForm'; ");
 	out.println("</script>");
 	out.close();
 }

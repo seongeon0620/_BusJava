@@ -14,13 +14,13 @@ if (!isLogin) {		// 로그인이 되어 있지 않다면
 %>
 <div class="page-wrapper">
 	<div class="page-breadcrumb">
-		<h3 class="page-title text-truncate text-dark font-weight-bold">배너 상세</h3>
+		<h3 class="page-title text-truncate text-dark font-weight-bold">배너 관리</h3>
 		<div class="d-flex align-items-center">
 		    <nav aria-label="breadcrumb">
 		        <ol class="breadcrumb m-0 p-0">
-		            <li class="breadcrumb-item"><a href="/busjava_admin" class="text-muted">홈</a></li>
+		            <li class="breadcrumb-item"><a href="/Admin_BusJava" class="text-muted">홈</a></li>
 		            <li class="breadcrumb-item"><a href="bannerList" class="text-muted">배너 목록</a></li>
-		            <li class="breadcrumb-item text-muted active" aria-current="page">배너 상세</li>
+		            <li class="breadcrumb-item active" aria-current="page">배너 상세</li>
 		        </ol>
 		    </nav>
 		</div>
@@ -40,10 +40,10 @@ if (!isLogin) {		// 로그인이 되어 있지 않다면
 			                    <col width="10%">
 			                    <col width="*">
 			                </colgroup>
-			                <tbody>
+			                <tbody class="border">
 			                    <tr>
 			                        <th scope="row" class="text-center table-primary align-middle">배너명</th>
-			                        <td><%=bi.getBl_name() %></td> 
+			                        <td colspan="5"><%=bi.getBl_name() %></td> 
 			                    </tr>
 			                    <tr>
 			                        <th scope="row" class="text-center table-primary">내용</th>
@@ -52,7 +52,7 @@ if (!isLogin) {		// 로그인이 되어 있지 않다면
 			                    <tr>
 			                        <th scope="row" class="text-center table-primary align-middle">이미지</th>
 			                        <td class="text-left" colspan="5">
-			                        	<div class="img-box">
+			                        	<div class="file-img-wrap">
 			                                <img src="resources/images/banner/<%=bi.getBl_img().toLowerCase() %>" />
 										</div>
 			                        </td> 

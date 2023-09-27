@@ -81,7 +81,7 @@ function chkOne(one) {
 		<div class="d-flex align-items-center">
 		    <nav aria-label="breadcrumb">
 		        <ol class="breadcrumb m-0 p-0">
-		            <li class="breadcrumb-item"><a href="/busjava_admin" class="text-muted">홈</a></li>
+		            <li class="breadcrumb-item"><a href="/Admin_BusJava" class="text-muted">홈</a></li>
 		            <li class="breadcrumb-item active" aria-current="page">배너 목록</li>
 		        </ol>
 		    </nav>
@@ -131,7 +131,7 @@ function chkOne(one) {
 								<button type="button" class="btn waves-effect waves-light btn-primary" onclick="location.href='bannerForm?kind=in'">글등록</button>
 								<button type="button" class="btn waves-effect waves-light btn-secondary ml-2" onclick="chkChange('n');" value="">미게시로변경</button>
 							</div>
-							<table id="table" class="table text-center mt-3 mb-0 table-sm">
+							<table id="table" class="table text-center table-hover mt-3 mb-0 table-sm">
 			                <colgroup>
 			                    <col width="5%">
 								<col width="10%">
@@ -142,7 +142,10 @@ function chkOne(one) {
 			                <thead class="bg-primary text-white">
 			                <tr>
 			                    <th class="align-middle">
-			                    <input type="checkbox"  id="checkall" name="checkall" style="width:18px; height:18px;" onclick="chkAll(this);" />
+			                    	<div class="custom-control custom-checkbox">
+										<input type="checkbox" class="custom-control-input" id="checkall" name="checkall" onclick="chkAll(this);">
+										<label class="custom-control-label" for="checkall"></label>
+									</div>
 			                    </th>
 			                    <th>No</th>
 			                    <th>배너명</th>
@@ -156,7 +159,10 @@ function chkOne(one) {
 	for (BannerInfo bi : bannerList) { %>				
 					                <tr class="tr">
 					                    <td class="align-middle">
-					                    <input type="checkbox" id="chk" name="chk" value="<%=bi.getBl_idx() %>" style="width:18px; height:18px;" onclick="chkOne(this);" />
+					                    	<div class="custom-control custom-checkbox">
+                                        		<input type="checkbox" class="custom-control-input" id="customCheck<%=bi.getBl_idx() %>" name="chk" value="<%=bi.getBl_idx() %>" onclick="chkOne(this);">
+                                        		<label class="custom-control-label" for="customCheck<%=bi.getBl_idx() %>"></label>
+                                    		</div>
 					                    </td>
 					                    <td><%=num %></td>
 					                    <td class="text-left"><a href="bannerView?bl_idx=<%=bi.getBl_idx() %>"><%=bi.getBl_name() %></a></td>

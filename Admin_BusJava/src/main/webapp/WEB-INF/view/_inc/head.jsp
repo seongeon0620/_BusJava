@@ -13,7 +13,7 @@ if (loginInfo != null)	isLogin = true;
 
 if (!isLogin) {		// 로그인이 되어 있지 않다면
 	out.println("<script>");
-	out.println("alert('로그인 후 이용해 주세요.'); location.href='login?returnUrl=faqForm'; ");
+	out.println("location.href='login?returnUrl=faqForm'; ");
 	out.println("</script>");
 	out.close();
 }
@@ -27,7 +27,7 @@ if (!isLogin) {		// 로그인이 되어 있지 않다면
 	<meta name="description" content="">
 	<meta name="author" content="">
 	<link rel="icon" type="image/png" sizes="16x16" href="${pageContext.request.contextPath}/resources/images/favicon.png">
-	<title>BUSJAVA ADMIN</title>
+	<title>BusJava Admin</title>
 	<link href="${pageContext.request.contextPath}/resources/css/style.min.css" rel="stylesheet">
 	<link href="${pageContext.request.contextPath}/resources/css/bootstrap-datepicker.css" rel="stylesheet">
 	<link href="${pageContext.request.contextPath}/resources/js/jquery.timepicker.min.css" rel="stylesheet">
@@ -50,14 +50,14 @@ function onlyNum(obj) {
 			<div class="lds-pos"></div>
 			<div class="lds-pos"></div>
 		</div>
-    </div>
+	</div>
 	<div id="main-wrapper" data-theme="light" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full" data-sidebar-position="fixed" data-header-position="fixed" data-boxed-layout="full">
 		<header class="topbar" data-navbarbg="skin6">
-            <nav class="navbar top-navbar navbar-expand-md">
+			<nav class="navbar top-navbar navbar-expand-md">
 				<div class="navbar-header" data-logobg="skin6">
 					<a class="nav-toggler waves-effect waves-light d-block d-md-none" href="javascript:void(0)"><i class="ti-menu ti-close"></i></a>
 					<div class="navbar-brand">
-						<a href="/busjava_admin">
+						<a href="/Admin_BusJava">
 							<span class="logo-text">
 								<img src="${pageContext.request.contextPath}/resources/images/logo.png" alt="homepage" class="dark-logo" width="95%" />
 							</span>
@@ -130,13 +130,13 @@ function onlyNum(obj) {
 							</a>
 							<ul aria-expanded="false" class="collapse  first-level base-level-line">
 							<li class="sidebar-item">
-								<a href="faqList" class="sidebar-link">
-									<span class="hide-menu">FAQ 관리</span>
+								<a href="noticeList" class="sidebar-link">
+									<span class="hide-menu">공지사항 관리</span>
 								</a>
 							</li>
 							<li class="sidebar-item">
-								<a href="noticeList" class="sidebar-link">
-									<span class="hide-menu">공지사항 관리</span>
+								<a href="faqList" class="sidebar-link">
+									<span class="hide-menu">FAQ 관리</span>
 								</a>
 							</li>
 							<li class="sidebar-item">

@@ -15,9 +15,9 @@ request.setCharacterEncoding("utf-8");
 	<div class="d-flex align-items-center">
 		<nav aria-label="breadcrumb">
 			<ol class="breadcrumb m-0 p-0">
-	            <li class="breadcrumb-item"><a href="/busjava_admin" class="text-muted">홈</a></li>
+	            <li class="breadcrumb-item"><a href="/Admin_BusJava" class="text-muted">홈</a></li>
 	            <li class="breadcrumb-item"><a href="noticeList" class="text-muted">공지사항 목록</a></li>
-	            <li class="breadcrumb-item text-muted active" aria-current="page">공지사항 ${type }</li>
+	            <li class="breadcrumb-item active" aria-current="page">공지사항 ${type }</li>
 	        </ol>
 		</nav>
 	</div>
@@ -46,7 +46,7 @@ request.setCharacterEncoding("utf-8");
 		                        <td colspan="3">
 		                        <input type="text" class="form-control" name="title" value="${ni.getNl_title() }" maxlength="100" required />
 		                        </td> 
-		                        <td class="text-left">
+		                        <td class="text-left align-middle">
 								<div class="form-check form-check-inline">
 									<div class="custom-control custom-checkbox">
 										<input type="checkbox" name="accent" value="Y" class="custom-control-input" id="accent" onchange="chkAccentCnt(this.value)" 

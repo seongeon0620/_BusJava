@@ -116,7 +116,7 @@ public class CsNoticeCtrl {
 		NoticeInfo ni = new NoticeInfo();
 		ni.setAi_idx(loginInfo.getAi_idx());
 		ni.setNl_accent(accent == null ? "N" : "Y");
-		ni.setNl_title(request.getParameter("title").trim());
+		ni.setNl_title(request.getParameter("title").trim().replaceAll("[\"]", "&quot;"));
 		ni.setNl_content(request.getParameter("content").trim());
 		ni.setNl_isview(request.getParameter("isview"));
 		

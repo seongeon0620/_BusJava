@@ -77,7 +77,20 @@ public class MemberCtrl {
 	
 	/* 회원가입 시작 */
 	@GetMapping("/memberJoinStep1")
-	public String joinStep1() {
+	public String joinStep1(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		request.setCharacterEncoding("utf-8");
+		HttpSession session = request.getSession();
+		MemberInfo loginInfo = (MemberInfo)session.getAttribute("loginInfo");
+		
+		if (loginInfo != null) {
+			response.setContentType("text/html; charset=utf-8");
+			PrintWriter out = response.getWriter();
+			out.println("<script>");
+			out.println("alert('알 수 없는 접근입니다.');");
+			out.println("history.back();");
+			out.println("</script>");
+			out.close();
+		} 
 		return "/member/join_step1";
 	}
 	

@@ -8,7 +8,7 @@ boolean hasSchedule = scheduleList != null ? true : false;
 %>
 <section class="section">
 	<div class="container">
-		<div class="row text-center">
+		<div class="row text-center mb-3">
 			<div class="col-md-12">
 				<h2 class="border-bottom heading"><%=ri1.getRi_line_type().equals("H") ? "고속" : "시외" %>버스 예매
 				</h2>

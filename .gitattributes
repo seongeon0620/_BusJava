@@ -1,0 +1,7 @@
+Admin_BusJava/src/main/webapp/resources/** linguist-vendored=true
+BusJava/src/main/webapp/resources/** linguist-vendored=true
+
+*.css linguist-detectable=false
+*.scss linguist-detectable=false
+*.less linguist-detectable=false
+*.html linguist-detectable=false

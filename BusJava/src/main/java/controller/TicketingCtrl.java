@@ -85,15 +85,15 @@ public class TicketingCtrl {
 	}
 
 	@GetMapping("ticket/step01")
-	public String ticketingStep01(HttpServletRequest request, @RequestParam String type) {
+	public String ticketingStep01(HttpServletRequest request, @RequestParam String type, Model model) {
 		request.setAttribute("typeCode", type.toUpperCase()); // 타입코드 H: 고속, S: 시외
+		model.addAttribute("activeTicket", "active");
 		return "ticketing/ticket_step1";
 	}
 
 	// 출발지 선택 팝업
 	@GetMapping("/pickSpot")
-	public String pickSpot(HttpServletRequest request, @RequestParam String typeCode,
-			@RequestParam(required = false) String keyword) throws Exception {
+	public String pickSpot(HttpServletRequest request, @RequestParam String typeCode, @RequestParam(required = false) String keyword) throws Exception {
 		List<TerminalInfo> terminalList = ticketingSvc.getTerminalList(typeCode);
 		request.setAttribute("typeCode", typeCode);
 		request.setAttribute("terminalList", terminalList);

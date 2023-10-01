@@ -70,7 +70,7 @@
 		</button>
 		<div class="collapse navbar-collapse justify-content-end" id="main-menu">
 			<ul class="navbar-nav">
-				<li class="nav-item dropdown">
+				<li class="nav-item dropdown ${activeTicket}">
 					<a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown">버스예매</a>
 					<div class="dropdown-menu">
 						<a class="dropdown-item" href="/BusJava/ticket/step01?type=h">고속버스 예매</a>

@@ -14,8 +14,12 @@ String bigImg = jo.get("firstimage").toString();
 <div class="modal-body">
 	<div class="row">
 		<div class="col">
-			<div class='card-img embed-responsive embed-responsive-4by3 border' id="bigImg" style='background-image: url(<%=bigImg%>)'></div>
-			<div class="d-flex border">
+			<% if (bigImg.equals("")) { %>
+			<div class='card-img noimg embed-responsive embed-responsive-4by3' id="bigImg"></div>
+			<% } else { %>
+			<div class='card-img embed-responsive embed-responsive-4by3' id="bigImg" style='background-image: url(<%=bigImg%>)'></div>
+			<% } %>
+			<div class="d-flex">
 				<%
 				if (!jo.get("tel").equals("")) {
 				%>

@@ -42,7 +42,6 @@ PageInfo pi = (PageInfo) request.getAttribute("pi");
 						for (int i = 0; i < joItem.size(); i++) {
 							JSONObject jo = (JSONObject) joItem.get(i);
 							String img = jo.get("firstimage").toString();
-							System.out.println(img);
 					%>
 			<div class="col-md-3 mb-4">
 				<div class="card h-100" onclick="imgModal('<%=jo.get("contentid")%>');">
@@ -62,7 +61,9 @@ PageInfo pi = (PageInfo) request.getAttribute("pi");
 			<%
 					}
 					} else {
-					out.println("<p>데이터가 없습니다. 검색내용을 확인해주세요.</p>");
+					%><p>데이터가 없습니다. 검색내용을 확인해주세요.</p>
+					<%
+					
 					}
 					%>
 		</div>

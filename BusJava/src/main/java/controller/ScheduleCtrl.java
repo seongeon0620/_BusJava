@@ -29,13 +29,14 @@ public class ScheduleCtrl {
 		this.scheduleSvc = scheduleSvc;
 	}
 
-	@GetMapping("/schedule")
-	public String schedule() {
-		// 시간표 조회 메뉴
+	@GetMapping("/runinfo/schedule")
+	public String schedule(Model model) {
+		// 시간표 조회 메뉴		
+		model.addAttribute("activeRuninfo", "active");
 		return "raceinfo/schedule";
 	}
 
-	@PostMapping("/getSchedule")
+	@PostMapping("/runinfo/getSchedule")
 	@ResponseBody
 	public List<ScheduleInfo> getSchedule(HttpServletRequest request) throws Exception {
 		request.setCharacterEncoding("utf-8");
@@ -110,12 +111,13 @@ public class ScheduleCtrl {
 		return scheduleList;
 	}
 
-	@GetMapping("/arrivaltime")
+	@GetMapping("/runinfo/arrivaltime")
 	public String arrivaltime(Model model, HttpServletRequest request) throws Exception {
 		// 도착시간 안내 메뉴
 		String kind = "h"; // getAreaList메서드 호출 시 구분자(시외버스)
 		List<TerminalInfo> areaList = scheduleSvc.getAreaList(kind); // 지역명리스트
 		request.setAttribute("areaList", areaList);
+		model.addAttribute("activeRuninfo", "active");
 		return "raceinfo/arrival_time";
 	}
 
@@ -282,8 +284,8 @@ public class ScheduleCtrl {
 		return arriveList;
 	}
 
-	@GetMapping("/terminalPlace")
-	public String terminalPlace(HttpServletRequest request) throws Exception {
+	@GetMapping("/runinfo/terminal")
+	public String terminal(HttpServletRequest request, Model model) throws Exception {
 		// 터미널 안내 메뉴
 		request.setCharacterEncoding("utf-8");
 		String schtype = "";
@@ -325,17 +327,19 @@ public class ScheduleCtrl {
 		if (rcnt % psize > 0)
 			pcnt++;
 		spage = (cpage - 1) / bsize * bsize + 1;
-
+		String fullUrl = request.getRequestURI();
+		
 		PageInfo pi = new PageInfo();
 		pi.setBsize(bsize);			pi.setCpage(cpage);			pi.setPcnt(pcnt);
 		pi.setPsize(psize);			pi.setRcnt(rcnt);			pi.setSpage(spage);
 		pi.setSchtype(schtype);		pi.setArgs(args);			pi.setSchargs(schargs);
-
 		request.setAttribute("pi", pi);
 		
 		List<TerminalInfo> areaList = scheduleSvc.getAreaList(kind); // 지역명리스트
 		request.setAttribute("areaList", areaList);
-
-		return "raceinfo/terminal_place";
+		model.addAttribute("activeRuninfo", "active");
+		model.addAttribute("url", fullUrl);
+		
+		return "raceinfo/terminal_info";
 	}
 }

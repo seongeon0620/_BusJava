@@ -4,7 +4,6 @@
 request.setCharacterEncoding("utf-8");
 List<TerminalInfo> areaList = (List<TerminalInfo>) request.getAttribute("areaList");
 PageInfo pi = (PageInfo) request.getAttribute("pi");
-int cpage = pi.getCpage();
 List<TerminalInfo> terminalList = null;
 if (request.getAttribute("terminalList") != null)
 	terminalList = (List<TerminalInfo>) request.getAttribute("terminalList");
@@ -34,7 +33,7 @@ if (request.getParameter("keyword") != null)
 					<h4>터미널명으로 찾기</h4>
 				</div>
 				<div class="col-md-5 p-0">
-					<form name="frmTerName" action="terminalPlace">
+					<form name="frmTerName">
 						<input type="hidden" name="cpage" value="1" />
 						<div class="input-group">
 							<input type="text" class="form-control form-control-lg" placeholder="터미널명을 입력하세요" name="keyword" value="<%=keyword%>">
@@ -49,7 +48,7 @@ if (request.getParameter("keyword") != null)
 
 				<div>
 					<div class="col-md-12">
-						<form name="frmAreaName" action="terminalPlace">
+						<form name="frmAreaName">
 							<input type="hidden" name="cpage" value="1" />
 							<%
 							if (areaList.size() > 0) {
@@ -123,43 +122,12 @@ if (request.getParameter("keyword") != null)
 							%>
 						</table>
 						<!-- 페이지네이션 영역 -->
-						<nav aria-label="Page navigation" class="mt-4">
-							<ul class="pagination justify-content-center">
-								<%if (cpage == 1) {%>
-								<li class="page-item"><span class="page-link" aria-hidden="true">&laquo;</span></li>
-								<%
-								} else {
-								pLink = "terminalPlace?cpage=" + (cpage - 1) + pi.getSchargs() + "#terminalList";
-								%>
-								<li class="page-item"><a class="page-link" href="<%=pLink%>" aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
-								</a></li>
-								<%
-								}
-								for (int i = pi.getSpage(), j = 1; i <= pi.getPcnt() && j <= pi.getBsize(); i++, j++) {
-								if (i == cpage) {
-								%>
-								<li class="page-item active" aria-current="page"><a class="page-link"><%=i%></a></li>
-								<%
-								} else {
-								link = "terminalPlace?cpage=" + i + pi.getSchargs() + "#terminalList"; // 지정한 id 위치로 이동
-								%>
-								<li class="page-item"><a class="page-link" href="<%=link%>"><%=i%></a></li>
-								<%
-								}
-
-								}
-								if (cpage == pi.getPcnt()) {
-								%>
-								<li class="page-item"><span class="page-link" aria-hidden="true">&raquo;</span></li>
-								<%
-								} else {
-								nLink = "terminalPlace?cpage=" + (cpage + 1) + pi.getSchargs() + "#terminalList";
-								%>
-								<li class="page-item"><a class="page-link" href="<%=nLink%>" aria-label="Next"> <span aria-hidden="true">&raquo;</span>
-								</a></li>
-								<%}%>
-							</ul>
-						</nav>
+						<%
+						if (pi != null && terminalList.size() > 0) {
+						%>
+						<%@ include file="../_inc/pagination.jsp"%>
+						<%}%>
+						
 						<!-- 페이지네이션 영역 종료 -->
 						<!-- 카카오맵 api 영역 시작 -->
 						<div align="center" class="row">

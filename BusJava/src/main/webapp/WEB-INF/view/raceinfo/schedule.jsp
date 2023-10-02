@@ -191,7 +191,7 @@ const selectFromSpot = function(terminal_code) {	// (2)
 	const isHighBusSelected = document.getElementById("highBus").checked;
 	const typeCode = isHighBusSelected ? "H" : "S";
 	$.ajax({
-	      url: "ticket/getToSpot",
+	      url: "../ticket/getToSpot",
 	      type: "GET",
 	      data: { 
 	    	  frCode : terminal_code,
@@ -294,16 +294,16 @@ $("#schBtn").click(function() {	// 조회하기 버튼 클릭
         url: "./getSchedule",
         data: { sPoint: sPoint, ePoint: ePoint, frCode: frCode, toCode: toCode, busType: busType, frDate: frDate },
         success: function(data) {
-			console.log(data);
+        	let tableHTML = "<table class='table'>" + 
+							"<colgroup><col width='10%'><col width='14%'><col width='15%'><col width='15%'>" +
+							"<col width='15%'><col width='15%'><col width='8%'><col width='8%'></colgroup>" + 
+							"<thead class='bg-light'><tr>" + 
+							"<th scope='col' class='text-center'>출발시간</th><th scope='col' class='text-center'>고속사</th>" + 
+							"<th scope='col' class='text-center'>등급</th><th scope='col' class='text-center'>성인요금</th>" + 
+							"<th scope='col' class='text-center'>청소년요금</th><th scope='col' class='text-center'>아동요금</th>" + 
+							"<th scope='col' class='text-center'>전체좌석</th><th scope='col' class='text-center'>잔여좌석</th></tr></thead><tbody>";
+							
             if (data != null && data.length > 0) {
-                let tableHTML = "<table class='table'>" + 
-               					"<colgroup><col width='10%'><col width='14%'><col width='15%'><col width='15%'>" +
-								"<col width='15%'><col width='15%'><col width='8%'><col width='8%'></colgroup>" + 
-	            				"<thead class='bg-light'><tr>" + 
-	            				"<th scope='col' class='text-center'>출발시간</th><th scope='col' class='text-center'>고속사</th>" + 
-	            				"<th scope='col' class='text-center'>등급</th><th scope='col' class='text-center'>성인요금</th>" + 
-	            				"<th scope='col' class='text-center'>청소년요금</th><th scope='col' class='text-center'>아동요금</th>" + 
-	            				"<th scope='col' class='text-center'>전체좌석</th><th scope='col' class='text-center'>잔여좌석</th></tr></thead><tbody>";
                 data.forEach(function(table) {
                     tableHTML += "<tr>";
                     tableHTML += "<td>" + table.fr_time + "</td>";
@@ -317,15 +317,12 @@ $("#schBtn").click(function() {	// 조회하기 버튼 클릭
                     tableHTML += "</tr>";
                 });
                 tableHTML += "</tbody></table>";
-
-                // 테이블을 보여줌
-                $("#timetable").html(tableHTML);
-                $("#timetable-container").show();
             } else {	// 데이터가 없는 경우
-                alert("조회된 시간표가 없습니다.");
-                $("#timetable").empty();
-                $("#timetable-container").hide();
+            	tableHTML += "<tr><td colspan='8'>조회된 시간표가 없습니다.</td></tr></tbody></table>"
             }
+            
+            $("#timetable").html(tableHTML);
+            $("#timetable-container").show();
         },
         error: function(xhr, status, error) {
             console.error("AJAX Error:", error);

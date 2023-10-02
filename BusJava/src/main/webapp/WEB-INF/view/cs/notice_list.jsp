@@ -90,14 +90,11 @@ String fullUrl = (String) request.getAttribute("fullUrl");
 			</div>
 		</div>
 		<!-- 페이지네이션 영역 -->
-
 		<%
 		if (noticeList.size() > 0 || aNoticeList != null && aNoticeList.size() > 0) {
 		%>
 		<%@ include file="../_inc/pagination.jsp"%>
 		<%}%>
-		</ul>
-		</nav>
 		<!-- 페이지네이션 영역 끝 -->
 	</div>
 </section>

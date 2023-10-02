@@ -80,10 +80,11 @@ $(document).ready(function() {
         
         $.ajax({
             type: "POST",
-            url: "./getDepartureTerminal",
+            url: "../getDepartureTerminal",
             data: { selectedArea : selectedArea },
             dataType: "json",
             success: function(data) {
+            	console.log(data);
             	if (data.length > 0 ) {
 					$("#departureTerminal").children('option:not(:first)').remove();
 					data.forEach(function(terminal) {
@@ -108,7 +109,7 @@ $(document).ready(function() {
         
         $.ajax({
             type: "POST",
-            url: "./getArrTerminal",
+            url: "../getArrTerminal",
             data: { selectedTerminal : selectedTerminal },
             dataType: "json",
             success: function(data) {
@@ -147,7 +148,7 @@ $(document).ready(function() {
 
 		    $.ajax({
 		        type: "POST", 
-		        url: "./getArrivalTimeInfo",
+		        url: "../getArrivalTimeInfo",
 		        data: { departureTerminal: departureTerminal, arrivalTerminal: arrivalTerminal },
 		        dataType: "json",
 		        success: function(data) {
@@ -174,19 +175,15 @@ $(document).ready(function() {
 		                    tableHTML += "<td>" + table.etime + "</td>";
 		                    tableHTML += "<td>" + table.ltime + "</td>";
 		                    tableHTML += "<td class='align-middle'>" + table.status + "</td>";
-		                    tableHTML += "</tr>";
+		                    tableHTML += "</tr></tbody></table>";
 		                });
-		                tableHTML += "</tbody></table>";
-
-		                // 테이블을 보여줌
-		                $("#timetable").html(tableHTML);
-		                $("#timetable-container").show();
-		            } else {
-		                // 데이터가 없는 경우
-		                alert("조회 결과가 없습니다.");
-		                $("#timetable").empty();
-		                $("#timetable-container").hide();
+		                
+		            } else { // 데이터가 없는 경우
+		            	tableHTML += "<tr><td colspan='8'>조회된 시간표가 없습니다.</td></tr></tbody></table>"
 		            }
+		            
+		            $("#timetable").html(tableHTML);
+	                $("#timetable-container").show();
 		        },
 		        error: function(xhr, status, error) {
 		            console.error("AJAX Error:", error);

@@ -91,7 +91,7 @@ String fullUrl = (String) request.getAttribute("fullUrl");
 		</div>
 		<!-- 페이지네이션 영역 -->
 		<%
-		if (noticeList.size() > 0 || aNoticeList != null && aNoticeList.size() > 0) {
+		if (noticeList.size() > 0) {
 		%>
 		<%@ include file="../_inc/pagination.jsp"%>
 		<%}%>

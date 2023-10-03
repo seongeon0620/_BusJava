@@ -420,7 +420,7 @@ public class MemberCtrl {
 	}
 	
 	/* 회원 비밀번호 변경 */
-	@PostMapping("/memberUpPw")
+	@PostMapping("/mypage/memberUpPw")
 	// 비동기 통신(ajax)시 서버에서 클라이언트로 응답 메세지를 보낼 떄 데이터를 담아서 보낼 해당 본문을 의미
 	public String memberUpPw(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		request.setCharacterEncoding("utf-8");
@@ -456,7 +456,7 @@ public class MemberCtrl {
 	}
 	
 	/* 회원 메일 변경 */
-	@PostMapping("/memberUpMail")
+	@PostMapping("/mypage/memberUpMail")
 	// 비동기 통신(ajax)시 서버에서 클라이언트로 응답 메세지를 보낼 떄 데이터를 담아서 보낼 해당 본문을 의미
 	public String memberUpMail(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		request.setCharacterEncoding("utf-8");
@@ -499,7 +499,7 @@ public class MemberCtrl {
 	}
 	
 	/* 회원 번호 변경 */
-	@PostMapping("/memberUpPhone")
+	@PostMapping("/mypage/memberUpPhone")
 	// 비동기 통신(ajax)시 서버에서 클라이언트로 응답 메세지를 보낼 떄 데이터를 담아서 보낼 해당 본문을 의미
 	public String memberUpPhone(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		request.setCharacterEncoding("utf-8");
@@ -572,7 +572,7 @@ public class MemberCtrl {
 	
 // 예매 부분
 	@GetMapping("/booking")
-	public String bookingList(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public String bookingList(HttpServletRequest request, HttpServletResponse response, Model model) throws Exception {
 		request.setCharacterEncoding("utf-8");
 		HttpSession session = request.getSession();
 		
@@ -605,18 +605,21 @@ public class MemberCtrl {
         if (rcnt % psize > 0) pcnt ++;
         spage = (cpage - 1) / bsize * bsize + 1;
     	
-        PageInfo pageInfo = new PageInfo();
-        pageInfo.setBsize(bsize);   
-        pageInfo.setCpage(cpage);
-        pageInfo.setPsize(psize);   
-        pageInfo.setPcnt(pcnt);
-        pageInfo.setRcnt(rcnt);      
-        pageInfo.setSpage(spage);
-        pageInfo.setArgs(args);
+        PageInfo pi = new PageInfo();
+        pi.setBsize(bsize);   
+        pi.setCpage(cpage);
+        pi.setPsize(psize);   
+        pi.setPcnt(pcnt);
+        pi.setRcnt(rcnt);      
+        pi.setSpage(spage);
+        pi.setArgs(args);
         
-    
+        String fullUrl = request.getRequestURI();
+		
 		request.setAttribute("bookList", bookList);
-		request.setAttribute("pageInfo", pageInfo);
+		request.setAttribute("pageInfo", pi);
+		model.addAttribute("url", fullUrl);
+		model.addAttribute("activeBooking", "active");
 			
 		return "/member/booking_list";
 	}

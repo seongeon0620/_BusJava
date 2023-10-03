@@ -152,15 +152,15 @@ $(document).ready(function() {
 		        data: { departureTerminal: departureTerminal, arrivalTerminal: arrivalTerminal },
 		        dataType: "json",
 		        success: function(data) {
-		            if (data.length > 0) {
-		                let tableHTML = "<table class='table'>" + 
-		               					"<colgroup><col width='15%'><col width='10%'><col width='15%'><col width='15%'>" +
+					let tableHTML = "<table class='table'>" + 
+										"<colgroup><col width='15%'><col width='10%'><col width='15%'><col width='15%'>" +
 										"<col width='15%'><col width='15%'><col width='15%'></colgroup>" + 
-			            				"<thead class='bg-light'><tr>" + 
-			            				"<th scope='col' class='text-center'>출발시간</th><th scope='col' class='text-center'>고속사</th>" + 
-			            				"<th scope='col' class='text-center'>등급</th><th scope='col' class='text-center'>차량번호</th>" + 
-			            				"<th scope='col' class='text-center'>도착예정시간</th><th scope='col' class='text-center'>남은시간</th>" + 
-			            				"<th scope='col' class='text-center'>상태</th></tr></thead><tbody>";
+										"<thead class='bg-light'><tr>" + 
+										"<th scope='col' class='text-center'>출발시간</th><th scope='col' class='text-center'>고속사</th>" + 
+										"<th scope='col' class='text-center'>등급</th><th scope='col' class='text-center'>차량번호</th>" + 
+										"<th scope='col' class='text-center'>도착예정시간</th><th scope='col' class='text-center'>남은시간</th>" + 
+										"<th scope='col' class='text-center'>상태</th></tr></thead><tbody>";
+		            if (data.length > 0) {
 		                data.forEach(function(table) {
 		                	if (table.status == "도착") {
 		                		table.status = "<span class='badge rounded-pill bg-secondary text-white font-weight-normal'>도착</span>";

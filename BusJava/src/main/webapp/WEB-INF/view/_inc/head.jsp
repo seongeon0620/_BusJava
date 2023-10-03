@@ -77,7 +77,7 @@
 						<a class="dropdown-item" href="/BusJava/ticket/step01?type=s">시외버스 예매</a>
 					</div>
 				</li>
-				<li class="nav-item"><a class="nav-link" href="/BusJava/booking">예매 내역</a></li>
+				<li class="nav-item ${activeBooking}"><a class="nav-link" href="/BusJava/booking">예매 내역</a></li>
 				<li class="nav-item dropdown ${activeRuninfo}">
 					<a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown">운행정보</a>
 					<div class="dropdown-menu">
@@ -86,9 +86,9 @@
 						<a class="dropdown-item" href="/BusJava/runinfo/terminal">터미널 안내</a>
 					</div>
 				</li>
-				<li class="nav-item"><a class="nav-link" href="/BusJava/travelList">추천 여행지</a></li>
-				<li class="nav-item"><a class="nav-link" href="/BusJava/pmoneyInfo">페이머니 구매</a></li>
-				<li class="nav-item dropdown">
+				<li class="nav-item ${activeTravel}"><a class="nav-link" href="/BusJava/travelList">추천 여행지</a></li>
+				<li class="nav-item ${activePaymoney}"><a class="nav-link" href="/BusJava/pmoneyInfo">페이머니 구매</a></li>
+				<li class="nav-item dropdown ${activeCs}">
 					<a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown">고객지원</a>
 					<div class="dropdown-menu">
 						<a class="dropdown-item" href="/BusJava/noticeList">공지사항</a>

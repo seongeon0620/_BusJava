@@ -173,6 +173,7 @@ public class TravelCtrl {
 		model.addAttribute("pi", pi );
 		request.setAttribute("joItem", joItem);
 		model.addAttribute("keyword", keyword);
+		model.addAttribute("activeTravel", "active");
 		request.setAttribute("code", code);
 		request.setAttribute("name", name);
 		return "/travel/travel_list";

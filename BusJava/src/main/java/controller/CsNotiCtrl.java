@@ -75,6 +75,7 @@ public class CsNotiCtrl {
 		model.addAttribute("pi", pi);
 		model.addAttribute("noticeList", noticeList);
 		model.addAttribute("url", fullUrl);
+		model.addAttribute("activeCs", "active");
 		
 		return "/cs/notice_list";
 	}
@@ -99,6 +100,7 @@ public class CsNotiCtrl {
 		NoticeInfo ni = csNotiSvc.getNoticeInfo(nlidx);
 		model.addAttribute("ni", ni);
 		model.addAttribute("args", args);
+		model.addAttribute("activeCs", "active");
 		
 		return "/cs/notice_view";
 	}

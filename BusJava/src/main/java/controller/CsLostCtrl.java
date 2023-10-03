@@ -86,6 +86,7 @@ public class CsLostCtrl {
 		model.addAttribute("pi", pi);
 		model.addAttribute("lostList", lostList);
 		model.addAttribute("url", fullUrl);
+		model.addAttribute("activeCs", "active");
 		
 		return "/cs/lost_list";
 	}
@@ -118,6 +119,7 @@ public class CsLostCtrl {
 		LostInfo li = csLostSvc.getLostInfo(ll_idx);
 		model.addAttribute("li", li);
 		model.addAttribute("args", args);
+		model.addAttribute("activeCs", "active");
 		
 		return "/cs/lost_view";
 	}

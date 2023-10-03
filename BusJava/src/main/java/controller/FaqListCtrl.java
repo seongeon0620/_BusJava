@@ -26,6 +26,7 @@ public class FaqListCtrl {
 		String where = " where fl_isview = 'Y' ";
 		List<FaqInfo> faqList = faqListSvc.getfaqList(where);
 		model.addAttribute("faqList", faqList);
+		model.addAttribute("activeCs", "active");
 		
 		return "cs/faq_list";
 	}
@@ -48,7 +49,6 @@ public class FaqListCtrl {
 		
 		model.addAttribute("faqList", faqList);
 		model.addAttribute("pi", pi);
-		
 		
 		return "cs/faq_list";
 	}

@@ -35,7 +35,7 @@ public class TicketingCtrl {
 	}
 
 	@GetMapping("/pmoneyInfo")
-	public String pmoneyInfo(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public String pmoneyInfo(HttpServletRequest request, HttpServletResponse response, Model model) throws Exception {
 		request.setCharacterEncoding("utf-8");
 		HttpSession session = request.getSession();
 		MemberInfo loginInfo = (MemberInfo) session.getAttribute("loginInfo");
@@ -49,6 +49,8 @@ public class TicketingCtrl {
 			out.println("</script>");
 			out.close();
 		}
+		
+		model.addAttribute("activePaymoney", "active");
 		return "member/paymoney_info";
 	}
 

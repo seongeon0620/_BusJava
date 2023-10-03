@@ -1,7 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../_inc/head.jsp"%>
-<%@ page import="java.util.*"%>
-<%@ page import="vo.*"%>
 <%
 request.setCharacterEncoding("utf-8");
 List<BookInfo> bookList = (List<BookInfo>) request.getAttribute("bookList");
@@ -42,12 +40,11 @@ PageInfo pi = (PageInfo) request.getAttribute("pageInfo");
 						<%
 						if (bookList.size() > 0) {
 							for (BookInfo bl : bookList) {
-								// ri_idx, ri_line_type, ri_fr, ri_to, ri_frdate, ri_status, rd_seat_num, ri_time, ri_count
 						%>
 						<tr>
 							<!-- 이동할 주소입력(ri_idx값 들고 가야함) -->
 							<td>
-								<a href="bookDetail<%=pi.getArgs()%>&riidx=<%=bl.getRi_idx()%>"><%=bl.getRi_idx()%></a>
+								<a href="bookDetail${pi.getArgs()}&riidx=<%=bl.getRi_idx()%>"><%=bl.getRi_idx()%></a>
 							</td>
 							<td><%=bl.getRi_line_type()%></td>
 							<td><%=bl.getRi_fr()%></td>
@@ -68,52 +65,13 @@ PageInfo pi = (PageInfo) request.getAttribute("pageInfo");
 						%>
 					</tbody>
 				</table>
-				<!-- 페이지 네이션 부분------------------------------------------------------------------------------------------------ -->
-				<nav aria-label="Page navigation" class="mt-4">
-					<ul class="pagination justify-content-center">
-						<%
-						if (bookList.size() > 0) {
-						%>
-						<%
-						if (pi.getCpage() == 1) {
-						%>
-						<li class="page-item"><span class="page-link" aria-hidden="true">&laquo;</span></li>
-						<%
-						} else if (pi.getCpage() > 1) {
-						%>
-						<li class="page-item"><a class="page-link" href="booking?cpage=<%=pi.getCpage() - 1%>" aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
-						</a></li>
-						<%
-						}
-						int endPage = (pi.getSpage() + pi.getBsize() - 1 <= pi.getPcnt()) ? pi.getSpage() + pi.getBsize() - 1 : pi.getPcnt();
-						for (int i = pi.getSpage(); i <= endPage; i++) {
-						if (i == pi.getCpage()) {
-						%>
-						<li class="page-item active" aria-current="page"><a class="page-link"><%=i%></a></li>
-						<%
-						} else if (i != pi.getCpage()) {
-						%>
-						<li class="page-item"><a class="page-link" href="booking?cpage=<%=i%>"><%=i%></a></li>
-						<%
-						}
-						}
-						%>
-						<%
-						if (pi.getCpage() < pi.getPcnt()) {
-						%>
-						<li class="page-item"><a class="page-link" href="booking?cpage=<%=pi.getCpage() + 1%>" aria-label="Next"> <span aria-hidden="true">&raquo;</span>
-						</a></li>
-						<%
-						} else if (pi.getCpage() == pi.getPcnt()) {
-						%>
-						<li class="page-item"><span class="page-link" aria-hidden="true">&raquo;</span></li>
-						<%
-						}
-						}
-						%>
-					</ul>
-				</nav>
-				<!-- 페이지 네이션 부분------------------------------------------------------------------------------------------------ -->
+				<!-- 페이지 네이션 부분-------------------------------------- -->
+				<%
+				if (bookList.size() > 0) {
+				%>
+				<%@ include file="../_inc/pagination.jsp"%>
+				<%}%>
+				<!-- 페이지 네이션 부분-------------------------------------- -->
 			</div>
 		</div>
 		<ul>

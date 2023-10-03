@@ -245,7 +245,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 								</div>
 							</td>
 						</tr>
-						<form name="frmUpPw" action=memberUpPw method="post" class="was-validated">
+						<form name="frmUpPw" action="memberUpPw" method="post" class="was-validated">
 							<input type="hidden" id="pwDup" name="pwDup" value="N" />
 							<tr id="pwChangeform1" style="display: none;">
 								<th class="align-middle">새 비밀번호</th>
@@ -284,7 +284,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 								</div>
 							</td>
 						</tr>
-						<form name="frmUpMail" action=memberUpMail method="post">
+						<form name="frmUpMail" action="memberUpMail" method="post">
 							<input type="hidden" name="mailChk" id="mailChk" value="N" />
 							<tr id="mailChangeform1" style="display: none;">
 								<th class="align-middle">새 이메일</th>
@@ -334,7 +334,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 								</div>
 							</td>
 						</tr>
-						<form name="frmUpPhone" action=memberUpPhone method="post">
+						<form name="frmUpPhone" action="memberUpPhone" method="post">
 							<input type="hidden" name="phoneChk" id="phoneChk" value="N" />
 							<tr id="phoneChangeform1" style="display: none;">
 								<th class="align-middle">새 전화번호</th>

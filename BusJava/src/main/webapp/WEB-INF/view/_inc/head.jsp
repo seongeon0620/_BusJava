@@ -51,7 +51,7 @@
 	if (isLogin) {	// 로그인 상태
 %>
 			<span class="mb-0"><%=memName %>님</span>
-			<li class="nav-item"><a href="/BusJava/memberMypage" class="nav-link px-2">마이페이지<i class="bi bi-person-circle ml-1"></i></a></li>
+			<li class="nav-item"><a href="/BusJava/mypage" class="nav-link px-2">마이페이지<i class="bi bi-person-circle ml-1"></i></a></li>
 			<li class="nav-item"><a href="/BusJava/memberLogout" class="nav-link px-2">로그아웃<i class="bi bi-box-arrow-right ml-1"></i></a></li>
 <%
 	} else {

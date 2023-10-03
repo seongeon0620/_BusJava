@@ -371,8 +371,19 @@ public class MemberCtrl {
 
 
 	/* 회원 마이페이지 부분*/
-	@GetMapping("/memberMypage")
-	public String mypage() {
+	@GetMapping("/mypage")
+	public String mypage(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		HttpSession session = request.getSession();
+		MemberInfo loginInfo = (MemberInfo)session.getAttribute("loginInfo");
+		
+		if (loginInfo == null) {		// 로그인이 되어 있지 않다면
+			response.setContentType("text/html; charset=utf-8");
+			PrintWriter out = response.getWriter();
+			out.println("<script>");
+			out.println("location.href='memberLogin?returnUrl=mypage'");
+			out.println("</script>");
+			out.close();
+		}
 		return "/member/mypage";
 	}
 	
@@ -382,7 +393,7 @@ public class MemberCtrl {
 	}
 	
 	/* 회원 내정보 비밀번호 체크 부분 */
-	@PostMapping("/memberModify")
+	@PostMapping("/mypage/myInfo")
 	// 비동기 통신(ajax)시 서버에서 클라이언트로 응답 메세지를 보낼 떄 데이터를 담아서 보낼 해당 본문을 의미
 	public String memberUpdate(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		request.setCharacterEncoding("utf-8");
@@ -392,10 +403,6 @@ public class MemberCtrl {
 		String mi_id = loginInfo.getMi_id();
 		String mi_pw = request.getParameter("mi_pw");
 		
-		/*
-		  System.out.println(mi_id); 
-		  System.out.println(mi_pw);
-		 */
 		int result = memberSvc.memberPwChk(mi_id, mi_pw);
 		
 		if (result != 1) {

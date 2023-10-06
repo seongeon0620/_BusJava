@@ -13,7 +13,7 @@
 					<input type="hidden" name="returnUrl" value="${param.returnUrl}" />
 					<div class="form-group">
 						<label for="mi_id">아이디</label>
-						<input type="text" class="form-control" id="mi_id" name="mi_id" value="test1">
+						<input type="text" class="form-control" id="mi_id" name="mi_id" value="user">
 					</div>
 					<div class="form-group">
 						<label for="mi_pw">비밀번호</label>
@@ -26,8 +26,8 @@
 					<a href="memberFind" class="text-decoration-none text-dark">아이디/비밀번호 찾기</a>
 				</div>
 				<div class="d-flex justify-content-center mt-2">
-					<% String kakaoLogin = "https://kauth.kakao.com/oauth/authorize?client_id=be7adf36fd8efa4f57b4b83208a0b9f6&redirect_uri=http://localhost:8086/busjavaf/kakaoLoginProc&response_type=code"; 
-					String naverLogin = "https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=gd01GYXHHa_j2i1TDt8V&state=STATE_STRING&redirect_uri=http://localhost:8086/busjavaf/naverLoginProc"; %>
+					<% String kakaoLogin = "https://kauth.kakao.com/oauth/authorize?client_id=d8decf476758026bbde1814f07d3d2d8&redirect_uri=http://localhost:8086/BusJava/kakaoLoginProc&response_type=code"; 
+					String naverLogin = "https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=gd01GYXHHa_j2i1TDt8V&state=STATE_STRING&redirect_uri=http://localhost:8086/BusJava/naverLoginProc"; %>
 					<a href="<%=kakaoLogin%>" class="btn-social kakao text-decoration-none">
 						<img src="${pageContext.request.contextPath}/resources/images/ico-kakao.svg" />
 						<span class="text-center w-100">카카오 로그인</span>

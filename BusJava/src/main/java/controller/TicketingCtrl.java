@@ -27,8 +27,8 @@ import vo.*;
 @Controller
 public class TicketingCtrl {
 	private TicketingSvc ticketingSvc;
-	public static final String H_API_KEY = "3719cb8e-3437-4ce9-bb3d-a3c940576089";
-	public static final String S_API_KEY = "3b621b3b-2be7-4841-91d0-60e27f9e7e60";
+	public static final String H_API_KEY = "c5a5f488-68bd-451a-b3f8-91c1902f09f3";
+	public static final String S_API_KEY = "1ad471ca-5121-440b-8e02-bb811453cabb";
 
 	public void setTicketingSvc(TicketingSvc ticketingSvc) {
 		this.ticketingSvc = ticketingSvc;
@@ -156,7 +156,7 @@ public class TicketingCtrl {
 	}
 
 	@PostMapping("/ticket/step02")
-	public String ticketingStep02(HttpServletRequest request) throws Exception {
+	public String ticketingStep02(HttpServletRequest request, Model model) throws Exception {
 		request.setCharacterEncoding("utf-8");
 		String typeCode = request.getParameter("type");
 		String mode = request.getParameter("mode");
@@ -249,12 +249,13 @@ public class TicketingCtrl {
 		}
 		session.setAttribute("scheduleList", scheduleList);
 		session.setAttribute("ri1", ri1);
+		model.addAttribute("activeTicket", "active");
 
 		return "ticketing/ticket_step2";
 	}
 
 	@PostMapping("/ticket/step03")
-	public String ticketingStep03(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public String ticketingStep03(HttpServletRequest request, HttpServletResponse response, Model model) throws Exception {
 		request.setCharacterEncoding("utf-8");
 		String routeId = request.getParameter("routeId");
 		String frTime = request.getParameter("frTime");
@@ -299,7 +300,7 @@ public class TicketingCtrl {
 	}
 
 	@PostMapping("/ticket/step04")
-	public String ticketingStep04(HttpServletRequest request) throws Exception {
+	public String ticketingStep04(HttpServletRequest request, Model model) throws Exception {
 		request.setCharacterEncoding("utf-8");
 		HttpSession session = request.getSession();
 		ReservationInfo ri1 = (ReservationInfo) session.getAttribute("ri1");
@@ -382,12 +383,13 @@ public class TicketingCtrl {
 		session.setAttribute("scheduleList", scheduleList);
 		session.setAttribute("ri1", ri1);
 		session.setAttribute("ri2", ri2);
+		model.addAttribute("activeTicket", "active");
 
 		return "ticketing/ticket_step4";
 	}
 
 	@PostMapping("/ticket/step05")
-	public String ticketingStep05(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public String ticketingStep05(HttpServletRequest request, HttpServletResponse response, Model model) throws Exception {
 		request.setCharacterEncoding("utf-8");
 		String routeId = request.getParameter("routeId");
 		String frTime = request.getParameter("frTime");
@@ -438,12 +440,13 @@ public class TicketingCtrl {
 
 		List<Integer> seatList = ticketingSvc.getSeatList(ri2);
 		session.setAttribute("seatList", seatList);
+		model.addAttribute("activeTicket", "active");
 
 		return "ticketing/ticket_step5";
 	}
 
 	@PostMapping("/ticket/payment")
-	public String payment(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public String payment(HttpServletRequest request, HttpServletResponse response, Model model) throws Exception {
 		request.setCharacterEncoding("utf-8");
 
 		HttpSession session = request.getSession();
@@ -521,6 +524,7 @@ public class TicketingCtrl {
 
 		request.setAttribute("couponType", couponType);
 		request.setAttribute("discount", discount);
+		model.addAttribute("activeTicket", "active");
 
 		return "ticketing/ticket_pay";
 	}
@@ -539,7 +543,7 @@ public class TicketingCtrl {
 	}
 
 	@PostMapping("/ticket/result")
-	public String hTicketingResult(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public String hTicketingResult(HttpServletRequest request, HttpServletResponse response, Model model) throws Exception {
 		request.setCharacterEncoding("utf-8");
 		HttpSession session = request.getSession();
 		MemberInfo loginInfo = (MemberInfo) session.getAttribute("loginInfo");
@@ -603,6 +607,7 @@ public class TicketingCtrl {
 
 		request.setAttribute("reservedDate", reservedInfo.get("reservedDate"));
 		request.setAttribute("reservedPayment", reservedPayment);
+		model.addAttribute("activeTicket", "active");
 
 		return "ticketing/ticket_result";
 	}

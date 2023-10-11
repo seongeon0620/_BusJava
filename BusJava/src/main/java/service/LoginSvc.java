@@ -31,8 +31,8 @@ public class LoginSvc {
 				BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(conn.getOutputStream()));
 				StringBuilder sb = new StringBuilder();
 				sb.append("grant_type=authorization_code");
-				sb.append("&client_id=be7adf36fd8efa4f57b4b83208a0b9f6"); // <!-- 자바스크립트 키 -->		
-				sb.append("&redirect_uri=http://localhost:8086/busjavaf/kakaoLoginProc");
+				sb.append("&client_id=d8decf476758026bbde1814f07d3d2d8"); // <!-- 자바스크립트 키 -->		
+				sb.append("&redirect_uri=http://localhost:8086/BusJava/kakaoLoginProc");
 				sb.append("&code=" + code);
 				bw.write(sb.toString());
 				bw.flush();
@@ -99,7 +99,9 @@ public class LoginSvc {
 				JSONObject kakao_account = (JSONObject)jo.get("kakao_account");
 				
 				String kakao_id = jo.get("id").toString();
+				System.out.println(kakao_id);
 				String nickname = properties.get("nickname").toString();
+				System.out.println(nickname);
 				String email = "";
 				String gender = "";
 				
@@ -138,9 +140,9 @@ public class LoginSvc {
 				BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(conn.getOutputStream()));
 				StringBuilder sb = new StringBuilder();
 				sb.append("grant_type=authorization_code");
-				sb.append("&client_id=gd01GYXHHa_j2i1TDt8V"); // <!-- 자바스크립트 키 -->		
-				sb.append("&client_secret=1aQYmdtz68"); // <!-- 자바스크립트 키 -->		
-				sb.append("&redirect_uri=http://localhost:8086/busjavaf/naverLoginProc");
+				sb.append("&client_id=u24ngSwxw38TIfyhyoJ0");		
+				sb.append("&client_secret=KyNKyQ2F_c");		
+				sb.append("&redirect_uri=http://localhost:8086/BusJava/naverLoginProc");
 				sb.append("state=9kgsGTfH4j7IyAkg");
 				sb.append("&code=" + code);
 				bw.write(sb.toString());

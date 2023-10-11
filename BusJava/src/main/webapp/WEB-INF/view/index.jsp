@@ -31,9 +31,6 @@ String cookie = request.getAttribute("isViewPop").toString();
 								}
 							%>
 								<img src="${pageContext.request.contextPath}/resources/images/banner/<%= bi.get(i).getBl_img() %>" class="d-block w-100">
-								<div class="carousel-caption d-none d-md-block">
-								<h4>버스자바와 함께 국내여행 떠나요</h4>
-								</div>
 							</div>
 							<%
 								}

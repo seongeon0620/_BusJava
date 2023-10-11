@@ -27,7 +27,7 @@
 				</div>
 				<div class="d-flex justify-content-center mt-2">
 					<% String kakaoLogin = "https://kauth.kakao.com/oauth/authorize?client_id=d8decf476758026bbde1814f07d3d2d8&redirect_uri=http://localhost:8086/BusJava/kakaoLoginProc&response_type=code"; 
-					String naverLogin = "https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=gd01GYXHHa_j2i1TDt8V&state=STATE_STRING&redirect_uri=http://localhost:8086/BusJava/naverLoginProc"; %>
+					String naverLogin = "https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=u24ngSwxw38TIfyhyoJ0&state=STATE_STRING&redirect_uri=http://localhost:8086/BusJava/naverLoginProc"; %>
 					<a href="<%=kakaoLogin%>" class="btn-social kakao text-decoration-none">
 						<img src="${pageContext.request.contextPath}/resources/images/ico-kakao.svg" />
 						<span class="text-center w-100">카카오 로그인</span>

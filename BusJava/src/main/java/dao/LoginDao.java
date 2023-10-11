@@ -27,6 +27,8 @@ public class LoginDao {
 	
 	public int kakaoInsert(MemberInfo mi) {
 		String sql = "";
+		System.out.println(mi);
+		System.out.println(mi.getMi_gender());
 		if (mi.getMi_gender().equals("") && mi.getMi_email().equals("")) {
 			sql = "insert into t_member_info (mi_id, mi_name, mi_type) "
 					+ " values ('"+ mi.getMi_id() +"','"+ mi.getMi_name()+"', '"+ mi.getMi_type() +"') ";

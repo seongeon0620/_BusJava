@@ -1,13 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../_inc/head.jsp" %>
-<%@ page import="vo.*" %>
 <%
 request.setCharacterEncoding("utf-8");
 String kind = request.getParameter("kind");
 BannerInfo bi = (BannerInfo) request.getAttribute("bi");
 if (!isLogin) {		// 로그인이 되어 있지 않다면
 	out.println("<script>");
-	out.println("alert('로그인 후 이용해 주세요.'); location.href='/busjava_admin/login' ");
+	out.println("alert('로그인 후 이용해 주세요.'); location.href='/Admin_BusJava/login' ");
 	out.println("</script>");
 	out.close();
 }
@@ -53,7 +52,7 @@ if (!isLogin) {		// 로그인이 되어 있지 않다면
 			                        <th scope="row" class="text-center table-primary align-middle">이미지</th>
 			                        <td class="text-left" colspan="5">
 			                        	<div class="file-img-wrap">
-			                                <img src="resources/images/banner/<%=bi.getBl_img().toLowerCase() %>" />
+			                                <img src="${pageContext.request.contextPath}/resources/images/banner/<%=bi.getBl_img().toLowerCase() %>" />
 										</div>
 			                        </td> 
 			                    </tr>

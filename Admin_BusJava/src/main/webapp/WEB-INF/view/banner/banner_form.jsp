@@ -19,6 +19,11 @@ $(document).ready(function() {
         
         var radio1 = document.getElementById('customRadio1');
         var radio2 = document.getElementById('customRadio2');
+        	
+		if (!radio1.checked && !radio2.checked) {
+			alert("게시여부를 선택해 주세요.");
+			return;
+		}
         
         if (radio1.checked) {
 	        $.ajax({
@@ -70,7 +75,7 @@ $(document).ready(function() {
 									<tr>
 										<th scope="row" class="text-center table-primary align-middle">배너명<span class="text-danger">*</span></th>
 										<td class="text-left" colspan="5">
-											<input type="text" class="form-control" name="name" maxlength="40" required <% if (kind.equals("up")) { %> value="<%=bi.getBl_name() %>" <% } %> />
+											<input type="text" class="form-control" name="BannerName" maxlength="40" required <% if (kind.equals("up")) { %> value="<%=bi.getBl_name() %>" <% } %> />
 										</td>
 									</tr>
 									<tr>
@@ -174,9 +179,5 @@ $("input[type='file']").on('change',function(){
 
 	preview.parentNode.classList.remove('d-none');
 	preview.src = imageSrc;
-	  
-	$(this).next().html(event.target.files[0].name);
 });
-
-  
 </script>

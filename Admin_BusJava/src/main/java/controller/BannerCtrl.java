@@ -145,13 +145,12 @@ public class BannerCtrl {
 	}
 
 	@PostMapping("/bannerIn")
-	public String bannerIn(@RequestParam("uploadFile") MultipartFile uploadFile, HttpServletRequest request,
-			HttpServletResponse response) throws Exception {
+	public String bannerIn(@RequestParam("uploadFile") MultipartFile uploadFile, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html; charset=utf-8");
 		PrintWriter out = response.getWriter();
-		String uploadPath = "E:\\3차 Busjava\\Admin_BusJava\\src\\main\\webapp\\resources\\images\\banner";
-		String uploadPath2 = "E:\\3차 Busjava\\BusJava\\src\\main\\webapp\\resources\\images\\banner";
+		String uploadPath = "C:\\Users\\user\\git\\_BusJava\\BusJava\\src\\main\\webapp\\resources\\images\\banner";
+		String uploadPath2 = "C:\\Users\\user\\git\\_BusJava\\Admin_BusJava\\src\\main\\webapp\\resources\\images\\banner";
 		String files = "";
 		String kind = request.getParameter("kind");
 		String fileSrc = request.getParameter("fileSrc");
@@ -159,33 +158,9 @@ public class BannerCtrl {
 		MultipartFile file = uploadFile;
 		File saveFile = new File(uploadPath, file.getOriginalFilename());
 		File saveFile2 = new File(uploadPath2, file.getOriginalFilename());
+		System.out.println(file.getOriginalFilename());
 		try {
-
 			files += file.getOriginalFilename();
-			if (!files.equals("")) {
-				int num = files.indexOf(".");
-				String tmp = files.substring(num + 1).toLowerCase();
-
-				if (!tmp.equals("jpeg") && !tmp.equals("png") && !tmp.equals("gif") && !tmp.equals("jpg")) {
-					out.println("<script>");
-					out.println("alert('파일의 확장자를 확인해주세요.');");
-					out.println("history.back();");
-					out.println("</script>");
-					out.close();
-					return "";
-				}
-
-			} else {
-				if (files.equals("") && fileSrc.equals("")) {
-					out.println("<script>");
-					out.println("alert('파일을 첨부해 주세요.');");
-					out.println("history.back();");
-					out.println("</script>");
-					out.close();
-					return "";
-				}
-				files += fileSrc;
-			}
 			file.transferTo(saveFile);
 			file.transferTo(saveFile2);
 		} catch (Exception e) {
@@ -193,8 +168,9 @@ public class BannerCtrl {
 		}
 
 		BannerInfo bi = new BannerInfo();
-		bi.setBl_name(request.getParameter("name").trim());
+		bi.setBl_name(request.getParameter("BannerName").trim());
 		bi.setBl_content(request.getParameter("content").trim());
+		System.out.println(files.toLowerCase());
 		bi.setBl_img(files.toLowerCase());
 		bi.setBl_isview(request.getParameter("isview"));
 

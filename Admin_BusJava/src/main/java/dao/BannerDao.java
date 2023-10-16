@@ -73,8 +73,10 @@ public class BannerDao {
 				" values(" + bi.getAi_idx() + ", '" + bi.getBl_name() + "', '" + bi.getBl_content() + "', '" + 
 				bi.getBl_img() + "', '" + bi.getBl_isview() + "')";
 		} else {
-			sql = "update t_banner_list set ai_idx = '" + bi.getAi_idx() + "', bl_name = '" + bi.getBl_name() +"', bl_content = '" + bi.getBl_content() + "', bl_img = '"
-					+ bi.getBl_img() + "', bl_isview = '" + bi.getBl_isview() + "' where bl_idx = " + bi.getBl_idx();
+			if (bi.getBl_img().equals(""))
+				sql = "UPDATE T_BANNER_LIST SET AI_IDX = '"  + bi.getAi_idx() + "', bl_name = '" + bi.getBl_name() +"', bl_content = '" + bi.getBl_content() + "', bl_isview = '" + bi.getBl_isview() + "' where bl_idx = " + bi.getBl_idx();
+			else 
+				sql = "UPDATE T_BANNER_LIST SET AI_IDX = '" + bi.getAi_idx() + "', bl_name = '" + bi.getBl_name() +"', bl_content = '" + bi.getBl_content() + "', bl_img = '" + bi.getBl_img() + "', bl_isview = '" + bi.getBl_isview() + "' where bl_idx = " + bi.getBl_idx();
 		}
 			
 		int result = jdbc.update(sql);

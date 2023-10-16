@@ -3,7 +3,7 @@
 <%
 if (!isLogin) {		// 로그인이 되어 있지 않다면
 	out.println("<script>");
-	out.println("alert('로그인 후 이용해 주세요.'); location.href='/busjava_admin/login' ");
+	out.println("alert('로그인 후 이용해 주세요.'); location.href='/Admin_BusJava/login' ");
 	out.println("</script>");
 	out.close();
 }
@@ -122,14 +122,13 @@ function chkOne(one) {
 				                </tbody>
 				            </table>
 				            <div class="d-flex justify-content-center">
-				            	<button type="submit" class="btn waves-effect waves-light btn-secondary mb-2" >검색
-				            	<i class="icon-magnifier"></i></button>
+				            	<button type="submit" class="btn waves-effect waves-light btn-secondary mb-2" >검색<i class="icon-magnifier"></i></button>
 				            </div>
             			</form>
             			<form name="frm">
 				            <div class="text-right mt-2">
-								<button type="button" class="btn waves-effect waves-light btn-primary" onclick="location.href='bannerForm?kind=in'">글등록</button>
-								<button type="button" class="btn waves-effect waves-light btn-secondary ml-2" onclick="chkChange('n');" value="">미게시로변경</button>
+								<button type="button" class="btn waves-effect waves-light btn-primary" onclick="location.href='bannerForm?kind=in'">배너등록</button>
+								<button type="button" class="btn waves-effect waves-light btn-secondary ml-2" onclick="chkChange('N');" value="">미게시로변경</button>
 							</div>
 							<table id="table" class="table text-center table-hover mt-3 mb-0 table-sm">
 			                <colgroup>

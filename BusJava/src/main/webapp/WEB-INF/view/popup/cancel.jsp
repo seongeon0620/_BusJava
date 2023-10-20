@@ -4,6 +4,7 @@
 <%
 request.setCharacterEncoding("utf-8");
 String riidx = request.getParameter("riidx");
+int cpage = Integer.parseInt(request.getParameter("cpage"));
 %>
 <div class="modal-header">
 	<h5 class="modal-title" id="exampleModalLabel" align="center">취소수수료 안내</h5>
@@ -55,5 +56,5 @@ String riidx = request.getParameter("riidx");
 </div>
 <div class="modal-footer">
   <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
-  <button type="button" id="btnSubmit" class="btn btn-primary" data-dismiss="modal" onclick="location.href='realCancel?riidx=<%=riidx %>&'">동의</button>
+  <button type="button" id="btnSubmit" class="btn btn-primary" data-dismiss="modal" onclick="location.href='realCancel?cpage=<%=cpage%>&riidx=<%=riidx %>'">동의</button>
 </div>

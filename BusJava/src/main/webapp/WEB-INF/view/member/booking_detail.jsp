@@ -188,7 +188,7 @@ Date date2 = sdf.parse(dateTimeString);
 </section>
 <script>
 	function openModal(riidx) {
-		$('#ViewModal .modal-content').load("/busjavaf/cancel?riidx=" + riidx);
+		$('#ViewModal .modal-content').load("/BusJava/cancel<%=args%>&riidx=" + riidx);
 		$('#ViewModal').modal();
 	}
 </script>

@@ -44,7 +44,7 @@ PageInfo pi = (PageInfo) request.getAttribute("pageInfo");
 						<tr>
 							<!-- 이동할 주소입력(ri_idx값 들고 가야함) -->
 							<td>
-								<a href="bookDetail${pi.getArgs()}&riidx=<%=bl.getRi_idx()%>"><%=bl.getRi_idx()%></a>
+								<a href="bookDetail<%=pi.getArgs() %>&riidx=<%=bl.getRi_idx()%>"><%=bl.getRi_idx()%></a>
 							</td>
 							<td><%=bl.getRi_line_type()%></td>
 							<td><%=bl.getRi_fr()%></td>

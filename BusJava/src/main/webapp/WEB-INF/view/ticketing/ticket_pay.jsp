@@ -368,7 +368,7 @@ String couponType = (String)request.getAttribute("couponType");
 					</div>
 					<div id="pmoney_view">
 						<div>
-							<% if (loginInfo.getMi_pmoney() > (totalFee1 + totalFee2)) { // 회원의 보유 페이머니가 결제금액보다 큰 경우 %>
+							<% if (loginInfo.getMi_pmoney() >= (totalFee1 + totalFee2)) { // 회원의 보유 페이머니가 결제금액보다 큰 경우 %>
 							<p class="h5 text-left">
 								잔액 <span id="myPmoney"></span>
 							</p>

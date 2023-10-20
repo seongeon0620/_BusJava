@@ -9,9 +9,9 @@ List<Integer> seatList = (List<Integer>) session.getAttribute("seatList");
 %>
 <section class="section">
 	<div class="container">
-		<div class="row text-center animate fadeInUp animated">
+		<div class="row text-center">
 			<div class="col-md-12">
-				<h2 class="border-bottom section-heading"><%=ri2.getRi_line_type().equals("고속") ? "고속" : "시외" %>버스 예매</h2>
+				<h2 class="border-bottom heading"><%=ri2.getRi_line_type().equals("H") ? "고속" : "시외" %>버스 예매</h2>
 			</div>
 			<div class="col-md-12">
 				<div class="col-md-12 m-auto">

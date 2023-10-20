@@ -14,6 +14,7 @@ int adult_fee = ri1.getAdult_fee(), student_fee = ri1.getStudent_fee(), child_fe
 String action = "";
 if (mode.equals("p"))	action = "payment";
 else	action = "step04";
+System.out.println(ri1.getRi_line_type());
 %>
 <section class="section">
 	<div class="container">

@@ -645,11 +645,12 @@ public class MemberCtrl {
 	}
 
 	@GetMapping("/realCancel")
-	public String realCancel(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public void realCancel(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		request.setCharacterEncoding("utf-8");
 		HttpSession session = request.getSession();
 		MemberInfo loginInfo = (MemberInfo)session.getAttribute("loginInfo");
 		String riidx = request.getParameter("riidx");
+		int cpage = Integer.parseInt(request.getParameter("cpage"));
 		String mi_id =  loginInfo.getMi_id();
 		
 		int result = memberSvc.getrealCancel(riidx, mi_id);
@@ -658,11 +659,9 @@ public class MemberCtrl {
 		PrintWriter out = response.getWriter();
 		out.println("<script>");
 		out.println("alert('예매가 취소처리 되었습니다.');");
-		out.println("location.href='memberMypage';");
+		out.println("location.href='bookDetail?cpage=" + cpage + "&riidx=" + riidx + "';");
 		out.println("</script>");
 		out.close();
-		
-		return "redirect:/booking";
 	}
 	
 	

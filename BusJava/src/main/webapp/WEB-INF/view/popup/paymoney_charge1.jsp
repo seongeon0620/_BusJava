@@ -155,20 +155,20 @@
 		changePay();
 		
 		$.ajax({
-		      url: "/busjavaf/chargePaymoney",
-		      type: "POST",
-		      data: {
-		        realAmount: Number(chargeFluid.value.replaceAll(',', '')),
-		        payment: payment
-		      },	
-		      dataType: "json",
-		      success: function(data) { 
-		    	  successModal(realAmount);
-		      },
-		      error: function(xhr, status, error) {
-		    	  alert("페이머니 충전에 실패했습니다.");
-		    	  return;
-		      }
+			url: "/BusJava/chargePaymoney",
+			type: "POST",
+			data: {
+				realAmount: Number(chargeFluid.value.replaceAll(',', '')),
+				payment: payment
+			},	
+			dataType: "json",
+			success: function(data) { 
+				successModal(realAmount);
+			},
+			error: function(xhr, status, error) {
+				alert("페이머니 충전에 실패했습니다.");
+				return;
+			}
 		});
 	});
 </script>

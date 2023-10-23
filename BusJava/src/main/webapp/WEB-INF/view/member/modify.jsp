@@ -77,7 +77,7 @@ function chkDupMail(e1, e3) {
 
 	if (e1 != null && e3 != null) {
 		$.ajax({
-			type : "POST", url : "./dupMail", data : {"e1" : e1, "e3" : e3 },
+			type : "POST", url : "../dupMail", data : {"e1" : e1, "e3" : e3 },
 			success : function(chkRs){
 				var msg = "";
 				if (chkRs == 0) {
@@ -135,7 +135,7 @@ function chkDupPhone(p2, p3) {
 	
 	if (p2 != null && p3 != null) {
 		$.ajax({
-			type : "POST", url : "./dupPhone", data : {"p2" : p2, "p3" : p3 },
+			type : "POST", url : "../dupPhone", data : {"p2" : p2, "p3" : p3 },
 			success : function(chkRs){
 				var msg = "";
 				if (chkRs == 0) {
@@ -178,16 +178,6 @@ function memberDel(){
 }
 
 /* 전체 점검 */
-window.addEventListener('DOMContentLoaded', (event) => {
-    document.getElementById('pwChange').addEventListener('click', function(event) {
-        var pwDup = document.getElementById('pwDup').value;
-        if (pwDup === 'N'){
-        	alert("비밀번호를 확인해주세요");
-        	event.preventDefault();
-        }
-        
-    });
-});
 
 window.addEventListener('DOMContentLoaded', (event) => {
     document.getElementById('mailChange').addEventListener('click', function(event) {
@@ -264,7 +254,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 							<tr id="pwChangeform3" style="display: none;">
 								<td colspan="2">
 									<button type="button" class="btn btn-outline-secondary" onclick="changePw();">취소</button>
-									<button type="submit" id="pwChange" class="btn btn-outline-primary">확인</button>
+									<button type="button" id="pwChangeBtn" class="btn btn-outline-primary">확인</button>
 								</td>
 							</tr>
 						</form>
@@ -449,6 +439,24 @@ function changePhone() {
 		phoneChk.value = "N";
 	}
 }
+
+$("#pwChangeBtn").click(function(){
+	var pwDup = document.getElementById('pwDup').value;
+	var passwordInput = document.getElementById("mi_pw");
+	var mi_pw = passwordInput.value;
+	
+	if (pwDup === 'N') {
+		alert("비밀번호를 확인해주세요");
+		return;
+	}
+	
+	$.ajax({
+		type : "POST", url : "memberUpPw", data : {"mi_pw" : mi_pw},
+		success : function(data){
+			location.reload();
+		}
+	});
+});
 </script>
 
 <%@ include file="../_inc/foot.jsp"%>

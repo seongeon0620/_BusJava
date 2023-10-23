@@ -387,15 +387,15 @@ public class MemberCtrl {
 		return "/member/mypage";
 	}
 	
+	
 	@GetMapping("/pwChk")
 	public String pwForm() {
 		return "/member/pw_form";
 	}
 	
-	/* 회원 내정보 비밀번호 체크 부분 */
-	@PostMapping("/mypage/myInfo")
-	// 비동기 통신(ajax)시 서버에서 클라이언트로 응답 메세지를 보낼 떄 데이터를 담아서 보낼 해당 본문을 의미
-	public String memberUpdate(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	@PostMapping("/chkPw")
+	@ResponseBody
+	public int chkPw(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		request.setCharacterEncoding("utf-8");
 		HttpSession session = request.getSession();
 		MemberInfo loginInfo = (MemberInfo)session.getAttribute("loginInfo");
@@ -413,7 +413,33 @@ public class MemberCtrl {
 			out.println("history.back();");
 			out.println("</script>");
 			out.close();
-		} 
+		}
+		
+		return result;
+		
+	}
+	
+	/* 회원 내정보 비밀번호 체크 부분 */
+	@GetMapping("/mypage/myInfo")
+	public String memberUpdate(HttpServletRequest request, HttpServletResponse response) throws Exception {
+//		request.setCharacterEncoding("utf-8");
+//		HttpSession session = request.getSession();
+//		MemberInfo loginInfo = (MemberInfo)session.getAttribute("loginInfo");
+//		
+//		String mi_id = loginInfo.getMi_id();
+//		String mi_pw = request.getParameter("mi_pw");
+//		
+//		int result = memberSvc.memberPwChk(mi_id, mi_pw);
+//		
+//		if (result != 1) {
+//			response.setContentType("text/html; charset=utf-8");
+//			PrintWriter out = response.getWriter();
+//			out.println("<script>");
+//			out.println("alert('비밀번호가 잘못되었습니다.');");
+//			out.println("history.back();");
+//			out.println("</script>");
+//			out.close();
+//		} 
 		
 		return "/member/modify";
 		
@@ -421,8 +447,8 @@ public class MemberCtrl {
 	
 	/* 회원 비밀번호 변경 */
 	@PostMapping("/mypage/memberUpPw")
-	// 비동기 통신(ajax)시 서버에서 클라이언트로 응답 메세지를 보낼 떄 데이터를 담아서 보낼 해당 본문을 의미
-	public String memberUpPw(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	@ResponseBody
+	public int memberUpPw(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		request.setCharacterEncoding("utf-8");
 		HttpSession session = request.getSession();
 		MemberInfo loginInfo = (MemberInfo)session.getAttribute("loginInfo");
@@ -430,10 +456,8 @@ public class MemberCtrl {
 		String mi_id = loginInfo.getMi_id();
 		String mi_pw = request.getParameter("mi_pw");
 		
-		/*
-		  System.out.println(mi_id); 
-		  System.out.println(mi_pw);
-		 */
+		System.out.println(mi_id); 
+		System.out.println(mi_pw);
 		
 		int result = memberSvc.memberUpPw(mi_id, mi_pw);
 		
@@ -448,10 +472,9 @@ public class MemberCtrl {
 		} else {
 		// 정보수정 성공시 세션에 들어있는 로그인 정보도 수정함
 			loginInfo.setMi_pw(mi_pw);
-			session.invalidate();
 		}
 		
-		return "redirect:/";
+		return result;
 		
 	}
 	
@@ -491,7 +514,6 @@ public class MemberCtrl {
 		} else {
 		// 정보수정 성공시 세션에 들어있는 로그인 정보도 수정함
 			loginInfo.setMi_pw(mi_email);
-			session.invalidate();
 		}
 		
 		return "redirect:/";

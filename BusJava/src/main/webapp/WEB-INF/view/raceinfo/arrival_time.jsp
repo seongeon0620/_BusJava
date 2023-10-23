@@ -175,8 +175,9 @@ $(document).ready(function() {
 		                    tableHTML += "<td>" + table.etime + "</td>";
 		                    tableHTML += "<td>" + table.ltime + "</td>";
 		                    tableHTML += "<td class='align-middle'>" + table.status + "</td>";
-		                    tableHTML += "</tr></tbody></table>";
+		                    tableHTML += "</tr>";
 		                });
+		                tableHTML += "</tbody></table>";
 		                
 		            } else { // 데이터가 없는 경우
 		            	tableHTML += "<tr><td colspan='8'>조회된 시간표가 없습니다.</td></tr></tbody></table>"

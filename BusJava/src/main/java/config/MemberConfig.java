@@ -44,8 +44,8 @@ public class MemberConfig {
         
         mailSender.setHost("smtp.naver.com");
         mailSender.setPort(465);
-        mailSender.setUsername("jeenworks@naver.com");
-        mailSender.setPassword("skrowneej!");
+        mailSender.setUsername("dev_eon@naver.com");
+        mailSender.setPassword("qwer!@#$");
 
         Properties props = mailSender.getJavaMailProperties();
         props.put("mail.transport.protocol", "smtp");

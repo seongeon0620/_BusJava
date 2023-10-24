@@ -121,9 +121,8 @@ public class MemberCtrl {
 		request.setCharacterEncoding("utf-8");
 		String mi_id = request.getParameter("mi_id");
 		String mi_status = request.getParameter("mi_status");
-		int mi_pmoney = Integer.parseInt(request.getParameter("mi_pmoney"));
 		
-		int result = memberSvc.memberUpdate(mi_id, mi_status, mi_pmoney);
+		int result = memberSvc.memberUpdate(mi_id, mi_status);
 		
 		  if (result != 1) { 
 			  response.setContentType("text/html; charset=utf-8");

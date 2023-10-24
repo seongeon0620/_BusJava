@@ -27,8 +27,8 @@ public class MemberSvc {
 		return memDetailList;
 	}
 
-	public int memberUpdate(String mi_id, String mi_status, int mi_pmoney) {
-		int result = memberDao.memberUpdate(mi_id, mi_status, mi_pmoney);
+	public int memberUpdate(String mi_id, String mi_status) {
+		int result = memberDao.memberUpdate(mi_id, mi_status);
 		return result;
 	}
 	

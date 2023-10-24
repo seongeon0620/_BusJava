@@ -49,7 +49,7 @@ const sSalesQuarterNow = ${sSalesQuarterNow};
 			<div class="col-lg-6">
 				<div class="card">
 					<div class="card-body">
-						<h4 class="card-title">이달의 고속버스 인기 노선<span class="h6 ml-2">팔린 좌석 수 [단위 : 석]</span></h4>
+						<h4 class="card-title">이달의 고속버스 인기 노선<span class="h6 ml-2">[단위 : 건]</span></h4>
 						<div>
 							<canvas id="hTopPie" height="150"></canvas>
 						</div>
@@ -59,7 +59,7 @@ const sSalesQuarterNow = ${sSalesQuarterNow};
 			<div class="col-lg-6">
 				<div class="card">
 					<div class="card-body">
-						<h4 class="card-title">이달의 시외버스 인기 노선<span class="h6 ml-2">팔린 좌석 수 [단위 : 석]</span></h4>
+						<h4 class="card-title">이달의 시외버스 인기 노선<span class="h6 ml-2">[단위 : 건]</span></h4>
 						<div>
 							<canvas id="sTopPie" height="150"></canvas>
 						</div>

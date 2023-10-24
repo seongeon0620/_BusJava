@@ -177,13 +177,11 @@ if (ti.getSeatInfo().size() > 0) {
 		</div>
 	</div>	
 </div>
-	</div>
 
-    
 
 <script>
 function openModal(ri_idx, mi_id) {
-	$('#ViewModal .modal-content').load("/busjava_admin/cancel?ri_idx=" + ri_idx + "&mi_id=" + mi_id);
+	$('#ViewModal .modal-content').load("/Admin_BusJava/cancel?ri_idx=" + ri_idx + "&mi_id=" + mi_id);
 	$('#ViewModal').modal();
   }
 </script>

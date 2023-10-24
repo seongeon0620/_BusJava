@@ -20,7 +20,7 @@ public class IndexDao {
       String sql = "SELECT '어제' AS TITLE, COUNT(RI.RI_IDX) COUNT, IFNULL(SUM(CR.CR_PMONEY + CR.CR_PAY), 0) SALES"
     		  		+ " FROM T_COUNT_RINFO CR"
     		  		+ " JOIN T_RESERVATION_INFO RI ON CR.RI_IDX = RI.RI_IDX" 
-    		  		+ " WHERE RI.RI_STATUS = '예매' AND CR.CR_DATE = adddate(curdate(), -1)"
+    		  		+ " WHERE RI.RI_STATUS = '예매' AND date(CR.CR_DATE) = adddate(curdate(), -1)"
     		  		+ " UNION ALL"
     		  		+ " SELECT '일주일', COUNT(RI.RI_IDX) COUNT, IFNULL(SUM(CR.CR_PMONEY + CR.CR_PAY), 0) SALES"
     		  		+ " FROM T_COUNT_RINFO CR"

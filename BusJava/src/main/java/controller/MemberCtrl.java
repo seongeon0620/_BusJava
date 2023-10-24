@@ -231,9 +231,10 @@ public class MemberCtrl {
 			email = (idE1 + "@" + idE3);
 		}
 		
-		String setfrom = "jeenworks@naver.com";		
-		String title = "busjava"; // 제목
-		String content = "회원님의 아이디는 : "; // 내용
+		String setfrom = "dev_eon@naver.com";		
+		String title = "[BusJava] 회원님의 아이디를 안내해 드립니다."; // 제목
+		String content = "<div style='border: 1px solid #ccc; padding: 20px;'>";
+		content += "<h2>회원님의 아이디는 ";
 
 		int result = memberSvc.chkDupMail(email);
 		
@@ -248,7 +249,7 @@ public class MemberCtrl {
 		}
 		
 		String mi_id = memberSvc.passDupMail(email);
-		content += mi_id + "입니다.";
+		content += mi_id + "입니다.</h2></div>";
 			
 		try {
 				MimeMessage message = mailSender.createMimeMessage();
@@ -257,7 +258,7 @@ public class MemberCtrl {
 				messageHelper.setFrom(setfrom); // 보내는사람 생략하면 정상작동을 안함
 				messageHelper.setTo(email); // 받는사람 이메일
 				messageHelper.setSubject(title); // 메일제목은 생략이 가능하다
-				messageHelper.setText(content); // 메일 내용
+				message.setText(content, "utf-8", "html"); // 메일 내용
 	
 				mailSender.send(message);
 				
@@ -280,7 +281,6 @@ public class MemberCtrl {
 /* 비밀번호 찾기 */
 	
 	@PostMapping("/memberFindPw")
-	// 비동기 통신(ajax)시 서버에서 클라이언트로 응답 메세지를 보낼 떄 데이터를 담아서 보낼 해당 본문을 의미
 	public String memberFindPw(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		request.setCharacterEncoding("utf-8");
 		String pwE1 = request.getParameter("pwE1").trim();
@@ -296,10 +296,10 @@ public class MemberCtrl {
 			email = (pwE1 + "@" + pwE3);
 		}
 		
-		String setfrom = "jeenworks@naver.com";		
-		String title = "busjava"; // 제목
+		String setfrom = "dev_eon@naver.com";		
+		String title = "[BusJava] 회원님의 임시비밀번호 발급 결과를 안내해 드립니다."; // 제목
 		String newPw = getRandomPassword();
-		String content = "회원님의 임시비밀번호는 : " + newPw; // 내용
+		String content = "회원님의 임시비밀번호는 : " + newPw + "입니다."; // 내용
 		
 		int result = memberSvc.chkDupIdMail(mi_id, email);
 		

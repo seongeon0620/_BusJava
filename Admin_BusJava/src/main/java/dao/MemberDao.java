@@ -72,9 +72,9 @@ public class MemberDao {
 		return memDetailList;
 	}
 
-	public int memberUpdate(String mi_id, String mi_status, int mi_pmoney) {
+	public int memberUpdate(String mi_id, String mi_status) {
 		String sql = "update t_member_Info "
-				+ " set mi_pmoney = " + mi_pmoney + ", mi_status = '" + mi_status + "' "
+				+ " set mi_status = '" + mi_status + "' "
 				+ " where mi_id = '" + mi_id + "' ";
 		int result = jdbc.update(sql);
 		return result;

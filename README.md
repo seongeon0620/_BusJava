@@ -2,7 +2,7 @@
 Open API를 활용한 Spring MVC 기반의 고속, 시외 버스 예매 사이트입니다.
 <br /><br />
 🔗 <a href="https://www.figma.com/file/9Q8LJ9pOOshHCMSdftHcIy/%EB%B2%84%EC%8A%A4%EC%9E%90%EB%B0%94v3?type=design&node-id=0%3A1&mode=design&t=rtgqBkAPAO5YO1WO-1">기획안으로 이동하기(피그마)</a><br />
-🔗 <a href="[https://drive.google.com/file/d/1hUpJ2KJH9F7dg3evDS84cmWUGQquRU7d/view?usp=drive_link](https://drive.google.com/file/d/1hUpJ2KJH9F7dg3evDS84cmWUGQquRU7d/view?usp=sharing)](https://drive.google.com/file/d/1wDVGjN0RBVG_PaRbkgAvVVsCuJ4pdiZJ/view?usp=sharing)">발표자료</a><br />
+🔗 <a href="https://drive.google.com/file/d/1wDVGjN0RBVG_PaRbkgAvVVsCuJ4pdiZJ/view?usp=sharing">발표자료</a><br />
 
 ## 🕔 프로젝트 기간
 - 2023.08.30 ~ 2023.09.20 (3주)
